@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<resultMap type="com.topia.card.User.UserVO" id="info">
+		<result column="USER_IDX" property="userIdx"/>
+		<result column="USER_REGISTER_DATE" property="userRegisterDate"/>
+		<result column="USER_NAME" property="userName"/>
+		<result column="USER_SOCIAL_SECUNUM" property="userSocialSecunum"/>
+		<result column="USER_SEX" property="userSex"/>
+		<result column="USER_COMP" property="userComp"/>
+		<result column="USER_COMP_ENTERDATE" property="userCompEnterdate"/>
+		<result column="USER_DEPT" property="userDept"/>
+		<result column="USER_SPOT" property="userSpot"/>
+		<result column="USER_ARMY_SERV" property="userArmyServ"/>
+		<result column="USER_MARITAL_STATUS" property="userMaritalStatus"/>
+		<result column="USER_ARMY_SERV_ENTER" property="userArmyServEnter"/>
+		<result column="USER_ARMY_SERV_LEAVE" property="userArmyServLeave"/>
+		<result column="USER_ARMY_SERV_PERIOD" property="userArmyServPeriod"/>
+		<result column="USER_TELNUM_WIRED" property="userTelnumWired"/>
+		<result column="USER_TELNUM_WIRELESS" property="userTelnumWireless"/>
+		<result column="USER_EMAIL" property="userEmail"/>
+		<result column="USER_ZIPCODE" property="userZipcode"/>
+		<result column="USER_ADDRESS" property="userAddress"/>
+		<result column="CAREER_IDX" property="careerIdx"/>
+		<result column="CAREER_COMP_NAME" property="careerCompName"/>
+		<result column="CAREER_ENTERDATE" property="careerEnterdate"/>
+		<result column="CAREER_LEAVEDATE" property="careerLeavedate"/>
+		<result column="CAREER_SPOT" property="careerSpot"/>
+		<result column="CAREER_RESPONSIB" property="careerResponsib"/>
+		<result column="EDU_IDX" property="eduIdx"/>
+		<result column="EDU_SCHOOL_NAME" property="eduSchoolName"/>
+		<result column="EDU_STATUS" property="eduStatus"/>
+		<result column="EDU_YEAR" property="eduYear"/>
+		<result column="EDU_MONTH" property="eduMonth"/>
+		<result column="LICEN_IDX" property="licenIdx"/>
+		<result column="LICEN_NAME" property="licenName"/>
+		<result column="LICEN_SKILL_LEVEL" property="licenSkillLevel"/>
+		<result column="QUALIFI_IDX" property="qualifiIdx"/>
+		<result column="QUALIFI_NAME" property="qualifiName"/>
+		<result column="QUALIFI_GETDATE" property="qualifiGetdate"/>
+		<result column="SKILL_IDX" property="skillIdx"/>
+		<result column="SKILL_PROJECT_NAME" property="skillProjectName"/>
+		<result column="SKILL_STARTDATE" property="skillStartdate"/>
+		<result column="SKILL_ENDDATE" property="skillEnddate"/>
+		<result column="SKILL_CUSTOMER_COMP" property="skillCustomerComp"/>
+		<result column="SKILL_WORK_COMP" property="skillWorkComp"/>
+		<result column="SKILL_APPLIED" property="skillApplied"/>
+		<result column="SKILL_INDUSTRY" property="skillIndustry"/>
+		<result column="SKILL_ROLE" property="skillRole"/>
+		<result column="SKILL_MODEL" property="skillModel"/>
+		<result column="SKILL_OS" property="skillOs"/>
+		<result column="SKILL_LANG" property="skillLang"/>
+		<result column="SKILL_DBMS" property="skillDbms"/>
+		<result column="SKILL_COMM" property="skillComm"/>
+		<result column="SKILL_TOOL" property="skillTool"/>
+		<result column="SKILL_ETC" property="skillEtc"/>
+		<result column="TRAINING_IDX" 			property="trainingIdx"/>
+		<result column="TRAINING_NAME" 			property="trainingName"/>
+		<result column="TRAINING_STARTDATE" 	property="trainingStartdate"/>
+		<result column="TRAINING_ENDDATE" 		property="trainingEnddate"/>
+		<result column="TRAINING_AGENCY"		property="trainingAgency"/>
+	</resultMap>
+	
+	<insert id="userInsert">
+		INSERT INTO USER_INFO
+			(
+				USER_IDX
+				<!-- user name 필수입력사항 -->
+				,USER_NAME
+				<if test="userSocialSecunum != null">, USER_SOCIAL_SECUNUM</if>
+				<if test="userSex != null">, USER_SEX</if>
+				<if test="userComp != null">, USER_COMP</if>
+				<if test="userCompEnterdate != null">, USER_COMP_ENTERDATE</if>
+				<if test="userDept != null">, USER_DEPT</if>
+				<if test="userSpot != null">, USER_SPOT</if>
+				<if test="userArmyServPeriod != null">, USER_ARMY_SERV_PERIOD</if>
+				<if test="userMaritalStatus != null">, USER_MARITAL_STATUS</if>
+				<if test="userArmyServEnter != null">, USER_ARMY_SERV_ENTER</if>
+				<if test="userArmyServLeave != null">, USER_ARMY_SERV_LEAVE</if>
+				<if test="userArmyServ != null">, USER_ARMY_SERV</if>
+				<if test="userTelnumWired != null">, USER_TELNUM_WIRED</if>
+				<if test="userTelnumWireless != null">, USER_TELNUM_WIRELESS</if>
+				<if test="userEmail != null">, USER_EMAIL</if>
+				<if test="userZipcode != null">, USER_ZIPCODE</if>
+				<if test="userAddress != null">, USER_ADDRESS</if>
+			)
+		VALUES (
+				#{userIdx}
+				<!-- user name 필수입력사항 -->
+				,#{userName[0]}
+				<if test="userSocialSecunum != null">, #{userSocialSecunum}</if>
+				<if test="userSex != null">, #{userSex[0]}</if>
+				<if test="userComp != null">, #{userComp[0]}</if>
+				<if test="userCompEnterdate != null">, #{userCompEnterdate[0]}</if>
+				<if test="userDept != null">, #{userDept[0]}</if>
+				<if test="userSpot != null">, #{userSpot[0]}</if>
+				<if test="userArmyServPeriod != null">, #{userArmyServPeriod[0]}</if>
+				<if test="userMaritalStatus != null">, #{userMaritalStatus[0]}</if>
+				<if test="userArmyServEnter != null">, #{userArmyServEnter[0]}</if>
+				<if test="userArmyServLeave != null">, #{userArmyServLeave[0]}</if>
+				<if test="userArmyServ != null">, #{userArmyServ[0]}</if>
+				<if test="userTelnumWired != null">, #{userTelnumWired[0]}</if>
+				<if test="userTelnumWireless != null">, #{userTelnumWireless[0]}</if>
+				<if test="userEmail != null">, #{userEmail[0]}</if>
+				<if test="userZipcode != null">, #{userZipcode[0]}</if>
+				<if test="userAddress != null">, #{userAddress[0]}</if>
+			)
+	</insert>
+
+</mapper>
