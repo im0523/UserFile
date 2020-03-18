@@ -55,7 +55,7 @@ tbody tr{
 	text-align: center;
 }
 
-button {
+button, .saveBtn {
     background-color: #bad0e0;
     border-radius: 2px;
     font-size: 12px;
@@ -63,7 +63,7 @@ button {
     border: solid 1px #666666;
 }
 
-button:hover {
+button:hover, .saveBtn:hover {
     background-color: #99b0bf;
 }
 
@@ -110,7 +110,7 @@ button:hover {
 
 
 /*
-	�뿤�뜑 �긽�깭�몴�떆 諛� 踰꾪듉 �젅�씠�븘�썐
+	占쎈엘占쎈쐭 占쎄맒占쎄묶占쎈ご占쎈뻻 獄쏉옙 甕곌쑵�뱣 占쎌쟿占쎌뵠占쎈툡占쎌뜍
 */
 .status-display-pannel{
 	padding: 10px 10px 10px 0;
@@ -132,7 +132,7 @@ button:hover {
 
 
 /*
-�쑀�� �젙蹂�
+占쎌�占쏙옙 占쎌젟癰귨옙
 */
 .user-info-list-pannel{
 	margin:30px auto;
@@ -154,7 +154,7 @@ button:hover {
 
 
 /*
-�쑀�� 湲곕낯�젙蹂� �뀒�씠釉�
+占쎌�占쏙옙 疫꿸퀡�궚占쎌젟癰귨옙 占쎈�믭옙�뵠�뇡占�
 */
 .user-info-list-pannel table{
 	border: solid 1px #666666;
@@ -186,7 +186,7 @@ input[type=date]{
 
 
 /*
-�쑀�� 湲곕낯�젙蹂� 泥ル쾲吏� �뀒�씠釉� �븯�쐞 td �젙�쓽
+占쎌�占쏙옙 疫꿸퀡�궚占쎌젟癰귨옙 筌ｃ꺂苡뀐쭪占� 占쎈�믭옙�뵠�뇡占� 占쎈릭占쎌맄 td 占쎌젟占쎌벥
 */
 .user-info-list-pannel .user-info-table1 td:nth-child(odd){
 	background-color:#dddddd;
@@ -203,7 +203,7 @@ input[type=date]{
 
 
 /*
-�쑀�� 湲곕낯�젙蹂� �몢踰덉㎏ �뀒�씠釉� �븯�쐞 td �젙�쓽
+占쎌�占쏙옙 疫꿸퀡�궚占쎌젟癰귨옙 占쎈あ甕곕뜆�럮 占쎈�믭옙�뵠�뇡占� 占쎈릭占쎌맄 td 占쎌젟占쎌벥
 */
 .user-info-list-pannel .user-info-table2 tr td:first-child{
 	background-color:#dddddd;
@@ -234,7 +234,7 @@ input[type=date]{
 
 
 /*
-	�븰�젰�궗�빆 諛� �옄寃⑹쬆�궗�빆
+	占쎈린占쎌젾占쎄텢占쎈퉮 獄쏉옙 占쎌쁽野꺿뫗弛놅옙沅쀯옙鍮�
 */
 
 .edu-and-qualifi-pannel div{
@@ -262,7 +262,7 @@ input[type=date]{
 
 
 /*
-	寃쎈젰�궗�빆
+	野껋럥�젾占쎄텢占쎈퉮
 */
 .career-info thead tr{
 	background-color:#dddddd;
@@ -270,7 +270,7 @@ input[type=date]{
 }
 
 /*
-	�븰�젰�궗�빆 諛� �옄寃⑹쬆�궗�빆
+	占쎈린占쎌젾占쎄텢占쎈퉮 獄쏉옙 占쎌쁽野꺿뫗弛놅옙沅쀯옙鍮�
 */
 
 .training-and-licen-pannel div{
@@ -306,7 +306,7 @@ input[type=date]{
 
 
 /*
-	Row 異붽� 踰꾪듉
+	Row �빊遺쏙옙 甕곌쑵�뱣
 */
 .add-row-btn-pannel{
 	width: 100%;
@@ -382,7 +382,7 @@ input[type=date]{
 
 
 /**
-* 遺덈윭�삤湲� �궡 寃��깋 �궎�썙�뱶 �뙣�꼸
+* �겫�뜄�쑎占쎌궎疫뀐옙 占쎄땀 野껓옙占쎄퉳 占쎄텕占쎌뜖占쎈굡 占쎈솭占쎄섯
 */
 
 .pop-keyword-add-btn-pannel {
@@ -516,3 +516,4 @@ input[type=date]{
 	width: 100%;
 	cursor: pointer;
 }
+

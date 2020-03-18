@@ -15,7 +15,7 @@
 	
 	<script src="./resources/js/util/util.js"></script>
 	
-	<script type="text/javascript" src="js/userCardFunc.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="./resources/js/userCardFunc.js" charset="UTF-8"></script>
 	
 	<link rel="stylesheet" type="text/css" href="./resources/compnent/jquery-ui-1.12.1.custom/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="./resources/compnent/jquery-loading-master/dist/jquery.loading.min.css">
@@ -43,7 +43,7 @@
 	</div> -->
 	<div class="custom-loading"><div class="loading-image"></div></div>
 	<%-- 새 작성건의 경우 해당 인풋값은 비어있고 수정 및 조회건은 들어감 --%>
-		<input id="userIdx" type="hidden">
+		<input id="userIdx" type="hidden" name="userIdx">
 	<div class="user-info-list-pannel">
 		<div class="personal-history-title-pannel">
 			<h3>개 인 이 력 카 드</h3>
@@ -68,9 +68,8 @@
 				<button class="personalHistoryResetBtn">
 					초기화
 				</button>
-				<button class="saveBtn">
-					저장
-				</button>
+				<input type="button" class="saveBtn" value="저장">
+					
 			</div>
 		</div>
 		
@@ -131,7 +130,7 @@
 					<td><input type="text" id="userArmyServPeriod" name="userArmyServPeriod"></td>
  					<td style="display: none;">
 							<input type="file" name="file">
-							<input type="hidden" name="userIdx">
+<!-- 							<input type="hidden" name="userIdx"> -->
 							<input type="hidden" name="userName" >
 					</td>
 				</tr>
@@ -196,186 +195,186 @@
 		
 		
 		
-<%-- 		<%-- 학력 / 자격증 --%> --%>
-<!-- 		<div class="edu-and-qualifi-pannel"> -->
-<!-- 			<div class="edu-table-pannel"> -->
-<!-- 				<table class="edu-table flexibleTable" tb="edu"> -->
-<!-- 					<thead> -->
-<!-- 						<tr> -->
-<!-- 							<td>학교명</td> -->
-<!-- 							<td>상태</td> -->
-<!-- 							<td colspan="2">년</td> -->
-<!-- 							<td colspan="2">월</td> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 					<tbody> -->
-<!-- 						<tr> -->
-<!-- 							<td><input type="text" data="eduSchoolName" class="eduSchoolName"></td> -->
-<!-- 							<td> -->
-<!-- 								<select data="eduStatus" class="eduStatus"> -->
-<!-- 									<option value="">선택없음</option> -->
-<!-- 									<option value="입학">입학</option> -->
-<!-- 									<option value="재학">재학</option> -->
-<!-- 									<option value="졸업">졸업</option> -->
-<!-- 									<option value="졸업예정">졸업예정</option> -->
-<!-- 								</select> -->
-<!-- 							</td> -->
-<!-- 							<td><input type="text" data="eduYear" placeholder="" class="eduYear"></td> -->
-<!-- 							<td>년</td> -->
-<!-- 							<td><input type="text" data="eduMonth" placeholder="" class="eduMonth"></td> -->
-<!-- 							<td>월</td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-					
-<!-- 				</table> -->
-				
-<!-- 				<div class="add-row-btn-pannel"> -->
-<!-- 					<button class="add-row-btn addRowBtn">+</button> -->
-<!-- 				</div> -->
-				
-<!-- 			</div> -->
-			
-<!-- 			<div class="qualifi-table-pannel"> -->
-<!-- 				<table class="qualifi-table flexibleTable" tb="qualifi"> -->
-				
-<!-- 					<thead> -->
-<!-- 						<tr> -->
-<!-- 							<td> -->
-<!-- 								자격증명 -->
-<!-- 							</td> -->
-<!-- 							<td> -->
-<!-- 								취득일 -->
-<!-- 							</td> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-					
-<!-- 					<tbody> -->
-<!-- 						<tr> -->
-<!-- 							<td><input type="text" data="qualifiName" class="qualifiName"></td> -->
-<!-- 							<td><input type="text" data="qualifiGetdate" class="qualifiGetdate dateInput"></td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-					
-<!-- 				</table> -->
-				
-<!-- 				<div class="add-row-btn-pannel"> -->
-<!-- 					<button class="add-row-btn addRowBtn">+</button> -->
-<!-- 				</div> -->
-				
-<!-- 			</div> -->
-<!-- 		</div> -->
-
-
-
-
-
-
-<!-- 		<div class="clear-pannel"></div> -->
-		
-		
-		
-		
-		
-<!-- 		<div class="career-info-pannel"> -->
-<!-- 			<table class="career-info flexibleTable" tb="career"> -->
-<!-- 				<thead> -->
-<!-- 					<tr> -->
-<!-- 						<td rowspan="2">회사명</td> -->
-<!-- 						<td colspan="2">재직기간</td> -->
-<!-- 						<td rowspan="2">직위</td> -->
-<!-- 						<td rowspan="2">담당업무</td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 						<td>시작일</td> -->
-<!-- 						<td>종료일</td> -->
-<!-- 					</tr> -->
-<!-- 				</thead> -->
-<!-- 				<tbody> -->
-<!-- 					<tr> -->
-<!-- 						<td><input type="text" data="careerCompName" class="careerCompName"></td> -->
-<!-- 						<td><input type="text" data="careerEnterdate" class="careerEnterdate dateInput prevDate"></td> -->
-<!-- 						<td><input type="text" data="careerLeavedate" class="careerLeavedate dateInput laterDate"></td> -->
-<!-- 						<td><input type="text" data="careerSpot" class="careerSpot"></td> -->
-<!-- 						<td><input type="text" data="careerResponsib" class="careerResponsib"></td> -->
-<!-- 					</tr> -->
-<!-- 				</tbody> -->
-<!-- 			</table> -->
-			
-<!-- 			<div class="add-row-btn-pannel"> -->
-<!-- 				<button class="add-row-btn addRowBtn">+</button> -->
-<!-- 			</div> -->
-			
-<!-- 		</div> -->
-		
-		
-		
-		
-		
-		
-		
-		
 		<%-- 학력 / 자격증 --%>
-<!-- 		<div class="training-and-licen-pannel"> -->
-<!-- 			<div class="training-table-pannel"> -->
-<!-- 				<table class="training-table flexibleTable" tb="training"> -->
-<!-- 					<thead> -->
-<!-- 						<tr> -->
-<!-- 							<td> -->
-<!-- 								교육명 -->
-<!-- 							</td> -->
-<!-- 							<td> -->
-<!-- 								시작일 -->
-<!-- 							</td> -->
-<!-- 							<td> -->
-<!-- 								종료일 -->
-<!-- 							</td> -->
-<!-- 							<td> -->
-<!-- 								기관 -->
-<!-- 							</td> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 					<tbody> -->
-<!-- 						<tr> -->
-<!-- 							<td><input type="text" data="trainingName" class="trainingName"></td> -->
-<!-- 							<td><input type="text" data="trainingStartdate" class="trainingStartdate dateInput prevDate"></td> -->
-<!-- 							<td><input type="text" data="trainingEnddate" class="trainingEnddate dateInput laterDate"></td> -->
-<!-- 							<td><input type="text" data="trainingAgency" class="trainingAgency"></td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-<!-- 				</table> -->
+		<div class="edu-and-qualifi-pannel">
+			<div class="edu-table-pannel">
+				<table class="edu-table flexibleTable" tb="edu">
+					<thead>
+						<tr>
+							<td>학교명</td>
+							<td>상태</td>
+							<td colspan="2">년</td>
+							<td colspan="2">월</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" data="eduSchoolName" class="eduSchoolName"></td>
+							<td>
+								<select data="eduStatus" class="eduStatus">
+									<option value="">선택없음</option>
+									<option value="입학">입학</option>
+									<option value="재학">재학</option>
+									<option value="졸업">졸업</option>
+									<option value="졸업예정">졸업예정</option>
+								</select>
+							</td>
+							<td><input type="text" data="eduYear" placeholder="" class="eduYear"></td>
+							<td>년</td>
+							<td><input type="text" data="eduMonth" placeholder="" class="eduMonth"></td>
+							<td>월</td>
+						</tr>
+					</tbody>
+					
+				</table>
 				
-<!-- 				<div class="add-row-btn-pannel"> -->
-<!-- 					<button class="add-row-btn addRowBtn">+</button> -->
-<!-- 				</div> -->
+				<div class="add-row-btn-pannel">
+					<button class="add-row-btn addRowBtn">+</button>
+				</div>
 				
-<!-- 			</div> -->
+			</div>
 			
-<!-- 			<div class="training-table-pannel"> -->
-<!-- 				<table class="licen-table flexibleTable" tb="licen"> -->
-<!-- 					<thead> -->
-<!-- 						<tr> -->
-<!-- 							<td> -->
-<!-- 								보유기술 및 외국어능력 -->
-<!-- 							</td> -->
-<!-- 							<td> -->
-<!-- 								숙련도<br>(A,B,C) -->
-<!-- 							</td> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 					<tbody> -->
-<!-- 						<tr> -->
-<!-- 							<td><input type="text" data="licenName" class="licenName"></td> -->
-<!-- 							<td><input type="text" data="licenSkillLevel" class="licenSkillLevel"></td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-<!-- 				</table> -->
+			<div class="qualifi-table-pannel">
+				<table class="qualifi-table flexibleTable" tb="qualifi">
 				
-<!-- 				<div class="add-row-btn-pannel"> -->
-<!-- 					<button class="add-row-btn addRowBtn">+</button> -->
-<!-- 				</div> -->
+					<thead>
+						<tr>
+							<td>
+								자격증명
+							</td>
+							<td>
+								취득일
+							</td>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td><input type="text" data="qualifiName" class="qualifiName"></td>
+							<td><input type="text" data="qualifiGetdate" class="qualifiGetdate dateInput"></td>
+						</tr>
+					</tbody>
+					
+				</table>
 				
-<!-- 			</div> -->
-<!-- 		</div> -->
+				<div class="add-row-btn-pannel">
+					<button class="add-row-btn addRowBtn">+</button>
+				</div>
+				
+			</div>
+		</div>
+
+
+
+
+
+
+		<div class="clear-pannel"></div>
+		
+		
+		
+		
+		
+		<div class="career-info-pannel">
+			<table class="career-info flexibleTable" tb="career">
+				<thead>
+					<tr>
+						<td rowspan="2">회사명</td>
+						<td colspan="2">재직기간</td>
+						<td rowspan="2">직위</td>
+						<td rowspan="2">담당업무</td>
+					</tr>
+					<tr>
+						<td>시작일</td>
+						<td>종료일</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" data="careerCompName" class="careerCompName"></td>
+						<td><input type="text" data="careerEnterdate" class="careerEnterdate dateInput prevDate"></td>
+						<td><input type="text" data="careerLeavedate" class="careerLeavedate dateInput laterDate"></td>
+						<td><input type="text" data="careerSpot" class="careerSpot"></td>
+						<td><input type="text" data="careerResponsib" class="careerResponsib"></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div class="add-row-btn-pannel">
+				<button class="add-row-btn addRowBtn">+</button>
+			</div>
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		학력 / 자격증
+		<div class="training-and-licen-pannel">
+			<div class="training-table-pannel">
+				<table class="training-table flexibleTable" tb="training">
+					<thead>
+						<tr>
+							<td>
+								교육명
+							</td>
+							<td>
+								시작일
+							</td>
+							<td>
+								종료일
+							</td>
+							<td>
+								기관
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" data="trainingName" class="trainingName"></td>
+							<td><input type="text" data="trainingStartdate" class="trainingStartdate dateInput prevDate"></td>
+							<td><input type="text" data="trainingEnddate" class="trainingEnddate dateInput laterDate"></td>
+							<td><input type="text" data="trainingAgency" class="trainingAgency"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="add-row-btn-pannel">
+					<button class="add-row-btn addRowBtn">+</button>
+				</div>
+				
+			</div>
+			
+			<div class="training-table-pannel">
+				<table class="licen-table flexibleTable" tb="licen">
+					<thead>
+						<tr>
+							<td>
+								보유기술 및 외국어능력
+							</td>
+							<td>
+								숙련도<br>(A,B,C)
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" data="licenName" class="licenName"></td>
+							<td><input type="text" data="licenSkillLevel" class="licenSkillLevel"></td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div class="add-row-btn-pannel">
+					<button class="add-row-btn addRowBtn">+</button>
+				</div>
+				
+			</div>
+		</div>
 		
 		
 	
@@ -383,7 +382,7 @@
 	
 		
 		
-<!-- 		<div class="clear-pannel"></div> -->
+		<div class="clear-pannel"></div>
 		
 		
 		
@@ -392,154 +391,154 @@
 		
 		
 		
-<!-- 		<div class="skill-inventory-table-pannel"> -->
-<!-- 			<table class="skill-inventory-table flexibleTable" tb="skill"> -->
-<!-- 				<thead> -->
-<!-- 					<tr> -->
-<!-- 						<td rowspan="2">프로젝트명<br>업무명</td> -->
-<!-- 						<td colspan="2">참여기간</td> -->
-<!-- 						<td rowspan="2">고객사</td> -->
-<!-- 						<td rowspan="2">근무회사</td> -->
-<!-- 						<td colspan="2">개발분야</td> -->
-<!-- 						<td rowspan="2">역할</td> -->
-<!-- 						<td colspan="7">개발환경</td> -->
-<!-- 					</tr> -->
-<!-- 					<tr> -->
-<!-- 						<td>시작일</td> -->
-<!-- 						<td>종료일</td> -->
-<!-- 						<td>산업</td> -->
-<!-- 						<td>응용</td> -->
-<!-- 						<td>기종</td> -->
-<!-- 						<td>O.S</td> -->
-<!-- 						<td>언어</td> -->
-<!-- 						<td>DBMS</td> -->
-<!-- 						<td>TOOL</td> -->
-<!-- 						<td>통신</td> -->
-<!-- 						<td>기타</td> -->
-<!-- 					</tr> -->
-<!-- 				</thead> -->
-<!-- 				<tbody> -->
-<!-- 					<tr> -->
-<!-- 						<td><textarea data="skillProjectName" class="skillProjectName"></textarea></td> -->
-<!-- 						<td><input type="text" data="skillStartdate" class="skillStartdate dateInput prevDate"></td> -->
-<!-- 						<td><input type="text" data="skillEnddate" class="skillEnddate dateInput laterDate"></td> -->
-<!-- 						<td><textarea data="skillCustomerComp" class="skillCustomerComp"></textarea></td> -->
-<!-- 						<td><textarea data="skillWorkComp" class="skillWorkComp"></textarea></td> -->
-<!-- 						<td><textarea data="skillIndustry" class="skillIndustry"></textarea></td> -->
-<!-- 						<td><textarea data="skillApplied" class="skillApplied"></textarea></td> -->
-<!-- 						<td><textarea data="skillRole" class="skillRole"></textarea></td> -->
-<!-- 						<td><textarea data="skillModel" class="skillModel"></textarea></td> -->
-<!-- 						<td><textarea data="skillOs" class="skillOs"></textarea></td> -->
-<!-- 						<td><textarea data="skillLang" class="skillLang"></textarea></td> -->
-<!-- 						<td><textarea data="skillDbms" class="skillDbms"></textarea></td> -->
-<!-- 						<td><textarea data="skillTool" class="skillTool"></textarea></td> -->
-<!-- 						<td><textarea data="skillComm" class="skillComm"></textarea></td> -->
-<!-- 						<td><textarea data="skillEtc" class="skillEtc"></textarea></td> -->
-<!-- 					</tr> -->
-<!-- 				</tbody> -->
-<!-- 			</table> -->
+		<div class="skill-inventory-table-pannel">
+			<table class="skill-inventory-table flexibleTable" tb="skill">
+				<thead>
+					<tr>
+						<td rowspan="2">프로젝트명<br>업무명</td>
+						<td colspan="2">참여기간</td>
+						<td rowspan="2">고객사</td>
+						<td rowspan="2">근무회사</td>
+						<td colspan="2">개발분야</td>
+						<td rowspan="2">역할</td>
+						<td colspan="7">개발환경</td>
+					</tr>
+					<tr>
+						<td>시작일</td>
+						<td>종료일</td>
+						<td>산업</td>
+						<td>응용</td>
+						<td>기종</td>
+						<td>O.S</td>
+						<td>언어</td>
+						<td>DBMS</td>
+						<td>TOOL</td>
+						<td>통신</td>
+						<td>기타</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><textarea data="skillProjectName" class="skillProjectName"></textarea></td>
+						<td><input type="text" data="skillStartdate" class="skillStartdate dateInput prevDate"></td>
+						<td><input type="text" data="skillEnddate" class="skillEnddate dateInput laterDate"></td>
+						<td><textarea data="skillCustomerComp" class="skillCustomerComp"></textarea></td>
+						<td><textarea data="skillWorkComp" class="skillWorkComp"></textarea></td>
+						<td><textarea data="skillIndustry" class="skillIndustry"></textarea></td>
+						<td><textarea data="skillApplied" class="skillApplied"></textarea></td>
+						<td><textarea data="skillRole" class="skillRole"></textarea></td>
+						<td><textarea data="skillModel" class="skillModel"></textarea></td>
+						<td><textarea data="skillOs" class="skillOs"></textarea></td>
+						<td><textarea data="skillLang" class="skillLang"></textarea></td>
+						<td><textarea data="skillDbms" class="skillDbms"></textarea></td>
+						<td><textarea data="skillTool" class="skillTool"></textarea></td>
+						<td><textarea data="skillComm" class="skillComm"></textarea></td>
+						<td><textarea data="skillEtc" class="skillEtc"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
 			
-<!-- 			<div class="add-row-btn-pannel"> -->
-<!-- 				<button class="add-row-btn addRowBtn">+</button> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+			<div class="add-row-btn-pannel">
+				<button class="add-row-btn addRowBtn">+</button>
+			</div>
+		</div>
 		
-<!-- 	</div> -->
+	</div>
 	
 	
-<!-- 	<div class="pop-user-register-pannel" id="drag-ele1"> -->
+	<div class="pop-user-register-pannel" id="drag-ele1">
 	
-<!-- 		<!-- 검색창 패널 --> -->
-<!-- 		<div class="pop-user-search-pannel"> -->
+		<!-- 검색창 패널 -->
+		<div class="pop-user-search-pannel">
 			
-<!-- 			<input type="hidden" id="userInfoTotalCnt"> -->
-<!-- 			<input type="hidden" id="userInfoPageSize" value="10"> -->
-<!-- 			<input type="hidden" id="userInfoPageNo" value="1"> -->
+			<input type="hidden" id="userInfoTotalCnt">
+			<input type="hidden" id="userInfoPageSize" value="10">
+			<input type="hidden" id="userInfoPageNo" value="1">
 			
-<!-- 			<select id="userListSearchPeriod"> -->
-<!-- 				<option value="">검색조건</option> -->
-<!-- 				<option value="userName">이름</option> -->
-<!-- 				<option value="userComp">소속회사</option> -->
-<!-- 				<option value="userDept">부서</option> -->
-<!-- 			</select> -->
+			<select id="userListSearchPeriod">
+				<option value="">검색조건</option>
+				<option value="userName">이름</option>
+				<option value="userComp">소속회사</option>
+				<option value="userDept">부서</option>
+			</select>
 			
-<!-- 			<input type="text" id="userListSearchWord"> -->
+			<input type="text" id="userListSearchWord">
 			
-<!-- 			<select id="userCareerLength"> -->
-<!-- 				<option value="">경력사항</option> -->
-<!-- 				<option value="1">1년이상</option> -->
-<!-- 				<option value="2">2년이상</option> -->
-<!-- 				<option value="3">3년이상</option> -->
-<!-- 				<option value="4">4년이상</option> -->
-<!-- 				<option value="5">5년이상</option> -->
-<!-- 				<option value="6">6년이상</option> -->
-<!-- 				<option value="7">7년이상</option> -->
-<!-- 				<option value="8">8년이상</option> -->
-<!-- 				<option value="9">9년이상</option> -->
-<!-- 				<option value="10">10년이상</option> -->
-<!-- 			</select> -->
+			<select id="userCareerLength">
+				<option value="">경력사항</option>
+				<option value="1">1년이상</option>
+				<option value="2">2년이상</option>
+				<option value="3">3년이상</option>
+				<option value="4">4년이상</option>
+				<option value="5">5년이상</option>
+				<option value="6">6년이상</option>
+				<option value="7">7년이상</option>
+				<option value="8">8년이상</option>
+				<option value="9">9년이상</option>
+				<option value="10">10년이상</option>
+			</select>
 			
-<!-- 			<select id="userInfoDataSize"> -->
-<!-- 				<option value="10">10개씩</option> -->
-<!-- 				<option value="20">20개씩</option> -->
-<!-- 			</select> -->
-<!-- 			<select id="genderSelect"> -->
-<!-- 				<option value="" selected="selected">선택없음</option> -->
-<!-- 				<option value="남성">남성</option> -->
-<!-- 				<option value="여성">여성</option> -->
-<!-- 			</select> -->
-<!-- 			<input type="hidden" id="userGender" name="userGender" > -->
-<!-- 			<button id="userListSearchBtn" class="user-list-search-btn">검색</button> -->
-<!-- 			<div class="search-cnt-pannel"> -->
-<!-- 				<span class="search-cnt-prev">검색결과 : </span> -->
-<!-- 				<span class="search-cnt-cnt"></span> -->
-<!-- 				<span class="search-cnt-later"> 건</span> -->
-<!-- 			</div> -->
-<!-- 			<button id="getUserCountByCareerDate">연차별 인원보기</button> -->
-<!-- 			<!-- <button id="downloadExel">엑셀 다운로드</button> --> -->
+			<select id="userInfoDataSize">
+				<option value="10">10개씩</option>
+				<option value="20">20개씩</option>
+			</select>
+			<select id="genderSelect">
+				<option value="" selected="selected">선택없음</option>
+				<option value="남성">남성</option>
+				<option value="여성">여성</option>
+			</select>
+			<input type="hidden" id="userGender" name="userGender" >
+			<button id="userListSearchBtn" class="user-list-search-btn">검색</button>
+			<div class="search-cnt-pannel">
+				<span class="search-cnt-prev">검색결과 : </span>
+				<span class="search-cnt-cnt"></span>
+				<span class="search-cnt-later"> 건</span>
+			</div>
+			<button id="getUserCountByCareerDate">연차별 인원보기</button>
+			<!-- <button id="downloadExel">엑셀 다운로드</button> -->
 			
-<!-- 		</div>		 -->
+		</div>		
 		
-<!-- 		<!-- 불러오기 최소화 버튼 --> -->
-<!-- 		<div class="pop-user-top-btn-pannel minimizeUserPannelBtn"> -->
-<!-- 			<div class="pop-user-minimize-btn"> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+		<!-- 불러오기 최소화 버튼 -->
+		<div class="pop-user-top-btn-pannel minimizeUserPannelBtn">
+			<div class="pop-user-minimize-btn">
+			</div>
+		</div>
 		
-<!-- 		<div class="clear-pannel"></div> -->
+		<div class="clear-pannel"></div>
 		
-<!-- 		<div class="keyword-add-pannel">			 -->
-<!-- 			<div class="keywordInputPannel keyword-input-pannel keyword-input-pannel-invisible">#<input maxlength="16"></div> -->
-<!-- 			<div class="pop-keyword-add-btn-pannel keywordAddPannelBtn tooltip"> -->
-<!-- 				<div class="pop-user-keyword-add-btn keywordAddBtn"> -->
-<!-- 				+ -->
-<!-- 				</div> -->
-<!-- 				<span class="tooltiptext">진행 했던 프로젝트의 개발환경을 키워드로 추가하여 조회</span> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+		<div class="keyword-add-pannel">			
+			<div class="keywordInputPannel keyword-input-pannel keyword-input-pannel-invisible">#<input maxlength="16"></div>
+			<div class="pop-keyword-add-btn-pannel keywordAddPannelBtn tooltip">
+				<div class="pop-user-keyword-add-btn keywordAddBtn">
+				+
+				</div>
+				<span class="tooltiptext">진행 했던 프로젝트의 개발환경을 키워드로 추가하여 조회</span>
+			</div>
+		</div>
 		
-<!-- 		<div class="pop-register-list-pannel"> -->
+		<div class="pop-register-list-pannel">
 		
-<!-- 			<table class="pop-register-list"> -->
-<!-- 				<thead> -->
-<!-- 					<tr> -->
-<!-- 						<td>등록번호</td> -->
-<!-- 						<td>성명</td> -->
-<!-- 						<td>소속회사</td> -->
-<!-- 						<td>부서</td> -->
-<!-- 						<td>성별</td> -->
-<!-- 						<td>경력</td> -->
-<!-- 						<td>등록날짜</td> -->
-<!-- 					</tr> -->
-<!-- 				</thead> -->
-<!-- 				<tbody> -->
-<!-- 				</tbody> -->
-<!-- 			</table> -->
+			<table class="pop-register-list">
+				<thead>
+					<tr>
+						<td>등록번호</td>
+						<td>성명</td>
+						<td>소속회사</td>
+						<td>부서</td>
+						<td>성별</td>
+						<td>경력</td>
+						<td>등록날짜</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
 			
-<!-- 			<div class="pop-paging-pannel"> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+			<div class="pop-paging-pannel">
+			</div>
+		</div>
+	</div>
 </form>
 </body>
 </html>

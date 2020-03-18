@@ -62,49 +62,53 @@
 		<result column="TRAINING_AGENCY"		property="trainingAgency"/>
 	</resultMap>
 	
-	<insert id="userInsert">
+	<insert id="userInsert" parameterType="com.topia.card.User.UserVO">
+<!-- 		<selectKey keyProperty="userIdx" resultType="Integer" order="BEFORE"> -->
+<!-- 			select user_info_seq.nextval as userIdx from dual -->
+<!-- 		</selectKey> -->
 		INSERT INTO USER_INFO
 			(
 				USER_IDX
 				<!-- user name 필수입력사항 -->
 				,USER_NAME
-				<if test="userSocialSecunum != null">, USER_SOCIAL_SECUNUM</if>
-				<if test="userSex != null">, USER_SEX</if>
-				<if test="userComp != null">, USER_COMP</if>
-				<if test="userCompEnterdate != null">, USER_COMP_ENTERDATE</if>
-				<if test="userDept != null">, USER_DEPT</if>
-				<if test="userSpot != null">, USER_SPOT</if>
-				<if test="userArmyServPeriod != null">, USER_ARMY_SERV_PERIOD</if>
-				<if test="userMaritalStatus != null">, USER_MARITAL_STATUS</if>
-				<if test="userArmyServEnter != null">, USER_ARMY_SERV_ENTER</if>
-				<if test="userArmyServLeave != null">, USER_ARMY_SERV_LEAVE</if>
-				<if test="userArmyServ != null">, USER_ARMY_SERV</if>
-				<if test="userTelnumWired != null">, USER_TELNUM_WIRED</if>
-				<if test="userTelnumWireless != null">, USER_TELNUM_WIRELESS</if>
-				<if test="userEmail != null">, USER_EMAIL</if>
-				<if test="userZipcode != null">, USER_ZIPCODE</if>
-				<if test="userAddress != null">, USER_ADDRESS</if>
+				, USER_SOCIAL_SECUNUM
+				, USER_SEX
+				, USER_COMP
+				, USER_COMP_ENTERDATE
+				, USER_DEPT
+				, USER_SPOT
+				, USER_ARMY_SERV_PERIOD
+				, USER_MARITAL_STATUS
+				, USER_ARMY_SERV_ENTER
+				, USER_ARMY_SERV_LEAVE
+				, USER_ARMY_SERV
+				, USER_TELNUM_WIRED
+				, USER_TELNUM_WIRELESS
+				, USER_EMAIL
+				, USER_ZIPCODE
+				, USER_ADDRESS
 			)
 		VALUES (
-				#{userIdx}
+<!-- 				#{userIdx} -->
+				(SELECT NVL(MAX(USER_IDX)+1, 0) FROM USER_INFO)
 				<!-- user name 필수입력사항 -->
-				,#{userName[0]}
-				<if test="userSocialSecunum != null">, #{userSocialSecunum}</if>
-				<if test="userSex != null">, #{userSex[0]}</if>
-				<if test="userComp != null">, #{userComp[0]}</if>
-				<if test="userCompEnterdate != null">, #{userCompEnterdate[0]}</if>
-				<if test="userDept != null">, #{userDept[0]}</if>
-				<if test="userSpot != null">, #{userSpot[0]}</if>
-				<if test="userArmyServPeriod != null">, #{userArmyServPeriod[0]}</if>
-				<if test="userMaritalStatus != null">, #{userMaritalStatus[0]}</if>
-				<if test="userArmyServEnter != null">, #{userArmyServEnter[0]}</if>
-				<if test="userArmyServLeave != null">, #{userArmyServLeave[0]}</if>
-				<if test="userArmyServ != null">, #{userArmyServ[0]}</if>
-				<if test="userTelnumWired != null">, #{userTelnumWired[0]}</if>
-				<if test="userTelnumWireless != null">, #{userTelnumWireless[0]}</if>
-				<if test="userEmail != null">, #{userEmail[0]}</if>
-				<if test="userZipcode != null">, #{userZipcode[0]}</if>
-				<if test="userAddress != null">, #{userAddress[0]}</if>
+				,#{userName}
+				, #{userSocialSecunum}
+				, #{userSex}
+				, #{userComp}
+				, #{userCompEnterdate}
+				, #{userDept}
+				, #{userSpot}
+				, #{userArmyServPeriod}
+				, #{userMaritalStatus}
+				, #{userArmyServEnter}
+				, #{userArmyServLeave}
+				, #{userArmyServ}
+				, #{userTelnumWired}
+				, #{userTelnumWireless}
+				, #{userEmail}
+				, #{userZipcode}
+				, #{userAddress}
 			)
 	</insert>
 

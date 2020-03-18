@@ -1,23 +1,21 @@
 package com.topia.card.User;
 
-import java.sql.Date;
-
 public class UserVO {
 	private int rnum;
 	
-	private int userIdx;
-	private Date userRegisterDate;
+	private Integer userIdx;
+	private String userRegisterDate;
 	private String userName;
 	private String userSocialSecunum;
 	private String userSex;
 	private String userComp;
-	private Date userCompEnterdate;
+	private String userCompEnterdate;
 	private String userDept;
 	private String userSpot;
 	private String userArmyServ;
 	private String userMaritalStatus;
-	private Date userArmyServEnter;
-	private Date userArmyServLeave;
+	private String userArmyServEnter;
+	private String userArmyServLeave;
 	private String userArmyServPeriod;
 	private String userTelnumWired;
 	private String userTelnumWireless;
@@ -32,31 +30,31 @@ public class UserVO {
 //	private UserInfoTraining userInfoTraining;
 //	private Image image;
 	
-	private int careerIdx;
+	private Integer careerIdx;
 	private String careerCompName;
-	private Date careerEnterdate;
-	private Date careerLeavedate;
+	private String careerEnterdate;
+	private String careerLeavedate;
 	private String careerSpot;
 	private String careerResponsib;
 	
-	private int eduIdx;
+	private Integer eduIdx;
 	private String eduSchoolName;
 	private String eduStatus;
 	private String eduYear;
 	private String eduMonth;
 	
-	private int licenIdx;
+	private Integer licenIdx;
 	private String licenName;
 	private String licenSkillLevel;
 	
-	private int qualifiIdx;
+	private Integer qualifiIdx;
 	private String qualifiName;
-	private Date qualifiGetdate;
+	private String qualifiGetdate;
 	
-	private int skillIdx;
+	private Integer skillIdx;
 	private String skillProjectName;
-	private Date skillStartdate;
-	private Date skillEnddate;
+	private String skillStartdate;
+	private String skillEnddate;
 	private String skillCustomerComp;
 	private String skillWorkComp;
 	private String skillApplied;
@@ -72,8 +70,8 @@ public class UserVO {
 	
 	private int trainingIdx;
 	private String trainingName;
-	private Date trainingStartdate;
-	private Date trainingEnddate;
+	private String trainingStartdate;
+	private String trainingEnddate;
 	private String trainingAgency;
 	public int getRnum() {
 		return rnum;
@@ -81,16 +79,16 @@ public class UserVO {
 	public void setRnum(int rnum) {
 		this.rnum = rnum;
 	}
-	public int getUserIdx() {
+	public Integer getUserIdx() {
 		return userIdx;
 	}
-	public void setUserIdx(int userIdx) {
+	public void setUserIdx(Integer userIdx) {
 		this.userIdx = userIdx;
 	}
-	public Date getUserRegisterDate() {
+	public String getUserRegisterDate() {
 		return userRegisterDate;
 	}
-	public void setUserRegisterDate(Date userRegisterDate) {
+	public void setUserRegisterDate(String userRegisterDate) {
 		this.userRegisterDate = userRegisterDate;
 	}
 	public String getUserName() {
@@ -117,10 +115,10 @@ public class UserVO {
 	public void setUserComp(String userComp) {
 		this.userComp = userComp;
 	}
-	public Date getUserCompEnterdate() {
+	public String getUserCompEnterdate() {
 		return userCompEnterdate;
 	}
-	public void setUserCompEnterdate(Date userCompEnterdate) {
+	public void setUserCompEnterdate(String userCompEnterdate) {
 		this.userCompEnterdate = userCompEnterdate;
 	}
 	public String getUserDept() {
@@ -147,16 +145,16 @@ public class UserVO {
 	public void setUserMaritalStatus(String userMaritalStatus) {
 		this.userMaritalStatus = userMaritalStatus;
 	}
-	public Date getUserArmyServEnter() {
+	public String getUserArmyServEnter() {
 		return userArmyServEnter;
 	}
-	public void setUserArmyServEnter(Date userArmyServEnter) {
+	public void setUserArmyServEnter(String userArmyServEnter) {
 		this.userArmyServEnter = userArmyServEnter;
 	}
-	public Date getUserArmyServLeave() {
+	public String getUserArmyServLeave() {
 		return userArmyServLeave;
 	}
-	public void setUserArmyServLeave(Date userArmyServLeave) {
+	public void setUserArmyServLeave(String userArmyServLeave) {
 		this.userArmyServLeave = userArmyServLeave;
 	}
 	public String getUserArmyServPeriod() {
@@ -195,10 +193,10 @@ public class UserVO {
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-	public int getCareerIdx() {
+	public Integer getCareerIdx() {
 		return careerIdx;
 	}
-	public void setCareerIdx(int careerIdx) {
+	public void setCareerIdx(Integer careerIdx) {
 		this.careerIdx = careerIdx;
 	}
 	public String getCareerCompName() {
@@ -207,16 +205,16 @@ public class UserVO {
 	public void setCareerCompName(String careerCompName) {
 		this.careerCompName = careerCompName;
 	}
-	public Date getCareerEnterdate() {
+	public String getCareerEnterdate() {
 		return careerEnterdate;
 	}
-	public void setCareerEnterdate(Date careerEnterdate) {
+	public void setCareerEnterdate(String careerEnterdate) {
 		this.careerEnterdate = careerEnterdate;
 	}
-	public Date getCareerLeavedate() {
+	public String getCareerLeavedate() {
 		return careerLeavedate;
 	}
-	public void setCareerLeavedate(Date careerLeavedate) {
+	public void setCareerLeavedate(String careerLeavedate) {
 		this.careerLeavedate = careerLeavedate;
 	}
 	public String getCareerSpot() {
@@ -231,10 +229,10 @@ public class UserVO {
 	public void setCareerResponsib(String careerResponsib) {
 		this.careerResponsib = careerResponsib;
 	}
-	public int getEduIdx() {
+	public Integer getEduIdx() {
 		return eduIdx;
 	}
-	public void setEduIdx(int eduIdx) {
+	public void setEduIdx(Integer eduIdx) {
 		this.eduIdx = eduIdx;
 	}
 	public String getEduSchoolName() {
@@ -261,10 +259,10 @@ public class UserVO {
 	public void setEduMonth(String eduMonth) {
 		this.eduMonth = eduMonth;
 	}
-	public int getLicenIdx() {
+	public Integer getLicenIdx() {
 		return licenIdx;
 	}
-	public void setLicenIdx(int licenIdx) {
+	public void setLicenIdx(Integer licenIdx) {
 		this.licenIdx = licenIdx;
 	}
 	public String getLicenName() {
@@ -279,10 +277,10 @@ public class UserVO {
 	public void setLicenSkillLevel(String licenSkillLevel) {
 		this.licenSkillLevel = licenSkillLevel;
 	}
-	public int getQualifiIdx() {
+	public Integer getQualifiIdx() {
 		return qualifiIdx;
 	}
-	public void setQualifiIdx(int qualifiIdx) {
+	public void setQualifiIdx(Integer qualifiIdx) {
 		this.qualifiIdx = qualifiIdx;
 	}
 	public String getQualifiName() {
@@ -291,16 +289,16 @@ public class UserVO {
 	public void setQualifiName(String qualifiName) {
 		this.qualifiName = qualifiName;
 	}
-	public Date getQualifiGetdate() {
+	public String getQualifiGetdate() {
 		return qualifiGetdate;
 	}
-	public void setQualifiGetdate(Date qualifiGetdate) {
+	public void setQualifiGetdate(String qualifiGetdate) {
 		this.qualifiGetdate = qualifiGetdate;
 	}
-	public int getSkillIdx() {
+	public Integer getSkillIdx() {
 		return skillIdx;
 	}
-	public void setSkillIdx(int skillIdx) {
+	public void setSkillIdx(Integer skillIdx) {
 		this.skillIdx = skillIdx;
 	}
 	public String getSkillProjectName() {
@@ -309,16 +307,16 @@ public class UserVO {
 	public void setSkillProjectName(String skillProjectName) {
 		this.skillProjectName = skillProjectName;
 	}
-	public Date getSkillStartdate() {
+	public String getSkillStartdate() {
 		return skillStartdate;
 	}
-	public void setSkillStartdate(Date skillStartdate) {
+	public void setSkillStartdate(String skillStartdate) {
 		this.skillStartdate = skillStartdate;
 	}
-	public Date getSkillEnddate() {
+	public String getSkillEnddate() {
 		return skillEnddate;
 	}
-	public void setSkillEnddate(Date skillEnddate) {
+	public void setSkillEnddate(String skillEnddate) {
 		this.skillEnddate = skillEnddate;
 	}
 	public String getSkillCustomerComp() {
@@ -405,16 +403,16 @@ public class UserVO {
 	public void setTrainingName(String trainingName) {
 		this.trainingName = trainingName;
 	}
-	public Date getTrainingStartdate() {
+	public String getTrainingStartdate() {
 		return trainingStartdate;
 	}
-	public void setTrainingStartdate(Date trainingStartdate) {
+	public void setTrainingStartdate(String trainingStartdate) {
 		this.trainingStartdate = trainingStartdate;
 	}
-	public Date getTrainingEnddate() {
+	public String getTrainingEnddate() {
 		return trainingEnddate;
 	}
-	public void setTrainingEnddate(Date trainingEnddate) {
+	public void setTrainingEnddate(String trainingEnddate) {
 		this.trainingEnddate = trainingEnddate;
 	}
 	public String getTrainingAgency() {
@@ -423,5 +421,6 @@ public class UserVO {
 	public void setTrainingAgency(String trainingAgency) {
 		this.trainingAgency = trainingAgency;
 	}
+	
 	
 }
