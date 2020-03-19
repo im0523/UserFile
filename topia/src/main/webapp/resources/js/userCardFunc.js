@@ -15,28 +15,28 @@ $(document).ready(function(){
 	//짝 지어진 날짜 정보와 비교
 	$('.dateInput').change(function(){
 		var $self = $(this);
-		var val = $self.val();
 		
-		if( !isEmpty(val) && ($self.hasClass('prevDate') || $self.hasClass('laterDate'))){
+		if( $self.val() != '' && ($self.hasClass('prevDate') || $self.hasClass('laterDate'))){
 			var $parentTr = $self.parents('tr');
-			var prevDate = $parentTr.find('.prevDate').val();
-			var laterDate = $parentTr.find('.laterDate').val();
+			var prevDate = new Date( $parentTr.find('.prevDate').val() );
+			var laterDate = new Date( $parentTr.find('.laterDate').val() );
+			var diff = laterDate - prevDate;
 			
-			var diff = dateDiff(prevDate, laterDate);
+			if(diff < 0){
+				alert("이전 날짜가 이후 날짜보다 클 수 없습니다.");
+				$self.val("").focus();
+			}
 		}
 	});
-		
 	
 // 저장버튼 클릭시 이벤트 발생
 	$(".saveBtn").click(function(){
-		var socialNumCheck = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))[1-4][0-9]{6}$/;
-		var socialNum = $('[name=userSocialSecunum]').val();
+		var check = validate();
 		
-		if( !socialNumCheck.test(socialNum) ){
-			alert('주민번호를 확인해주세요');
-			 $('[name=userSocialSecunum]').focus();
-			 return;
+		if(check == false){
+			return;
 		}
+		
 		var $frm = $('.userInsert :input');
 		var param = $frm.serialize();
 
@@ -60,3 +60,57 @@ $(document).ready(function(){
 	
 	
 });
+
+function validate(){
+	var socialNumCheck = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))[1-4][0-9]{6}$/;
+	var socialNum = $('#userSocialSecunum').val();
+	
+//	if(  $('#userName').val().trim()=='' ){
+//		alert('이름을 입력해주세요');
+//		$('#userName').focus();
+//		return false;
+//	}
+//	if( !socialNumCheck.test(socialNum) ){
+//		alert('주민번호를 확인해주세요');
+//		 $('#userSocialSecunum').focus();
+//		 return false;
+//	}
+	
+	//email과 emailDomain의 합친 값을 userEmail 컬럼에 합쳐서 저장
+	if( $('#emailDomain').val() != '1'){
+		var userEmail = $('#userEmail').val() + $('#emailDomain').val();
+		$('#userEmail').val(userEmail);
+	}
+	
+	return true;
+}
+
+function execPostCode(){
+	daum.postcode.load(function(){
+        new daum.Postcode({
+            oncomplete: function(data) {
+            	// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('userZipcode').value = data.zonecode;
+                document.getElementById("userAddress").value = addr;
+//                document.getElementById("userAddress").value += ", ";
+                
+//                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("userAddress").focus();
+//                alert("상세 주소를 입력해 주세요.")
+            }
+        }).open();
+    });
+}

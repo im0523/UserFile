@@ -11,7 +11,8 @@
 	<script src="./resources/compnent/jquery-loading-master/dist/jquery.loading.min.js"></script>
 	<script src="./resources/compnent/jqueryPrint/jqueryPrint.js"></script>
 
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
+<!-- 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script> -->
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	
 	<script src="./resources/js/util/util.js"></script>
 	
@@ -68,7 +69,9 @@
 				<button class="personalHistoryResetBtn">
 					초기화
 				</button>
-				<input type="button" class="saveBtn" value="저장">
+				<button type="button" class="saveBtn">
+					저장
+				</button>
 					
 			</div>
 		</div>
@@ -131,7 +134,7 @@
  					<td style="display: none;">
 							<input type="file" name="file">
 <!-- 							<input type="hidden" name="userIdx"> -->
-							<input type="hidden" name="userName" >
+<!-- 							<input type="hidden" name="userName" > -->
 					</td>
 				</tr>
 			</tbody>
@@ -162,7 +165,7 @@
 							<option>@naver.com</option>
 							<option>@gmail.com</option>
 							<option>@daum.net</option>
-							<option>직접입력</option>
+							<option value="1">직접입력</option>
 						</select>
 					</td>
 					<td id="test12" style="display: none;">
@@ -174,14 +177,13 @@
 					<td>주소</td>
 					<td>
 						<div>
-							<input type="text" id="userZipcode" name="userZipcode" placeholder="우편번호">
-							<input type="button" id="personalZipcodeSearchBtn" name="personalZipcodeSearchBtn" value="우편번호 찾기" />
+							<input type="text" id="userZipcode" name="userZipcode" placeholder="우편번호" readonly="readonly"/>
+							<input type="button" id="personalZipcodeSearchBtn" name="personalZipcodeSearchBtn" value="우편번호 찾기" onclick="execPostCode()" />
 							<div class="clear-pannel"></div>
 						</div>
 					</td>
 					<td colspan="2">
 						<input type="text" id="userAddress" name="userAddress" placeholder="   주소">
-						<!-- <input type="text" id="userAddress"> -->
 					</td>
 				</tr>
 			</tbody>
