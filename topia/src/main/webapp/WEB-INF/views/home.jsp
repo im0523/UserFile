@@ -11,10 +11,7 @@
 	<script src="./resources/compnent/jquery-loading-master/dist/jquery.loading.min.js"></script>
 	<script src="./resources/compnent/jqueryPrint/jqueryPrint.js"></script>
 
-<!-- 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script> -->
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	
-	<script src="./resources/js/util/util.js"></script>
 	
 	<script type="text/javascript" src="./resources/js/userCardFunc.js" charset="UTF-8"></script>
 	
@@ -104,7 +101,7 @@
 					<td>소속회사</td>
 					<td colspan="5"><input type="text" id="userComp" name="userComp"></td>
 					<td>입사일</td>
-					<td><input type="text" id="userCompEnterdate" name="userCompEnterdate" class="dateInput"></td>
+					<td><input type="text" id="userCompEnterdate" name="userCompEnterdate" class="dateInput" readonly="readonly"></td>
 				</tr>
 				
 				<tr>
@@ -126,9 +123,9 @@
 				
 				<tr>
 					<td>병역<br> 입대 ~ 제대일</td>
-					<td colspan="2"><input type="text" id="userArmyServEnter" name="userArmyServEnter" class="dateInput prevDate"></td>
+					<td colspan="2"><input type="text" id="userArmyServEnter" name="userArmyServEnter" class="dateInput prevDate" readonly="readonly"></td>
 					<td> ~ </td>
-					<td colspan="2"><input type="text" id="userArmyServLeave" name="userArmyServLeave" class="dateInput laterDate"></td>
+					<td colspan="2"><input type="text" id="userArmyServLeave" name="userArmyServLeave" class="dateInput laterDate" readonly="readonly"></td>
 					<td>역종/병과</td>
 					<td><input type="text" id="userArmyServPeriod" name="userArmyServPeriod"></td>
  					<td style="display: none;">
@@ -152,8 +149,8 @@
 			<tbody>
 				<tr>
 					<td>전화</td>
-					<td><input type="tel" placeholder='   휴대전화 "-" 포함' id="userTelnumWireless" name="userTelnumWireless"></td>
-					<td colspan="2"><input type="tel" placeholder='   유선 "-" 포함' id="userTelnumWired" name="userTelnumWired"></td>
+					<td><input type="tel" placeholder='   휴대전화 "-" 포함' id="userTelnumWireless" name="userTelnumWireless" maxlength="13"></td>
+					<td colspan="2"><input type="tel" placeholder='   유선 "-" 포함' id="userTelnumWired" name="userTelnumWired" maxlength="14"></td>
 				</tr>
 				
 				<tr>
@@ -200,7 +197,7 @@
 		<%-- 학력 / 자격증 --%>
 		<div class="edu-and-qualifi-pannel">
 			<div class="edu-table-pannel">
-				<table class="edu-table flexibleTable" tb="edu">
+				<table class="edu-table flexibleTable" id="schoolTb" tb="edu">
 					<thead>
 						<tr>
 							<td>학교명</td>
@@ -211,9 +208,9 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" data="eduSchoolName" class="eduSchoolName"></td>
+							<td><input type="text" name="eduList[0].eduSchoolName" class="eduSchoolName"></td>
 							<td>
-								<select data="eduStatus" class="eduStatus">
+								<select name="eduList[0].eduStatus" class="eduStatus">
 									<option value="">선택없음</option>
 									<option value="입학">입학</option>
 									<option value="재학">재학</option>
@@ -221,9 +218,9 @@
 									<option value="졸업예정">졸업예정</option>
 								</select>
 							</td>
-							<td><input type="text" data="eduYear" placeholder="" class="eduYear"></td>
+							<td><input type="text" name="eduList[0].eduYear" placeholder="" class="eduYear"></td>
 							<td>년</td>
-							<td><input type="text" data="eduMonth" placeholder="" class="eduMonth"></td>
+							<td><input type="text" name="eduList[0].eduMonth" placeholder="" class="eduMonth"></td>
 							<td>월</td>
 						</tr>
 					</tbody>
@@ -231,13 +228,13 @@
 				</table>
 				
 				<div class="add-row-btn-pannel">
-					<button class="add-row-btn addRowBtn">+</button>
+					<button type="button" class="add-row-btn addRowBtn" onclick="schoolAddBtn()">+</button>
 				</div>
 				
 			</div>
 			
 			<div class="qualifi-table-pannel">
-				<table class="qualifi-table flexibleTable" tb="qualifi">
+				<table class="qualifi-table flexibleTable" tb="qualifi" id="qualifiTb">
 				
 					<thead>
 						<tr>
@@ -252,15 +249,15 @@
 					
 					<tbody>
 						<tr>
-							<td><input type="text" data="qualifiName" class="qualifiName"></td>
-							<td><input type="text" data="qualifiGetdate" class="qualifiGetdate dateInput"></td>
+							<td><input type="text" name="qualifiList[0].qualifiName" class="qualifiName"></td>
+							<td><input type="text" name="qualifiList[0].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly"></td>
 						</tr>
 					</tbody>
 					
 				</table>
 				
 				<div class="add-row-btn-pannel">
-					<button class="add-row-btn addRowBtn">+</button>
+					<button type="button" class="add-row-btn addRowBtn" onclick="qualifiAddBtn()">+</button>
 				</div>
 				
 			</div>
@@ -293,11 +290,11 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="text" data="careerCompName" class="careerCompName"></td>
-						<td><input type="text" data="careerEnterdate" class="careerEnterdate dateInput prevDate"></td>
-						<td><input type="text" data="careerLeavedate" class="careerLeavedate dateInput laterDate"></td>
-						<td><input type="text" data="careerSpot" class="careerSpot"></td>
-						<td><input type="text" data="careerResponsib" class="careerResponsib"></td>
+						<td><input type="text" name="careerCompName" class="careerCompName"></td>
+						<td><input type="text" name="careerEnterdate" class="careerEnterdate dateInput prevDate" readonly="readonly"></td>
+						<td><input type="text" name="careerLeavedate" class="careerLeavedate dateInput laterDate" readonly="readonly"></td>
+						<td><input type="text" name="careerSpot" class="careerSpot"></td>
+						<td><input type="text" name="careerResponsib" class="careerResponsib"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -337,10 +334,10 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" data="trainingName" class="trainingName"></td>
-							<td><input type="text" data="trainingStartdate" class="trainingStartdate dateInput prevDate"></td>
-							<td><input type="text" data="trainingEnddate" class="trainingEnddate dateInput laterDate"></td>
-							<td><input type="text" data="trainingAgency" class="trainingAgency"></td>
+							<td><input type="text" name="trainingName" class="trainingName"></td>
+							<td><input type="text" name="trainingStartdate" class="trainingStartdate dateInput prevDate" readonly="readonly"></td>
+							<td><input type="text" name="trainingEnddate" class="trainingEnddate dateInput laterDate" readonly="readonly"></td>
+							<td><input type="text" name="trainingAgency" class="trainingAgency"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -365,8 +362,8 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" data="licenName" class="licenName"></td>
-							<td><input type="text" data="licenSkillLevel" class="licenSkillLevel"></td>
+							<td><input type="text" name="licenName" class="licenName"></td>
+							<td><input type="text" name="licenSkillLevel" class="licenSkillLevel"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -421,21 +418,21 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><textarea data="skillProjectName" class="skillProjectName"></textarea></td>
-						<td><input type="text" data="skillStartdate" class="skillStartdate dateInput prevDate"></td>
-						<td><input type="text" data="skillEnddate" class="skillEnddate dateInput laterDate"></td>
-						<td><textarea data="skillCustomerComp" class="skillCustomerComp"></textarea></td>
-						<td><textarea data="skillWorkComp" class="skillWorkComp"></textarea></td>
-						<td><textarea data="skillIndustry" class="skillIndustry"></textarea></td>
-						<td><textarea data="skillApplied" class="skillApplied"></textarea></td>
-						<td><textarea data="skillRole" class="skillRole"></textarea></td>
-						<td><textarea data="skillModel" class="skillModel"></textarea></td>
-						<td><textarea data="skillOs" class="skillOs"></textarea></td>
-						<td><textarea data="skillLang" class="skillLang"></textarea></td>
-						<td><textarea data="skillDbms" class="skillDbms"></textarea></td>
-						<td><textarea data="skillTool" class="skillTool"></textarea></td>
-						<td><textarea data="skillComm" class="skillComm"></textarea></td>
-						<td><textarea data="skillEtc" class="skillEtc"></textarea></td>
+						<td><textarea name="skillProjectName" class="skillProjectName"></textarea></td>
+						<td><input type="text" name="skillStartdate" class="skillStartdate dateInput prevDate" readonly="readonly"></td>
+						<td><input type="text" name="skillEnddate" class="skillEnddate dateInput laterDate" readonly="readonly"></td>
+						<td><textarea name="skillCustomerComp" class="skillCustomerComp"></textarea></td>
+						<td><textarea name="skillWorkComp" class="skillWorkComp"></textarea></td>
+						<td><textarea name="skillIndustry" class="skillIndustry"></textarea></td>
+						<td><textarea name="skillApplied" class="skillApplied"></textarea></td>
+						<td><textarea name="skillRole" class="skillRole"></textarea></td>
+						<td><textarea name="skillModel" class="skillModel"></textarea></td>
+						<td><textarea name="skillOs" class="skillOs"></textarea></td>
+						<td><textarea name="skillLang" class="skillLang"></textarea></td>
+						<td><textarea name="skillDbms" class="skillDbms"></textarea></td>
+						<td><textarea name="skillTool" class="skillTool"></textarea></td>
+						<td><textarea name="skillComm" class="skillComm"></textarea></td>
+						<td><textarea name="skillEtc" class="skillEtc"></textarea></td>
 					</tr>
 				</tbody>
 			</table>

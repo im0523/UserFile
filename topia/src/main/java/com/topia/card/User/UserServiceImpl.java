@@ -19,7 +19,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int user_insert(UserVO vo) {
-		return dao.user_insert(vo);
+		
+		int result = 0;
+		
+		result = dao.userInfo_insert(vo);
+		
+		if( result==1 ) {
+			dao.userEdu_insert(vo);
+			dao.userCareer_insert(vo);
+			dao.userLicen_insert(vo);
+			dao.userQualifi_insert(vo);
+			dao.userSkill_insert(vo);
+			dao.usereTraining_insert(vo);
+		}
+		return result;
 		
 	}
 

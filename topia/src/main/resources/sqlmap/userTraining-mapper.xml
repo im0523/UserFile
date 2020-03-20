@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userTraining">
+	
+	<resultMap type="com.topia.card.User.UserVO" id="training">
+		<result column="TRAINING_IDX" 			property="trainingIdx"/>
+		<result column="USER_IDX" 				property="userIdx"/>
+		<result column="TRAINING_NAME" 			property="trainingName"/>
+		<result column="TRAINING_STARTDATE" 	property="trainingStartdate"/>
+		<result column="TRAINING_ENDDATE" 		property="trainingEnddate"/>
+		<result column="TRAINING_AGENCY"		property="trainingAgency"/>
+	</resultMap>
+	
+	<insert id="insert">
+		INSERT INTO USER_INFO_TRAINING
+			(
+			  TRAINING_IDX
+			, USER_IDX
+			, TRAINING_NAME
+			, TRAINING_STARTDATE
+			, TRAINING_ENDDATE
+			, TRAINING_AGENCY
+			)
+		VALUES
+			(
+			  USER_INFO_TRAINING_SEQ.NEXTVAL
+			, USER_INFO_SEQ.CURRVAL
+			, #{trainingName}
+			, #{trainingStartdate}
+			, #{trainingEnddate}
+			, #{trainingAgency}
+			)
+	</insert>
+	
+	
+</mapper>

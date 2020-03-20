@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="user">
+<mapper namespace="userInfo">
 
 	<resultMap type="com.topia.card.User.UserVO" id="info">
 		<result column="USER_IDX" property="userIdx"/>
@@ -22,17 +22,6 @@
 		<result column="USER_EMAIL" property="userEmail"/>
 		<result column="USER_ZIPCODE" property="userZipcode"/>
 		<result column="USER_ADDRESS" property="userAddress"/>
-		<result column="CAREER_IDX" property="careerIdx"/>
-		<result column="CAREER_COMP_NAME" property="careerCompName"/>
-		<result column="CAREER_ENTERDATE" property="careerEnterdate"/>
-		<result column="CAREER_LEAVEDATE" property="careerLeavedate"/>
-		<result column="CAREER_SPOT" property="careerSpot"/>
-		<result column="CAREER_RESPONSIB" property="careerResponsib"/>
-		<result column="EDU_IDX" property="eduIdx"/>
-		<result column="EDU_SCHOOL_NAME" property="eduSchoolName"/>
-		<result column="EDU_STATUS" property="eduStatus"/>
-		<result column="EDU_YEAR" property="eduYear"/>
-		<result column="EDU_MONTH" property="eduMonth"/>
 		<result column="LICEN_IDX" property="licenIdx"/>
 		<result column="LICEN_NAME" property="licenName"/>
 		<result column="LICEN_SKILL_LEVEL" property="licenSkillLevel"/>
@@ -62,53 +51,50 @@
 		<result column="TRAINING_AGENCY"		property="trainingAgency"/>
 	</resultMap>
 	
-	<insert id="userInsert" parameterType="com.topia.card.User.UserVO">
-<!-- 		<selectKey keyProperty="userIdx" resultType="Integer" order="BEFORE"> -->
-<!-- 			select user_info_seq.nextval as userIdx from dual -->
-<!-- 		</selectKey> -->
+	<insert id="insert" parameterType="com.topia.card.User.UserVO">
 		INSERT INTO USER_INFO
 			(
-				USER_IDX
-				<!-- user name 필수입력사항 -->
-				,USER_NAME
-				, USER_SOCIAL_SECUNUM
-				, USER_SEX
-				, USER_COMP
-				, USER_COMP_ENTERDATE
-				, USER_DEPT
-				, USER_SPOT
-				, USER_ARMY_SERV_PERIOD
-				, USER_MARITAL_STATUS
-				, USER_ARMY_SERV_ENTER
-				, USER_ARMY_SERV_LEAVE
-				, USER_ARMY_SERV
-				, USER_TELNUM_WIRED
-				, USER_TELNUM_WIRELESS
-				, USER_EMAIL
-				, USER_ZIPCODE
-				, USER_ADDRESS
+			USER_IDX
+			<!-- user name 필수입력사항 -->
+			, USER_NAME
+			, USER_SOCIAL_SECUNUM
+			, USER_SEX
+			, USER_COMP
+			, USER_COMP_ENTERDATE
+			, USER_DEPT
+			, USER_SPOT
+			, USER_ARMY_SERV_PERIOD
+			, USER_MARITAL_STATUS
+			, USER_ARMY_SERV_ENTER
+			, USER_ARMY_SERV_LEAVE
+			, USER_ARMY_SERV
+			, USER_TELNUM_WIRED
+			, USER_TELNUM_WIRELESS
+			, USER_EMAIL
+			, USER_ZIPCODE
+			, USER_ADDRESS
 			)
-		VALUES (
-<!-- 				#{userIdx} -->
-				(SELECT NVL(MAX(USER_IDX)+1, 0) FROM USER_INFO)
-				<!-- user name 필수입력사항 -->
-				,#{userName}
-				, #{userSocialSecunum}
-				, #{userSex}
-				, #{userComp}
-				, #{userCompEnterdate}
-				, #{userDept}
-				, #{userSpot}
-				, #{userArmyServPeriod}
-				, #{userMaritalStatus}
-				, #{userArmyServEnter}
-				, #{userArmyServLeave}
-				, #{userArmyServ}
-				, #{userTelnumWired}
-				, #{userTelnumWireless}
-				, #{userEmail}
-				, #{userZipcode}
-				, #{userAddress}
+		VALUES
+			(
+			USER_INFO_SEQ.NEXTVAL
+			<!-- user name 필수입력사항 -->
+			, #{userName}
+			, #{userSocialSecunum}
+			, #{userSex}
+			, #{userComp}
+			, #{userCompEnterdate}
+			, #{userDept}
+			, #{userSpot}
+			, #{userArmyServPeriod}
+			, #{userMaritalStatus}
+			, #{userArmyServEnter}
+			, #{userArmyServLeave}
+			, #{userArmyServ}
+			, #{userTelnumWired}
+			, #{userTelnumWireless}
+			, #{userEmail}
+			, #{userZipcode}
+			, #{userAddress}
 			)
 	</insert>
 

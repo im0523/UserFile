@@ -16,11 +16,34 @@ public class UserDAO {
 		return null;
 	}
 
-	public int user_insert(UserVO vo) {
-		return sql.insert("user.userInsert", vo);
-
+	public int userInfo_insert(UserVO vo) {
+		return sql.insert("userInfo.insert", vo);
 	}
 
+	public int userEdu_insert(UserVO vo) {
+		return sql.insert("userEdu.insert", vo);
+	}
+	
+	public int userCareer_insert(UserVO vo) {
+		return sql.insert("userCareer.insert", vo);
+	}
+	
+	public int userLicen_insert(UserVO vo) {
+		return sql.insert("userLicen.insert", vo);
+	}
+	
+	public int userQualifi_insert(UserVO vo) {
+		return sql.insert("userQualifi.insert", vo);
+	}
+	
+	public int userSkill_insert(UserVO vo) {
+		return sql.insert("userSkill.insert", vo);
+	}
+	
+	public int usereTraining_insert(UserVO vo) {
+		return sql.insert("userTraining.insert", vo);
+	}
+	
 	public void user_update(UserVO vo) {
 
 	}
@@ -28,6 +51,8 @@ public class UserDAO {
 	public void user_delete(int userIdx) {
 
 	}
+
+
 
 
 }

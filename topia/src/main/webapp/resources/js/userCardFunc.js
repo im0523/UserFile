@@ -26,10 +26,13 @@ $(document).ready(function(){
 				alert("이전 날짜가 이후 날짜보다 클 수 없습니다.");
 				$self.val("").focus();
 			}
+			if( laterDate){
+				
+			}
 		}
 	});
-	
-// 저장버튼 클릭시 이벤트 발생
+
+	// 저장버튼 클릭시 이벤트 발생
 	$(".saveBtn").click(function(){
 		var check = validate();
 		
@@ -113,4 +116,43 @@ function execPostCode(){
             }
         }).open();
     });
+}
+
+//항목 추가버튼 클릭시
+var s=1;
+var q=1;
+function schoolAddBtn(){
+	$('#schoolTb').append(
+			'<tbody>'
+			+ '<tr>'
+				+ '<td><input type="text" name="eduList['+ s +'].eduSchoolName" class="eduSchoolName"></td>'
+				+ '<td>'
+					+ '<select name="eduList['+ s +'].eduStatus" class="eduStatus">'
+						+ '<option value="">선택없음</option>'
+						+ '<option value="입학">입학</option>'
+						+ '<option value="재학">재학</option>'
+						+ '<option value="졸업">졸업</option>'
+						+ '<option value="졸업예정">졸업예정</option>'
+					+ '</select>'
+				+ '</td>'
+				+ '<td><input type="text" name="eduList['+ s +'].eduYear" placeholder="" class="eduYear"></td>'
+				+ '<td>년</td>'
+				+ '<td><input type="text" name="eduList['+ s +'].eduMonth" placeholder="" class="eduMonth"></td>'
+				+ '<td>월</td>'
+			+ '</tr>'
+		+ '</tbody>'		
+	)
+	s++;
+}
+
+function qualifiAddBtn(){
+	$('#qualifiTb').append(
+			'<tbody>'
+			+ '<tr>'
+				+ '<td><input type="text" name="qualifiList['+ q +'].qualifiName" class="qualifiName"></td>'
+				+ '<td><input type="text" name="qualifiList['+ q +'].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly"></td>'
+			+ '</tr>'
+		+ '</tbody>'
+	)
+	q++;
 }

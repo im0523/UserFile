@@ -96,7 +96,6 @@
 			, #{userZipcode}
 			, #{userAddress}
 			)
-		
 	</insert>
 
 </mapper>

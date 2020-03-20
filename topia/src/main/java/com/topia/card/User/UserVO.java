@@ -1,5 +1,7 @@
 package com.topia.card.User;
 
+import java.util.List;
+
 public class UserVO {
 	private int rnum;
 	
@@ -22,13 +24,13 @@ public class UserVO {
 	private String userEmail;
 	private String userZipcode;
 	private String userAddress;
-//	private UserInfoCareer userInfoCareer;
-//	private UserInfoEdu userInfoEdu;
-//	private UserInfoLicen userInfoLicen;
-//	private UserInfoQualifi userInfoQualifi;
-//	private UserInfoSkill userInfoSkill;
-//	private UserInfoTraining userInfoTraining;
-//	private Image image;
+	private List<UserVO> eduList;
+	private List<UserVO> qualifiList;
+	private List<UserVO> careerList;
+	private List<UserVO> licenList;
+	private List<UserVO> skillList;
+	private List<UserVO> trainList;
+	
 	
 	private Integer careerIdx;
 	private String careerCompName;
@@ -73,6 +75,44 @@ public class UserVO {
 	private String trainingStartdate;
 	private String trainingEnddate;
 	private String trainingAgency;
+	
+	
+	public List<UserVO> getQualifiList() {
+		return qualifiList;
+	}
+	public void setQualifiList(List<UserVO> qualifiList) {
+		this.qualifiList = qualifiList;
+	}
+	public List<UserVO> getCareerList() {
+		return careerList;
+	}
+	public void setCareerList(List<UserVO> careerList) {
+		this.careerList = careerList;
+	}
+	public List<UserVO> getLicenList() {
+		return licenList;
+	}
+	public void setLicenList(List<UserVO> licenList) {
+		this.licenList = licenList;
+	}
+	public List<UserVO> getSkillList() {
+		return skillList;
+	}
+	public void setSkillList(List<UserVO> skillList) {
+		this.skillList = skillList;
+	}
+	public List<UserVO> getTrainList() {
+		return trainList;
+	}
+	public void setTrainList(List<UserVO> trainList) {
+		this.trainList = trainList;
+	}
+	public List<UserVO> getEduList() {
+		return eduList;
+	}
+	public void setEduList(List<UserVO> eduList) {
+		this.eduList = eduList;
+	}
 	public int getRnum() {
 		return rnum;
 	}
