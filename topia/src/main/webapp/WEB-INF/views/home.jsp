@@ -11,7 +11,7 @@
 	<script src="./resources/compnent/jquery-loading-master/dist/jquery.loading.min.js"></script>
 	<script src="./resources/compnent/jqueryPrint/jqueryPrint.js"></script>
 
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 	
 	<script type="text/javascript" src="./resources/js/userCardFunc.js" charset="UTF-8"></script>
 	
