@@ -10,7 +10,7 @@ public class userCareerVO {
 	private String careerLeavedate;
 	private String careerSpot;
 	private String careerResponsib;
-	private List<userInfoVO> careerList;
+	private List<userCareerVO> careerList;
 	
 	
 	public Integer getUserIdx() {
@@ -19,10 +19,10 @@ public class userCareerVO {
 	public void setUserIdx(Integer userIdx) {
 		this.userIdx = userIdx;
 	}
-	public List<userInfoVO> getCareerList() {
+	public List<userCareerVO> getCareerList() {
 		return careerList;
 	}
-	public void setCareerList(List<userInfoVO> careerList) {
+	public void setCareerList(List<userCareerVO> careerList) {
 		this.careerList = careerList;
 	}
 	public Integer getCareerIdx() {

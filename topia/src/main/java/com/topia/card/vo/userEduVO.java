@@ -9,7 +9,7 @@ public class userEduVO {
 	private String eduStatus;
 	private String eduYear;
 	private String eduMonth;
-	private List<userInfoVO> eduList;
+	private List<userEduVO> eduList;
 	
 	
 	public Integer getUserIdx() {
@@ -18,10 +18,10 @@ public class userEduVO {
 	public void setUserIdx(Integer userIdx) {
 		this.userIdx = userIdx;
 	}
-	public List<userInfoVO> getEduList() {
+	public List<userEduVO> getEduList() {
 		return eduList;
 	}
-	public void setEduList(List<userInfoVO> eduList) {
+	public void setEduList(List<userEduVO> eduList) {
 		this.eduList = eduList;
 	}
 	public Integer getEduIdx() {

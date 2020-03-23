@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userSkill">
 
-	<resultMap type="com.topia.card.User.UserVO" id="skill">
+	<resultMap type="com.topia.card.vo.userSkillVO" id="skill">
 		<result column="SKILL_IDX" property="skillIdx"/>
 		<result column="USER_IDX" property="userIdx"/>
 		<result column="SKILL_PROJECT_NAME" property="skillProjectName"/>
@@ -27,41 +27,41 @@
 			(
 			  SKILL_IDX
 			, USER_IDX
-			, SKILL_PROJECT_NAME
-			, SKILL_STARTDATE
-			, SKILL_ENDDATE
-			, SKILL_CUSTOMER_COMP
-			, SKILL_WORK_COMP
-			, SKILL_APPLIED
-			, SKILL_INDUSTRY
-			, SKILL_ROLE
-			, SKILL_MODEL
-			, SKILL_OS
-			, SKILL_LANG
-			, SKILL_DBMS
-			, SKILL_COMM
-			, SKILL_TOOL
-			, SKILL_ETC
+			<if test="skillProjectName != null">, SKILL_PROJECT_NAME</if>
+			<if test="skillStartdate != null">, SKILL_STARTDATE</if>
+			<if test="skillEnddate != null">, SKILL_ENDDATE</if>
+			<if test="skillCustomerComp != null">, SKILL_CUSTOMER_COMP</if>
+			<if test="skillWorkComp != null">, SKILL_WORK_COMP</if>
+			<if test="skillApplied != null">, SKILL_APPLIED</if>
+			<if test="skillIndustry != null">, SKILL_INDUSTRY</if>
+			<if test="skillRole != null">, SKILL_ROLE</if>
+			<if test="skillModel != null">, SKILL_MODEL</if>
+			<if test="skillOs != null">, SKILL_OS</if>
+			<if test="skillLang != null">, SKILL_LANG</if>
+			<if test="skillDbms != null">, SKILL_DBMS</if>
+			<if test="skillComm != null">, SKILL_COMM</if>
+			<if test="skillTool != null">, SKILL_TOOL</if>
+			<if test="skillEtc != null">, SKILL_ETC</if>
 			)
 		VALUES
 			(
 			  USER_INFO_EDU_SEQ.NEXTVAL
 			, USER_INFO_SEQ.CURRVAL
-			, #{skillProjectName}
-			, #{skillStartdate}
-			, #{skillEnddate}
-			, #{skillCustomerComp}
-			, #{skillWorkComp}
-			, #{skillApplied}
-			, #{skillIndustry}
-			, #{skillRole}
-			, UPPER( #{skillModel} )
-			, UPPER( #{skillOs}  )
-			, UPPER( #{skillLang} )
-			, UPPER( #{skillDbms} )
-			, UPPER( #{skillComm} )
-			, UPPER( #{skillTool} )
-			, UPPER( #{skillEtc} )
+			<if test="skillProjectName != null">, #{skillProjectName}</if>
+			<if test="skillStartdate != null">, #{skillStartdate}</if>
+			<if test="skillEnddate != null">, #{skillEnddate}</if>
+			<if test="skillCustomerComp != null">, #{skillCustomerComp}</if>
+			<if test="skillWorkComp != null">, #{skillWorkComp}</if>
+			<if test="skillApplied != null">, #{skillApplied}</if>
+			<if test="skillIndustry != null">, #{skillIndustry}</if>
+			<if test="skillRole != null">, #{skillRole}</if>
+			<if test="skillModel != null">, UPPER( #{skillModel} )</if>
+			<if test="skillOs != null">, UPPER( #{skillOs}  )</if>
+			<if test="skillLang != null">, UPPER( #{skillLang} )</if>
+			<if test="skillDbms != null">, UPPER( #{skillDbms} )</if>
+			<if test="skillComm != null">, UPPER( #{skillComm} )</if>
+			<if test="skillTool != null">, UPPER( #{skillTool} )</if>
+			<if test="skillEtc != null">, UPPER( #{skillEtc} )</if>
 			)
 	</insert>
 </mapper>

@@ -275,7 +275,7 @@
 		
 		
 		<div class="career-info-pannel">
-			<table class="career-info flexibleTable" tb="career">
+			<table class="career-info flexibleTable" tb="career" id="careerTb">
 				<thead>
 					<tr>
 						<td rowspan="2">회사명</td>
@@ -290,17 +290,17 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="text" name="careerCompName" class="careerCompName"></td>
-						<td><input type="text" name="careerEnterdate" class="careerEnterdate dateInput prevDate" readonly="readonly"></td>
-						<td><input type="text" name="careerLeavedate" class="careerLeavedate dateInput laterDate" readonly="readonly"></td>
-						<td><input type="text" name="careerSpot" class="careerSpot"></td>
-						<td><input type="text" name="careerResponsib" class="careerResponsib"></td>
+						<td><input type="text" name="careerList[0].careerCompName" class="careerCompName"></td>
+						<td><input type="text" name="careerList[0].careerEnterdate" class="careerEnterdate dateInput prevDate" readonly="readonly"></td>
+						<td><input type="text" name="careerList[0].careerLeavedate" class="careerLeavedate dateInput laterDate" readonly="readonly"></td>
+						<td><input type="text" name="careerList[0].careerSpot" class="careerSpot"></td>
+						<td><input type="text" name="careerList[0].careerResponsib" class="careerResponsib"></td>
 					</tr>
 				</tbody>
 			</table>
 			
 			<div class="add-row-btn-pannel">
-				<button class="add-row-btn addRowBtn">+</button>
+				<button type="button" class="add-row-btn addRowBtn" onclick="careerAddBtn()">+</button>
 			</div>
 			
 		</div>
@@ -315,7 +315,7 @@
 		학력 / 자격증
 		<div class="training-and-licen-pannel">
 			<div class="training-table-pannel">
-				<table class="training-table flexibleTable" tb="training">
+				<table class="training-table flexibleTable" tb="training" id="trainingTb">
 					<thead>
 						<tr>
 							<td>
@@ -334,22 +334,22 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" name="trainingName" class="trainingName"></td>
-							<td><input type="text" name="trainingStartdate" class="trainingStartdate dateInput prevDate" readonly="readonly"></td>
-							<td><input type="text" name="trainingEnddate" class="trainingEnddate dateInput laterDate" readonly="readonly"></td>
-							<td><input type="text" name="trainingAgency" class="trainingAgency"></td>
+							<td><input type="text" name="trainList[0].trainingName" class="trainingName"></td>
+							<td><input type="text" name="trainList[0].trainingStartdate" class="trainingStartdate dateInput prevDate" readonly="readonly"></td>
+							<td><input type="text" name="trainList[0].trainingEnddate" class="trainingEnddate dateInput laterDate" readonly="readonly"></td>
+							<td><input type="text" name="trainList[0].trainingAgency" class="trainingAgency"></td>
 						</tr>
 					</tbody>
 				</table>
 				
 				<div class="add-row-btn-pannel">
-					<button class="add-row-btn addRowBtn">+</button>
+					<button type="button" class="add-row-btn addRowBtn" onclick="trainingAddBtn()">+</button>
 				</div>
 				
 			</div>
 			
 			<div class="training-table-pannel">
-				<table class="licen-table flexibleTable" tb="licen">
+				<table class="licen-table flexibleTable" tb="licen" id="licenTb">
 					<thead>
 						<tr>
 							<td>
@@ -362,14 +362,14 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" name="licenName" class="licenName"></td>
-							<td><input type="text" name="licenSkillLevel" class="licenSkillLevel"></td>
+							<td><input type="text" name="licenList[0].licenName" class="licenName"></td>
+							<td><input type="text" name="licenList[0].licenSkillLevel" class="licenSkillLevel"></td>
 						</tr>
 					</tbody>
 				</table>
 				
 				<div class="add-row-btn-pannel">
-					<button class="add-row-btn addRowBtn">+</button>
+					<button type="button" class="add-row-btn addRowBtn" onclick="licenAddBtn()">+</button>
 				</div>
 				
 			</div>
@@ -391,7 +391,7 @@
 		
 		
 		<div class="skill-inventory-table-pannel">
-			<table class="skill-inventory-table flexibleTable" tb="skill">
+			<table class="skill-inventory-table flexibleTable" tb="skill" id="skillTb">
 				<thead>
 					<tr>
 						<td rowspan="2">프로젝트명<br>업무명</td>
@@ -418,27 +418,27 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><textarea name="skillProjectName" class="skillProjectName"></textarea></td>
-						<td><input type="text" name="skillStartdate" class="skillStartdate dateInput prevDate" readonly="readonly"></td>
-						<td><input type="text" name="skillEnddate" class="skillEnddate dateInput laterDate" readonly="readonly"></td>
-						<td><textarea name="skillCustomerComp" class="skillCustomerComp"></textarea></td>
-						<td><textarea name="skillWorkComp" class="skillWorkComp"></textarea></td>
-						<td><textarea name="skillIndustry" class="skillIndustry"></textarea></td>
-						<td><textarea name="skillApplied" class="skillApplied"></textarea></td>
-						<td><textarea name="skillRole" class="skillRole"></textarea></td>
-						<td><textarea name="skillModel" class="skillModel"></textarea></td>
-						<td><textarea name="skillOs" class="skillOs"></textarea></td>
-						<td><textarea name="skillLang" class="skillLang"></textarea></td>
-						<td><textarea name="skillDbms" class="skillDbms"></textarea></td>
-						<td><textarea name="skillTool" class="skillTool"></textarea></td>
-						<td><textarea name="skillComm" class="skillComm"></textarea></td>
-						<td><textarea name="skillEtc" class="skillEtc"></textarea></td>
+						<td><textarea name="skillList[0].skillProjectName" class="skillProjectName"></textarea></td>
+						<td><input type="text" name="skillList[0].skillStartdate" class="skillStartdate dateInput prevDate" readonly="readonly"></td>
+						<td><input type="text" name="skillList[0].skillEnddate" class="skillEnddate dateInput laterDate" readonly="readonly"></td>
+						<td><textarea name="skillList[0].skillCustomerComp" class="skillCustomerComp"></textarea></td>
+						<td><textarea name="skillList[0].skillWorkComp" class="skillWorkComp"></textarea></td>
+						<td><textarea name="skillList[0].skillIndustry" class="skillIndustry"></textarea></td>
+						<td><textarea name="skillList[0].skillApplied" class="skillApplied"></textarea></td>
+						<td><textarea name="skillList[0].skillRole" class="skillRole"></textarea></td>
+						<td><textarea name="skillList[0].skillModel" class="skillModel"></textarea></td>
+						<td><textarea name="skillList[0].skillOs" class="skillOs"></textarea></td>
+						<td><textarea name="skillList[0].skillLang" class="skillLang"></textarea></td>
+						<td><textarea name="skillList[0].skillDbms" class="skillDbms"></textarea></td>
+						<td><textarea name="skillList[0].skillTool" class="skillTool"></textarea></td>
+						<td><textarea name="skillList[0].skillComm" class="skillComm"></textarea></td>
+						<td><textarea name="skillList[0].skillEtc" class="skillEtc"></textarea></td>
 					</tr>
 				</tbody>
 			</table>
 			
 			<div class="add-row-btn-pannel">
-				<button class="add-row-btn addRowBtn">+</button>
+				<button type="button" class="add-row-btn addRowBtn" onclick="skillAddBtn()">+</button>
 			</div>
 		</div>
 		

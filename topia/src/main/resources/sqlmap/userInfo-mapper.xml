@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userInfo">
 
-	<resultMap type="com.topia.card.User.UserVO" id="info">
+	<resultMap type="com.topia.card.vo.userInfoVO" id="info">
 		<result column="USER_IDX" property="userIdx"/>
 		<result column="USER_REGISTER_DATE" property="userRegisterDate"/>
 		<result column="USER_NAME" property="userName"/>
@@ -51,7 +51,7 @@
 		<result column="TRAINING_AGENCY"		property="trainingAgency"/>
 	</resultMap>
 	
-	<insert id="insert" parameterType="com.topia.card.User.UserVO">
+	<insert id="insert" parameterType="com.topia.card.vo.userInfoVO">
 		INSERT INTO USER_INFO
 			(
 			USER_IDX

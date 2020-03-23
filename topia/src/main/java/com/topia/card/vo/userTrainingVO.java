@@ -9,7 +9,9 @@ public class userTrainingVO {
 	private String trainingStartdate;
 	private String trainingEnddate;
 	private String trainingAgency;
-	private List<userInfoVO> trainList;
+	private List<userTrainingVO> trainList;
+	
+	
 	public Integer getTrainingIdx() {
 		return trainingIdx;
 	}
@@ -46,10 +48,10 @@ public class userTrainingVO {
 	public void setTrainingAgency(String trainingAgency) {
 		this.trainingAgency = trainingAgency;
 	}
-	public List<userInfoVO> getTrainList() {
+	public List<userTrainingVO> getTrainList() {
 		return trainList;
 	}
-	public void setTrainList(List<userInfoVO> trainList) {
+	public void setTrainList(List<userTrainingVO> trainList) {
 		this.trainList = trainList;
 	}
 	

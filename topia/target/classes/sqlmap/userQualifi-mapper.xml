@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userQualifi">
 
-	<resultMap type="com.topia.card.User.UserVO" id="qualifi">
+	<resultMap type="com.topia.card.vo.userQualifiVO" id="qualifi">
 		<result column="QUALIFI_IDX" property="qualifiIdx"/>
 		<result column="USER_IDX" property="userIdx"/>
 		<result column="QUALIFI_NAME" property="qualifiName"/>
@@ -10,22 +10,20 @@
 	</resultMap>
 	
 	<insert id="insert">
-		<foreach collection="qualifiList" item="item" index="index" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL">
-		INTO USER_INFO_QUALIFI
+		INSERT INTO USER_INFO_QUALIFI
 			(
 			  QUALIFI_IDX
 			, USER_IDX
-			, QUALIFI_NAME
-			, QUALIFI_GETDATE
+			<if test="qualifiName != null">, QUALIFI_NAME</if>
+			<if test="qualifiGetdate != null">, QUALIFI_GETDATE</if>
 			)
 		VALUES
 			(
-		 	  USER_INFO_QUALIFI_SEQ.NEXTVAL+#{index}
+		 	  USER_INFO_QUALIFI_SEQ.NEXTVAL
 			, USER_INFO_SEQ.CURRVAL
-			, #{item.qualifiName}
-			, #{item.qualifiGetdate}
+			<if test="qualifiName != null">, #{qualifiName}</if>
+			<if test="qualifiGetdate != null">, #{qualifiGetdate}</if>
 			)
-		</foreach>
 	</insert>
 
 

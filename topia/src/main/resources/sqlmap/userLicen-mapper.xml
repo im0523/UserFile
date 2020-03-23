@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userLicen">
 
-	<resultMap type="com.topia.card.User.UserVO" id="licen">
+	<resultMap type="com.topia.card.vo.userLicenVO" id="licen">
 		<result column="LICEN_IDX" property="licenIdx"/>
 		<result column="USER_IDX" property="UserIdx"/>
 		<result column="LICEN_NAME" property="licenName"/>
@@ -14,15 +14,15 @@
 			(
 			  LICEN_IDX
 			, USER_IDX
-			, LICEN_NAME
-			, LICEN_SKILL_LEVEL
+			<if test="licenName != null">, LICEN_NAME</if>
+			<if test="licenName != null">, LICEN_SKILL_LEVEL</if>
 			)
 		VALUES
 			(
 			  USER_INFO_LICEN_SEQ.NEXTVAL
 			, USER_INFO_SEQ.CURRVAL
-			, #{licenName}
-			, #{licenSkillLevel}
+			<if test="licenName != null">, #{licenName}</if>
+			<if test="licenName != null">, #{licenSkillLevel}</if>
 			)
 	</insert>
 </mapper>

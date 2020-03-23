@@ -118,9 +118,8 @@ function execPostCode(){
     });
 }
 
-//항목 추가버튼 클릭시
+//학교 추가버튼 클릭시
 var s=1;
-var q=1;
 function schoolAddBtn(){
 	$('#schoolTb').append(
 			'<tbody>'
@@ -139,20 +138,132 @@ function schoolAddBtn(){
 				+ '<td>년</td>'
 				+ '<td><input type="text" name="eduList['+ s +'].eduMonth" placeholder="" class="eduMonth"></td>'
 				+ '<td>월</td>'
+				+ '<td><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>'
 			+ '</tr>'
 		+ '</tbody>'		
 	)
 	s++;
+	flexibleTableTrEve();
 }
 
+//자격증 추가버튼 클릭시 
+var q=1;
 function qualifiAddBtn(){
 	$('#qualifiTb').append(
 			'<tbody>'
 			+ '<tr>'
 				+ '<td><input type="text" name="qualifiList['+ q +'].qualifiName" class="qualifiName"></td>'
 				+ '<td><input type="text" name="qualifiList['+ q +'].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly"></td>'
+				+ '<td><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>'
 			+ '</tr>'
 		+ '</tbody>'
 	)
 	q++;
+}
+
+//회사 추가버튼 클릭시
+var c=1;
+function careerAddBtn(){
+	$('#careerTb').append(
+			'<tbody>'
+			+ '<tr>'
+				+ '<td><input type="text" name="careerList['+ c +'].careerCompName" class="careerCompName"></td>'
+				+ '<td><input type="text" name="careerList['+ c +'].careerEnterdate" class="careerEnterdate dateInput prevDate" readonly="readonly"></td>'
+				+ '<td><input type="text" name="careerList['+ c +'].careerLeavedate" class="careerLeavedate dateInput laterDate" readonly="readonly"></td>'
+				+ '<td><input type="text" name="careerList['+ c +'].careerSpot" class="careerSpot"></td>'
+				+ '<td><input type="text" name="careerList['+ c +'].careerResponsib" class="careerResponsib"></td>'
+				+ '<td><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>'
+			+ '</tr>'
+		+ '</tbody>'
+	)
+	c++;
+}
+
+//교육사항 추가버튼 클릭시
+var t=1;
+function trainingAddBtn(){
+	$('#trainingTb').append(
+		+ '<tbody>'
+			+ '<tr>'
+				+ '<td><input type="text" name="trainList['+ t +'].trainingName" class="trainingName"></td>'
+				+ '<td><input type="text" name="trainList['+ t +'].trainingStartdate" class="trainingStartdate dateInput prevDate" readonly="readonly"></td>'
+				+ '<td><input type="text" name="trainList['+ t +'].trainingEnddate" class="trainingEnddate dateInput laterDate" readonly="readonly"></td>'
+				+ '<td><input type="text" name="trainList['+ t +'].trainingAgency" class="trainingAgency"></td>'
+				+ '<td><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>'
+			+ '</tr>'
+		+ '</tbody>'
+	)
+	t++;
+}
+
+//보유기술 추가버튼 클릭시
+var l=1;
+function licenAddBtn(){
+	$('#licenTb').append(
+			'<tbody>'
+			+ '<tr>'
+				+ '<td><input type="text" name="licenList['+ l +'].licenName" class="licenName"></td>'
+				+ '<td><input type="text" name="licenList['+ l +'].licenSkillLevel" class="licenSkillLevel"></td>'
+				+ '<td><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>'
+			+ '</tr>'
+		+ '</tbody>'
+	)
+	l++;
+}
+
+//스킬 추가버튼 클릭시
+var k=1;
+function skillAddBtn(){
+	$('#skillTb').append(
+			'<tbody>'
+			+ '<tr>'
+				+ '<td><textarea name="skillList['+ k +'].skillProjectName" class="skillProjectName"></textarea></td>'
+				+ '<td><input type="text" name="skillList['+ k +'].skillStartdate" class="skillStartdate dateInput prevDate" readonly="readonly"></td>'
+				+ '<td><input type="text" name="skillList['+ k +'].skillEnddate" class="skillEnddate dateInput laterDate" readonly="readonly"></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillCustomerComp" class="skillCustomerComp"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillWorkComp" class="skillWorkComp"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillIndustry" class="skillIndustry"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillApplied" class="skillApplied"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillRole" class="skillRole"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillModel" class="skillModel"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillOs" class="skillOs"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillLang" class="skillLang"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillDbms" class="skillDbms"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillTool" class="skillTool"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillComm" class="skillComm"></textarea></td>'
+				+ '<td><textarea name="skillList['+ k +'].skillEtc" class="skillEtc"></textarea></td>'
+				+ '<td><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>'
+			+ '</tr>'
+		+ '</tbody>'
+	)
+	k++;
+}
+
+// 추가항목 삭제 처리
+function deleteBtn(o){
+	$(o).parent().parent().parent().remove();
+}
+
+var flexibleTableTrEve = function(){
+	
+//	$(".removeTrBtn").unbind().click(function(){
+//		var $btnSelf = $(this);
+//		var $parentTr = $btnSelf.parent();
+//		var $parentTbody = $parentTr.parent();
+//		
+//		$parentTr.remove();
+//	});
+	
+	$(".flexibleTable").find("tbody").find("tr").unbind().hover(function(){
+		var $trSelf = $(this);
+		var $childRemoveBtn = $trSelf.find(".removeTrBtn");
+		
+		$childRemoveBtn.css("display","block");
+	},function(){
+		var $trSelf = $(this);
+		var $childRemoveBtn = $trSelf.find(".removeTrBtn");
+		
+		$childRemoveBtn.css("display","none");
+	});
+	
 }

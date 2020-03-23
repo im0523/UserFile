@@ -11,7 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.topia.card.User.UserService;
-import com.topia.card.User.UserVO;
+import com.topia.card.vo.userCareerVO;
+import com.topia.card.vo.userEduVO;
+import com.topia.card.vo.userInfoVO;
+import com.topia.card.vo.userLicenVO;
+import com.topia.card.vo.userQualifiVO;
+import com.topia.card.vo.userSkillVO;
+import com.topia.card.vo.userTrainingVO;
 import com.topia.common.CommonUtil;
 
 @Controller
@@ -20,11 +26,11 @@ public class UserController {
 	
 	@RequestMapping(value="/topia/userInsert.do", method = RequestMethod.POST)
 	@ResponseBody 
-	public String userInsert(UserVO vo, Model model) throws IOException {
-		System.out.println(vo.getUserName());
+	public String userInsert(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
+				userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo,  Model model) throws IOException {
 		HashMap<String, String> result = new HashMap<String, String>();
 		CommonUtil commonUtil = new CommonUtil();
-		int resultCnt = service.user_insert(vo);
+		int resultCnt = service.user_insert(infoVo, careerVo, eduVo, licenVo, qualifiVo, skillVo, trainVo);
 		
 		result.put("success", (resultCnt > 0)?"Y":"N");
 		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);

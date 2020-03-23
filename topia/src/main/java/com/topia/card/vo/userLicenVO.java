@@ -7,7 +7,7 @@ public class userLicenVO {
 	private Integer userIdx;
 	private String licenName;
 	private String licenSkillLevel;
-	private List<userInfoVO> licenList;
+	private List<userLicenVO> licenList;
 	
 	
 	public Integer getUserIdx() {
@@ -16,10 +16,10 @@ public class userLicenVO {
 	public void setUserIdx(Integer userIdx) {
 		this.userIdx = userIdx;
 	}
-	public List<userInfoVO> getLicenList() {
+	public List<userLicenVO> getLicenList() {
 		return licenList;
 	}
-	public void setLicenList(List<userInfoVO> licenList) {
+	public void setLicenList(List<userLicenVO> licenList) {
 		this.licenList = licenList;
 	}
 	public Integer getLicenIdx() {

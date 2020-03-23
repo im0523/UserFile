@@ -1,7 +1,5 @@
 package com.topia.card.vo;
 
-import java.util.List;
-
 public class userInfoVO {
 	private int rnum;
 	
@@ -24,6 +22,7 @@ public class userInfoVO {
 	private String userEmail;
 	private String userZipcode;
 	private String userAddress;
+	
 	public int getRnum() {
 		return rnum;
 	}

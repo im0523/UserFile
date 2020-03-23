@@ -20,7 +20,7 @@ public class userSkillVO {
 	private String skillComm;
 	private String skillTool;
 	private String skillEtc;
-	private List<userInfoVO> skillList;
+	private List<userSkillVO> skillList;
 	
 	
 	public Integer getUserIdx() {
@@ -29,10 +29,10 @@ public class userSkillVO {
 	public void setUserIdx(Integer userIdx) {
 		this.userIdx = userIdx;
 	}
-	public List<userInfoVO> getSkillList() {
+	public List<userSkillVO> getSkillList() {
 		return skillList;
 	}
-	public void setSkillList(List<userInfoVO> skillList) {
+	public void setSkillList(List<userSkillVO> skillList) {
 		this.skillList = skillList;
 	}
 	public Integer getSkillIdx() {

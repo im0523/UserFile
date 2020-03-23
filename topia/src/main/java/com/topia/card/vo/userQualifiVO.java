@@ -7,7 +7,7 @@ public class userQualifiVO {
 	private Integer userIdx;
 	private String qualifiName;
 	private String qualifiGetdate;
-	private List<userInfoVO> qualifiList;
+	private List<userQualifiVO> qualifiList;
 	
 	
 	public Integer getUserIdx() {
@@ -16,10 +16,10 @@ public class userQualifiVO {
 	public void setUserIdx(Integer userIdx) {
 		this.userIdx = userIdx;
 	}
-	public List<userInfoVO> getQualifiList() {
+	public List<userQualifiVO> getQualifiList() {
 		return qualifiList;
 	}
-	public void setQualifiList(List<userInfoVO> qualifiList) {
+	public void setQualifiList(List<userQualifiVO> qualifiList) {
 		this.qualifiList = qualifiList;
 	}
 	public Integer getQualifiIdx() {

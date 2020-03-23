@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userTraining">
 	
-	<resultMap type="com.topia.card.User.UserVO" id="training">
+	<resultMap type="com.topia.card.vo.userTrainingVO" id="training">
 		<result column="TRAINING_IDX" 			property="trainingIdx"/>
 		<result column="USER_IDX" 				property="userIdx"/>
 		<result column="TRAINING_NAME" 			property="trainingName"/>
@@ -16,19 +16,19 @@
 			(
 			  TRAINING_IDX
 			, USER_IDX
-			, TRAINING_NAME
-			, TRAINING_STARTDATE
-			, TRAINING_ENDDATE
-			, TRAINING_AGENCY
+			<if test="trainingName != null">, TRAINING_NAME</if>
+			<if test="trainingStartdate != null">, TRAINING_STARTDATE</if>
+			<if test="trainingEnddate != null">, TRAINING_ENDDATE</if>
+			<if test="trainingAgency != null">, TRAINING_AGENCY</if>
 			)
 		VALUES
 			(
 			  USER_INFO_TRAINING_SEQ.NEXTVAL
 			, USER_INFO_SEQ.CURRVAL
-			, #{trainingName}
-			, #{trainingStartdate}
-			, #{trainingEnddate}
-			, #{trainingAgency}
+			<if test="trainingName != null">, #{trainingName}</if>
+			<if test="trainingStartdate != null">, #{trainingStartdate}</if>
+			<if test="trainingEnddate != null">, #{trainingEnddate}</if>
+			<if test="trainingAgency != null">, #{trainingAgency}</if>
 			)
 	</insert>
 	

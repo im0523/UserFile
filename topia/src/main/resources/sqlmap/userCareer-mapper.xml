@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="userCareer">
 
-	<resultMap type="com.topia.card.User.UserVO" id="career">
+	<resultMap type="com.topia.card.vo.userCareerVO" id="career">
 		<result column="CAREER_IDX" property="careerIdx"/>
 		<result column="USER_IDX" property="userIdx"/>
 		<result column="CAREER_COMP_NAME" property="careerCompName"/>
@@ -17,21 +17,21 @@
 			(
 			 CAREER_IDX
 			, USER_IDX
-			, CAREER_COMP_NAME
-			, CAREER_ENTERDATE
-			, CAREER_LEAVEDATE
-			, CAREER_SPOT
-			, CAREER_RESPONSIB
+			<if test="careerCompName != null">, CAREER_COMP_NAME</if>
+			<if test="careerEnterdate != null">, CAREER_ENTERDATE</if>
+			<if test="careerLeavedate != null">, CAREER_LEAVEDATE</if>
+			<if test="careerSpot != null">, CAREER_SPOT</if>
+			<if test="careerResponsib != null">, CAREER_RESPONSIB</if>
 			)
 		VALUES
 			(
 			  USER_INFO_CAREER_SEQ.NEXTVAL
 			, USER_INFO_SEQ.CURRVAL
-			, #{careerCompName}
-			, #{careerEnterdate}
-			, #{careerLeavedate}
-			, #{careerSpot}
-			, #{careerResponsib}
+			<if test="careerCompName != null">, #{careerCompName}</if>
+			<if test="careerEnterdate != null">, #{careerEnterdate}</if>
+			<if test="careerLeavedate != null">, #{careerLeavedate}</if>
+			<if test="careerSpot != null">, #{careerSpot}</if>
+			<if test="careerResponsib != null">, #{careerResponsib}</if>
 			)
 	</insert>
 
