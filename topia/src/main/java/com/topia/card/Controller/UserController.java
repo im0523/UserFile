@@ -2,6 +2,7 @@ package com.topia.card.Controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class UserController {
 	@RequestMapping(value="/topia/userInsert.do", method = RequestMethod.POST)
 	@ResponseBody 
 	public String userInsert(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
-				userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo,  Model model) throws IOException {
+							userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo) throws IOException {
 		HashMap<String, String> result = new HashMap<String, String>();
 		CommonUtil commonUtil = new CommonUtil();
 		int resultCnt = service.user_insert(infoVo, careerVo, eduVo, licenVo, qualifiVo, skillVo, trainVo);
@@ -38,5 +39,15 @@ public class UserController {
 		System.out.println("callbackMsg::"+callbackMsg);
 		
 		return callbackMsg;
+	}
+	
+	@RequestMapping("/topia/userList.do")
+	public String loadCard(Model model, userInfoVO infoVo) {
+		
+		List<userInfoVO> list = service.user_list(infoVo);
+		
+		model.addAttribute("list", list);
+		
+		return "userList";
 	}
 }

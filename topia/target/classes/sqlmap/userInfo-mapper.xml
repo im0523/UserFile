@@ -97,5 +97,10 @@
 			, #{userAddress}
 			)
 	</insert>
+	
+	<select id="userList" resultMap="info">
+		SELECT *
+		FROM USER_INFO
+	</select>
 
 </mapper>

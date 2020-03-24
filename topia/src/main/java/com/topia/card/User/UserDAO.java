@@ -1,5 +1,7 @@
 package com.topia.card.User;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,8 +18,8 @@ import com.topia.card.vo.userTrainingVO;
 public class UserDAO {
 	@Autowired private SqlSession sql; 
 
-	public userInfoVO user_list(userInfoVO vo) {
-		return null;
+	public List<userInfoVO> user_list(userInfoVO vo) {
+		return sql.selectList("userInfo.userList", vo);
 	}
 
 	public userInfoVO user_detail(int userIdx) {
@@ -59,6 +61,7 @@ public class UserDAO {
 	public void user_delete(int userIdx) {
 
 	}
+
 
 
 

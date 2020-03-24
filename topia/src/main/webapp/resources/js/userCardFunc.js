@@ -61,6 +61,36 @@ $(document).ready(function(){
 		});
 	});
 	
+	//불러오기 버튼 클릭시 이벤트 발생
+	$('.personalHistoryListBtn').click(function(){
+		var $listPannel = $('.pop-user-register-pannel');
+		var listPannelVisible = $listPannel.is(':visible');
+	
+		if(listPannelVisible){
+			$listPannel.css("display","none");
+			
+		}else{
+			$listPannel.css("display","block");
+			
+//			userListPagingView(1);
+		}
+		
+		var param = $('#selectList').serialize();
+		$.ajax({
+			url : '/topia/userList.do',
+			dataType: 'html',
+			type: 'POST',
+			data: param,
+			success: function(data){
+				console.log(data);
+				$('#result_div').html(data);
+			},error: function(jqXHR, textStatus, errorThrown){
+				alert('실패');
+			}
+		})
+		
+		
+	})
 	
 });
 
@@ -144,6 +174,17 @@ function schoolAddBtn(){
 	)
 	s++;
 	flexibleTableTrEve();
+	
+	$('.dateInput').datepicker({
+        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
+        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
+        changeYear: true,			//콤보박스에서 년 선택 가능
+        changeMonth: true,			//콤보박스에서 월 선택 가능                              
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		dateFormat: 'yy-mm-dd'
+	});
 }
 
 //자격증 추가버튼 클릭시 
@@ -159,6 +200,18 @@ function qualifiAddBtn(){
 		+ '</tbody>'
 	)
 	q++;
+	flexibleTableTrEve();
+	
+	$('.dateInput').datepicker({
+        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
+        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
+        changeYear: true,			//콤보박스에서 년 선택 가능
+        changeMonth: true,			//콤보박스에서 월 선택 가능                              
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		dateFormat: 'yy-mm-dd'
+	});
 }
 
 //회사 추가버튼 클릭시
@@ -177,9 +230,21 @@ function careerAddBtn(){
 		+ '</tbody>'
 	)
 	c++;
+	flexibleTableTrEve();
+	
+	$('.dateInput').datepicker({
+        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
+        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
+        changeYear: true,			//콤보박스에서 년 선택 가능
+        changeMonth: true,			//콤보박스에서 월 선택 가능                              
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		dateFormat: 'yy-mm-dd'
+	});
 }
 
-//교육사항 추가버튼 클릭시
+//학력,자격증 추가버튼 클릭시
 var t=1;
 function trainingAddBtn(){
 	$('#trainingTb').append(
@@ -194,6 +259,18 @@ function trainingAddBtn(){
 		+ '</tbody>'
 	)
 	t++;
+	flexibleTableTrEve();
+	
+	$('.dateInput').datepicker({
+        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
+        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
+        changeYear: true,			//콤보박스에서 년 선택 가능
+        changeMonth: true,			//콤보박스에서 월 선택 가능                              
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		dateFormat: 'yy-mm-dd'
+	});
 }
 
 //보유기술 추가버튼 클릭시
@@ -209,6 +286,18 @@ function licenAddBtn(){
 		+ '</tbody>'
 	)
 	l++;
+	flexibleTableTrEve();
+	
+	$('.dateInput').datepicker({
+        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
+        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
+        changeYear: true,			//콤보박스에서 년 선택 가능
+        changeMonth: true,			//콤보박스에서 월 선택 가능                              
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		dateFormat: 'yy-mm-dd'
+	});
 }
 
 //스킬 추가버튼 클릭시
@@ -237,22 +326,26 @@ function skillAddBtn(){
 		+ '</tbody>'
 	)
 	k++;
+	flexibleTableTrEve();
+	
+	$('.dateInput').datepicker({
+        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
+        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
+        changeYear: true,			//콤보박스에서 년 선택 가능
+        changeMonth: true,			//콤보박스에서 월 선택 가능                              
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		dateFormat: 'yy-mm-dd'
+	});
 }
 
 // 추가항목 삭제 처리
 function deleteBtn(o){
-	$(o).parent().parent().parent().remove();
+	$(o).parent().parent().remove();
 }
 
 var flexibleTableTrEve = function(){
-	
-//	$(".removeTrBtn").unbind().click(function(){
-//		var $btnSelf = $(this);
-//		var $parentTr = $btnSelf.parent();
-//		var $parentTbody = $parentTr.parent();
-//		
-//		$parentTr.remove();
-//	});
 	
 	$(".flexibleTable").find("tbody").find("tr").unbind().hover(function(){
 		var $trSelf = $(this);
