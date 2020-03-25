@@ -23,10 +23,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public userInfoVO user_detail(int userIdx) {
-		return null;
+	public int user_detail(int userIdx) {
+		
+		List<userInfoVO> result = dao.userInfo_detail(userIdx);
+		
+//		if( result.size() >= 1 ) {
+//			dao.userCareer_detail(userIdx);
+//			dao.userEdu_detail(userIdx);
+//			dao.userLicen_detail(userIdx);
+//			dao.userQualifi_detail(userIdx);
+//			dao.userSkill_detail(userIdx);
+//			dao.userTraining_detail(userIdx);
+//		}
+		
+		return result.size();
 	}
-
+	
 	@Override
 	public int user_insert(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
 							userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo) {
@@ -76,10 +88,9 @@ public class UserServiceImpl implements UserService {
 	public void user_update(userInfoVO vo) {
 		
 	}
-
+	
 	@Override
 	public void user_delete(int userIdx) {
 		
 	}
-	
 }

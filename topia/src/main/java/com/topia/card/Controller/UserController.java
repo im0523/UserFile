@@ -41,6 +41,7 @@ public class UserController {
 		return callbackMsg;
 	}
 	
+	//불러오기 버튼 눌렀을 시 user List조회
 	@RequestMapping("/topia/userList.do")
 	public String loadCard(Model model, userInfoVO infoVo) {
 		
@@ -49,5 +50,21 @@ public class UserController {
 		model.addAttribute("list", list);
 		
 		return "userList";
+	}
+	
+	@RequestMapping("/topia/userDetail.do")
+	@ResponseBody
+	public String userDetail(int userIdx) throws IOException {
+		
+		HashMap<String, String> result = new HashMap<String, String>();
+		CommonUtil commonUtil = new CommonUtil();
+		int resultCnt = service.user_detail(userIdx);
+		
+		result.put("success", (resultCnt > 0)?"Y":"N");
+		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
+		
+		System.out.println("callbackMsg::"+callbackMsg);
+		
+		return callbackMsg;
 	}
 }

@@ -22,7 +22,14 @@ public class userInfoVO {
 	private String userEmail;
 	private String userZipcode;
 	private String userAddress;
+	private Integer careerDate;
 	
+	public Integer getCareerDate() {
+		return careerDate;
+	}
+	public void setCareerDate(Integer careerDate) {
+		this.careerDate = careerDate;
+	}
 	public int getRnum() {
 		return rnum;
 	}

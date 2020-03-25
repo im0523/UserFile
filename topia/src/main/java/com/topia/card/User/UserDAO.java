@@ -18,12 +18,38 @@ import com.topia.card.vo.userTrainingVO;
 public class UserDAO {
 	@Autowired private SqlSession sql; 
 
+	// 불러오기 list 출력
 	public List<userInfoVO> user_list(userInfoVO vo) {
 		return sql.selectList("userInfo.userList", vo);
 	}
 
-	public userInfoVO user_detail(int userIdx) {
-		return null;
+	// 한 명의 user profile detail 조회
+	public List<userInfoVO> userInfo_detail(int userIdx) {
+		return sql.selectList("userInfo.userInfoList", userIdx);
+	}
+
+	public void userCareer_detail(int userIdx) {
+		
+	}
+
+	public void userEdu_detail(int userIdx) {
+		
+	}
+
+	public void userLicen_detail(int userIdx) {
+		
+	}
+
+	public void userQualifi_detail(int userIdx) {
+		
+	}
+
+	public void userSkill_detail(int userIdx) {
+		
+	}
+
+	public void userTraining_detail(int userIdx) {
+		
 	}
 
 	public int userInfo_insert(userInfoVO vo) {
@@ -61,9 +87,6 @@ public class UserDAO {
 	public void user_delete(int userIdx) {
 
 	}
-
-
-
 
 
 }
