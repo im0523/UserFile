@@ -3,6 +3,7 @@ package com.topia.card.Controller;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,18 +54,26 @@ public class UserController {
 	}
 	
 	@RequestMapping("/topia/userDetail.do")
-	@ResponseBody
-	public String userDetail(int userIdx) throws IOException {
+	@ResponseBody 
+	public Map userDetail(int userIdx) throws IOException {
+		Map map = new HashMap();
 		
-		HashMap<String, String> result = new HashMap<String, String>();
-		CommonUtil commonUtil = new CommonUtil();
-		int resultCnt = service.user_detail(userIdx);
+		userInfoVO userInfo = service.user_detail(userIdx);
+		List<userEduVO> userEduList = service.userEdu_detail(userIdx);
+		List<userCareerVO> userCareerList = service.userCareer_detail(userIdx);
+		List<userLicenVO> userLicenList = service.userLicen_detail(userIdx);
+		List<userQualifiVO> userQualifiList = service.userQualifi_detail(userIdx);
+		List<userSkillVO> userSkillList = service.userSkill_detail(userIdx);
+		List<userTrainingVO> userTrainingList = service.userTraining_detail(userIdx);
 		
-		result.put("success", (resultCnt > 0)?"Y":"N");
-		String callbackMsg = commonUtil.getJsonCallBackString(" ",result);
+		map.put("userInfo", userInfo);
+		map.put("userEduList", userEduList);
+		map.put("userCareerList", userCareerList);
+		map.put("userLicenList", userLicenList);
+		map.put("userQualifiList", userQualifiList);
+		map.put("userSkillList", userSkillList);
+		map.put("userTrainingList", userTrainingList);
 		
-		System.out.println("callbackMsg::"+callbackMsg);
-		
-		return callbackMsg;
+		return map;
 	}
 }

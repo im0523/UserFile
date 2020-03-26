@@ -82,7 +82,7 @@ $(document).ready(function(){
 			type: 'POST',
 			data: param,
 			success: function(data){
-				console.log(data);
+//				console.log(data);
 				$('#result_div').html(data);
 			},error: function(jqXHR, textStatus, errorThrown){
 				alert('실패');

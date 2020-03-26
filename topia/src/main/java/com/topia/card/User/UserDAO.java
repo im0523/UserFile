@@ -24,32 +24,33 @@ public class UserDAO {
 	}
 
 	// 한 명의 user profile detail 조회
-	public List<userInfoVO> userInfo_detail(int userIdx) {
-		return sql.selectList("userInfo.userInfoList", userIdx);
+	public userInfoVO userInfo_detail(int userIdx) {
+		return sql.selectOne("userInfo.userInfoList", userIdx);
 	}
 
-	public void userCareer_detail(int userIdx) {
+	public List<userCareerVO> userCareer_detail(int userIdx) {
+		return null;
+	}
+
+	public List<userEduVO> userEdu_detail(int userIdx) {
+		return sql.selectList("userEdu.userEduList", userIdx);
+	}
+
+	public List<userLicenVO> userLicen_detail(int userIdx) {
+		return null;
 		
 	}
 
-	public void userEdu_detail(int userIdx) {
-		
+	public List<userQualifiVO> userQualifi_detail(int userIdx) {
+		return null;
 	}
 
-	public void userLicen_detail(int userIdx) {
-		
+	public List<userSkillVO> userSkill_detail(int userIdx) {
+		return null;
 	}
 
-	public void userQualifi_detail(int userIdx) {
-		
-	}
-
-	public void userSkill_detail(int userIdx) {
-		
-	}
-
-	public void userTraining_detail(int userIdx) {
-		
+	public List<userTrainingVO> userTraining_detail(int userIdx) {
+		return null;
 	}
 
 	public int userInfo_insert(userInfoVO vo) {

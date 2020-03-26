@@ -32,4 +32,13 @@
 			)
 	</insert>
 	
+	<select id="userEduList" resultMap="edu">
+		SELECT
+			*
+		FROM
+			USER_INFO_EDU
+		WHERE
+			USER_IDX = #{userIdx}
+	</select>
+	
 </mapper>
