@@ -32,5 +32,18 @@
 			)
 	</insert>
 	
+	<select id="userTrainingList" resultMap="training">
+		SELECT
+			  TRAINING_IDX
+			, USER_IDX
+			, TRAINING_NAME
+			, TO_CHAR(TRAINING_STARTDATE, 'YYYY-MM-DD') TRAINING_STARTDATE
+			, TO_CHAR(TRAINING_ENDDATE, 'YYYY-MM-DD') TRAINING_ENDDATE
+			, TRAINING_AGENCY
+		FROM
+			USER_INFO_TRAINING
+		WHERE
+			USER_IDX = #{userIdx}
+	</select>
 	
 </mapper>

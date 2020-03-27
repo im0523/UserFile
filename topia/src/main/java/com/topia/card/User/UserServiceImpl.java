@@ -39,22 +39,22 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<userLicenVO> userLicen_detail(int userIdx) {
-		return null;
+		return dao.userLicen_detail(userIdx);
 	}
 
 	@Override
 	public List<userQualifiVO> userQualifi_detail(int userIdx) {
-		return null;
+		return dao.userQualifi_detail(userIdx);
 	}
 
 	@Override
 	public List<userSkillVO> userSkill_detail(int userIdx) {
-		return null;
+		return dao.userSkill_detail(userIdx);
 	}
 	
 	@Override
 	public List<userTrainingVO> userTraining_detail(int userIdx) {
-		return null;
+		return dao.userTraining_detail(userIdx);
 	}
 
 	@Override

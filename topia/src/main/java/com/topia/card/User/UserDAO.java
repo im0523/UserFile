@@ -29,7 +29,7 @@ public class UserDAO {
 	}
 
 	public List<userCareerVO> userCareer_detail(int userIdx) {
-		return null;
+		return sql.selectList("userCareer.userCareerList", userIdx);
 	}
 
 	public List<userEduVO> userEdu_detail(int userIdx) {
@@ -37,20 +37,20 @@ public class UserDAO {
 	}
 
 	public List<userLicenVO> userLicen_detail(int userIdx) {
-		return null;
+		return sql.selectList("userLicen.userLicenList", userIdx);
 		
 	}
 
 	public List<userQualifiVO> userQualifi_detail(int userIdx) {
-		return null;
+		return sql.selectList("userQualifi.userQualifiList", userIdx);
 	}
 
 	public List<userSkillVO> userSkill_detail(int userIdx) {
-		return null;
+		return sql.selectList("userSkill.userSkillList", userIdx);
 	}
 
 	public List<userTrainingVO> userTraining_detail(int userIdx) {
-		return null;
+		return sql.selectList("userTraining.userTrainingList", userIdx);
 	}
 
 	public int userInfo_insert(userInfoVO vo) {

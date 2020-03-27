@@ -26,5 +26,15 @@
 			)
 	</insert>
 
-
+	<select id="userQualifiList" resultMap="qualifi">
+		SELECT
+			  QUALIFI_IDX
+			, USER_IDX
+			, QUALIFI_NAME
+			, TO_CHAR(QUALIFI_GETDATE, 'YYYY-MM-DD') QUALIFI_GETDATE
+		FROM
+			USER_INFO_QUALIFI
+		WHERE
+			USER_IDX = #{userIdx}
+	</select>
 </mapper>
