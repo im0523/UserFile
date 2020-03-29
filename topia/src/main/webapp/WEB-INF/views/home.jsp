@@ -60,10 +60,7 @@
 				<button type="button" class="personalHistoryListBtn">
 					불러오기
 				</button>
-				<button class="newHistoryCreateBtn">
-					새로작성
-				</button>
-				<button class="personalHistoryResetBtn">
+				<button type="button" class="personalHistoryResetBtn">
 					초기화
 				</button>
 				<button type="button" class="saveBtn">
