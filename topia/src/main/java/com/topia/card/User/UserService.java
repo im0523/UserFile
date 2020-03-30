@@ -26,7 +26,7 @@ public interface UserService {
 	int user_insert(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
 					userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo);
 	
-	void user_update(userInfoVO vo);
-	
-	void user_delete(int userIdx);
+	//불러오기 후 update 처리
+	int user_update(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
+			userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo);
 }

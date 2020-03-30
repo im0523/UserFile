@@ -23,32 +23,38 @@ public class UserDAO {
 		return sql.selectList("userInfo.userList", vo);
 	}
 
-	// 한 명의 user profile detail 조회
+	// 한 명의 user profile detail 조회 - userInfo
 	public userInfoVO userInfo_detail(int userIdx) {
 		return sql.selectOne("userInfo.userInfoList", userIdx);
 	}
 
+	// 한 명의 user profile detail 조회 - userCareer
 	public List<userCareerVO> userCareer_detail(int userIdx) {
 		return sql.selectList("userCareer.userCareerList", userIdx);
 	}
 
+	// 한 명의 user profile detail 조회 - userEdu
 	public List<userEduVO> userEdu_detail(int userIdx) {
 		return sql.selectList("userEdu.userEduList", userIdx);
 	}
 
+	// 한 명의 user profile detail 조회 - userLicen
 	public List<userLicenVO> userLicen_detail(int userIdx) {
 		return sql.selectList("userLicen.userLicenList", userIdx);
 		
 	}
 
+	// 한 명의 user profile detail 조회 - userQualifi
 	public List<userQualifiVO> userQualifi_detail(int userIdx) {
 		return sql.selectList("userQualifi.userQualifiList", userIdx);
 	}
 
+	// 한 명의 user profile detail 조회 - userSkill
 	public List<userSkillVO> userSkill_detail(int userIdx) {
 		return sql.selectList("userSkill.userSkillList", userIdx);
 	}
 
+	// 한 명의 user profile detail 조회 - userTraining
 	public List<userTrainingVO> userTraining_detail(int userIdx) {
 		return sql.selectList("userTraining.userTrainingList", userIdx);
 	}
@@ -80,14 +86,9 @@ public class UserDAO {
 	public int usereTraining_insert(userTrainingVO vo) {
 		return sql.insert("userTraining.insert", vo);
 	}
-	
-	public void user_update(userInfoVO vo) {
 
+	public int userInfo_update(userInfoVO vo) {
+		return sql.update("userInfo.update", vo);
+		
 	}
-
-	public void user_delete(int userIdx) {
-
-	}
-
-
 }

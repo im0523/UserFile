@@ -103,13 +103,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void user_update(userInfoVO vo) {
+	public int user_update(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
+							userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo) {
+		int result = dao.userInfo_update(infoVo);
 		
+		return result;
 	}
 	
-	@Override
-	public void user_delete(int userIdx) {
-		
-	}
 
 }

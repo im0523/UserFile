@@ -2,11 +2,11 @@
 
 $(document).ready(function(){
 	$('.dateInput').datepicker({
-        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
-        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
-        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
-        changeYear: true,			//콤보박스에서 년 선택 가능
-        changeMonth: true,			//콤보박스에서 월 선택 가능                              
+		yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
+		monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
+		showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
+		changeYear: true,			//콤보박스에서 년 선택 가능
+		changeMonth: true,			//콤보박스에서 월 선택 가능                              
 		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
 		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
 		dateFormat: 'yy-mm-dd'
@@ -31,7 +31,7 @@ $(document).ready(function(){
 			}
 		}
 	});
-
+	
 	// 저장버튼 클릭시 이벤트 발생
 	$(".saveBtn").click(function(){
 		var check = validate();
@@ -43,22 +43,36 @@ $(document).ready(function(){
 		var $frm = $('.userInsert :input');
 		var param = $frm.serialize();
 
-		$.ajax({
-			url : "/topia/userInsert.do",
-			dataType: "json",
-			type: "POST",
-			data : param,
-			success: function(data, textStatus, jqXHR)
-			{
-				alert("등록완료");
-				
-				location.href = "/topia.do";
-			},
-			error: function (jqXHR, textStatus, errorThrown)
-			{
-				alert("실패");
-			}
-		});
+		if( $('#status').val()=='select'){
+			$.ajax({
+				url : "/topia/userInsert.do",
+				dataType: "json",
+				type: "POST",
+				data : param,
+				success: function(data, textStatus, jqXHR)
+				{
+					alert("등록완료");
+					
+					location.href = "/topia.do";
+				},
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					alert("실패");
+				}
+			});
+		}else{
+			$.ajax({
+				url : '/topia/userUpdate.do',
+				dataType: 'json',
+				type: 'post',
+				data : param,
+				success: function(data, textStatus, jqXHR){
+					alert('수정테스트');
+				},error: function (data){
+					alert("실패");
+				}
+			});
+		}
 	});
 	
 	//불러오기 버튼 클릭시 이벤트 발생
@@ -175,16 +189,7 @@ function schoolAddBtn(){
 	s++;
 	flexibleTableTrEve();
 	
-	$('.dateInput').datepicker({
-        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
-        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
-        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
-        changeYear: true,			//콤보박스에서 년 선택 가능
-        changeMonth: true,			//콤보박스에서 월 선택 가능                              
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		dateFormat: 'yy-mm-dd'
-	});
+	datepicker();
 }
 
 //자격증 추가버튼 클릭시 
@@ -202,16 +207,7 @@ function qualifiAddBtn(){
 	q++;
 	flexibleTableTrEve();
 	
-	$('.dateInput').datepicker({
-        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
-        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
-        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
-        changeYear: true,			//콤보박스에서 년 선택 가능
-        changeMonth: true,			//콤보박스에서 월 선택 가능                              
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		dateFormat: 'yy-mm-dd'
-	});
+	datepicker();
 }
 
 //회사 추가버튼 클릭시
@@ -232,16 +228,7 @@ function careerAddBtn(){
 	c++;
 	flexibleTableTrEve();
 	
-	$('.dateInput').datepicker({
-        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
-        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
-        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
-        changeYear: true,			//콤보박스에서 년 선택 가능
-        changeMonth: true,			//콤보박스에서 월 선택 가능                              
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		dateFormat: 'yy-mm-dd'
-	});
+	datepicker();
 }
 
 //학력,자격증 추가버튼 클릭시
@@ -261,16 +248,7 @@ function trainingAddBtn(){
 	t++;
 	flexibleTableTrEve();
 	
-	$('.dateInput').datepicker({
-        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
-        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
-        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
-        changeYear: true,			//콤보박스에서 년 선택 가능
-        changeMonth: true,			//콤보박스에서 월 선택 가능                              
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		dateFormat: 'yy-mm-dd'
-	});
+	datepicker();
 }
 
 //보유기술 추가버튼 클릭시
@@ -288,16 +266,7 @@ function licenAddBtn(){
 	l++;
 	flexibleTableTrEve();
 	
-	$('.dateInput').datepicker({
-        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
-        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
-        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
-        changeYear: true,			//콤보박스에서 년 선택 가능
-        changeMonth: true,			//콤보박스에서 월 선택 가능                              
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		dateFormat: 'yy-mm-dd'
-	});
+	datepicker();
 }
 
 //스킬 추가버튼 클릭시
@@ -328,16 +297,7 @@ function skillAddBtn(){
 	k++;
 	flexibleTableTrEve();
 	
-	$('.dateInput').datepicker({
-        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
-        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
-        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
-        changeYear: true,			//콤보박스에서 년 선택 가능
-        changeMonth: true,			//콤보박스에서 월 선택 가능                              
-		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-		dateFormat: 'yy-mm-dd'
-	});
+	datepicker();
 }
 
 // 추가항목 삭제 처리
@@ -359,4 +319,259 @@ var flexibleTableTrEve = function(){
 		$childRemoveBtn.css("display","none");
 	});
 	
+}
+
+// 불러오기 한 사람의 profile detail 뿌리기
+function go_detail(userIdx){
+	var $listPannel = $('.pop-user-register-pannel');
+	var listPannelVisible = $listPannel.is(':visible');
+	
+	$.ajax({
+		url : '/topia/userDetail.do',
+		dataType: 'json',
+		type: 'POST',
+		data: {userIdx : userIdx},
+		success: function(data){
+// 			console.log(data.userInfo.userName);
+			fnUserInfo(data.userInfo);		//userInfo → Controller에서 지정한 map의 Key명
+			fnUserEdu(data.userEduList);		//userEduList → Controller에서 지정한 map의 Key명
+			fnUserQualifi(data.userQualifiList);
+			fnUserCareer(data.userCareerList);
+			fnUserTraining(data.userTrainingList);
+			fnUserLicen(data.userLicenList);
+			fnUserSkill(data.userSkillList);
+
+			$('#status').val('update');
+			$listPannel.css("display","none");
+
+		},error: function(req, status){
+			alert('실패');
+		}
+	})
+}
+
+//불러오기 후 userInfo 상세정보 뿌리기
+function fnUserInfo(userInfo){
+	var fullEmail = userInfo.userEmail;
+	var email = fullEmail.split('@');
+
+	$('#userIdx').val(userInfo.userIdx); 
+	$('#userName').val(userInfo.userName);
+	$('#userSocialSecunum').val(userInfo.userSocialSecunum);
+	$('#userSex').val(userInfo.userSex);
+	$('#userComp').val(userInfo.userComp);
+	$('#userCompEnterdate').val(userInfo.userCompEnterdate);
+	$('#userDept').val(userInfo.userDept);
+	$('#userSpot').val(userInfo.userSpot);
+	$('#userArmyServ').val(userInfo.userArmyServ);
+	$('#userMaritalStatus').val(userInfo.userMaritalStatus);
+	$('#userArmyServEnter').val(userInfo.userArmyServEnter);
+	$('#userArmyServLeave').val(userInfo.userArmyServLeave);
+	$('#userArmyServPeriod').val(userInfo.userArmyServPeriod);
+	$('#userTelnumWireless').val(userInfo.userTelnumWireless);
+	$('#userArmyServPeriod').val(userInfo.userArmyServPeriod);
+	$('#userEmail').val(email[0]);
+	$('#emailDomain').val('@'+email[1]);
+	$('#userZipcode').val(userInfo.userZipcode);
+	$('#userAddress').val(userInfo.userAddress);
+}
+
+//불러오기 후 userEdu 상세정보 뿌리기
+function fnUserEdu(userEduList){
+	var eduTable = $('#schoolTb');
+	var html = '';
+
+	for(var i=0; i<userEduList.length; i++){
+		html += '<tr>'
+						+ '<td><input type="text" name="userEduList['+ i +'].eduSchoolName" class="eduSchoolName" value="'+ userEduList[i].eduSchoolName +'"></td>'
+						+ '<td>'
+							+ '<select name="userEduList['+ i +'].eduStatus" class="eduStatus">'
+								+ '<option value="">선택없음</option>'
+								+ '<option value="입학">입학</option>'
+								+ '<option value="재학">재학</option>'
+								+ '<option value="졸업">졸업</option>'
+								+ '<option value="졸업예정">졸업예정</option>'
+							+ '</select>'
+						+ '</td>'
+						+ '<td><input type="text" name="userEduList['+ i +'].eduYear" placeholder="" class="eduYear" value="'+ userEduList[i].eduYear +'"></td>'
+						+ '<td>년</td>'
+						+ '<td><input type="text" name="userEduList['+ i +'].eduMonth" placeholder="" class="eduMonth" value="'+ userEduList[i].eduMonth +'"></td>'
+						+ '<td>월</td>'
+						+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-e'+ i +'" onclick="deleteBtn(this)">-</button></td>'
+						+ '</tr>';
+		eduTable.find('tbody').html(html);
+		eduTable.find('input').each(function(){
+			if( $(this).val()== 'null' ){
+				$(this).val('');
+			}
+		});
+	}
+	//userEduList의 졸업상태를 DB에서 가져와 selected 설정하는 처리
+	for(var e=0; e<userEduList.length; e++){
+		$('select[name="userEduList['+ e +'].eduStatus"]').val(userEduList[e].eduStatus).prop('selected', true);
+	}
+	$('#removeTrBtn-e0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
+	
+}
+
+//불러오기 후 userQualifi 상세정보 뿌리기
+function fnUserQualifi(userQualifiList){
+	var quTable = $('#qualifiTb');
+	var html = '';
+	
+	for(var i=0; i<userQualifiList.length; i++){
+		html += '<tr>'
+				+ '<td><input type="text" name="userQualifiList['+ i +'].qualifiName" class="qualifiName" value="'+ userQualifiList[i].qualifiName +'"></td>'
+				+ '<td><input type="text" name="userQualifiList['+ i +'].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly" value="'+ userQualifiList[i].qualifiGetdate +'"></td>'
+				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-q'+ i +'" onclick="deleteBtn(this)">-</button></td>'
+			+ '</tr>';
+		quTable.find('tbody').html(html);
+	}
+	quTable.find('input').each(function(){
+		if( $(this).val()== 'null' ){
+			$(this).val('');
+		}
+	});
+	$('#removeTrBtn-q0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
+	datepicker();
+}
+
+//불러오기 후 userCareer 상세정보 뿌리기
+function fnUserCareer(userCareerList){
+	var caTable = $('#careerTb');
+	var html = '';
+
+	for(var i=0; i<userCareerList.length; i++){
+		html += '<tr>'
+				+ '<td><input type="text" name="userCareerList['+ i +'].careerCompName" class="careerCompName" value="'+ userCareerList[i].careerCompName +'"></td>'
+				+ '<td><input type="text" name="userCareerList['+ i +'].careerEnterdate" class="careerEnterdate dateInput prevDate" readonly="readonly" value="'+ userCareerList[i].careerEnterdate +'"></td>'
+				+ '<td><input type="text" name="userCareerList['+ i +'].careerLeavedate" class="careerLeavedate dateInput laterDate" readonly="readonly" value="'+ userCareerList[i].careerLeavedate +'"></td>'
+				+ '<td><input type="text" name="userCareerList['+ i +'].careerSpot" class="careerSpot" value="'+ userCareerList[i].careerSpot +'"></td>'
+				+ '<td><input type="text" name="userCareerList['+ i +'].careerResponsib" class="careerResponsib" value="'+ userCareerList[i].careerResponsib +'"></td>'
+				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-c'+ i +'" onclick="deleteBtn(this)">-</button></td>'
+			+ '</tr>';
+		caTable.find('tbody').html(html);
+	}
+	caTable.find('input').each(function(){
+		if( $(this).val()== 'null' ){
+			$(this).val('');
+		}
+	});
+	$('#removeTrBtn-c0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
+	datepicker();
+}
+
+//불러오기 후 userLicen 상세정보 뿌리기
+function fnUserLicen(userLicenList){
+	var licenTable = $('#licenTb');
+	var html = '';
+	
+	for(var i=0; i<userLicenList.length; i++){
+		html += '<tr>'
+					+ '<td><input type="text" name="userLicenList['+ i +'].licenName" class="licenName" value="'+ userLicenList[i].licenName +'"></td>'
+					+ '<td><input type="text" name="userLicenList['+ i +'].licenSkillLevel" class="licenSkillLevel" value="'+ userLicenList[i].licenSkillLevel +'"></td>'
+					+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-l'+ i +'" onclick="deleteBtn(this)">-</button></td>'
+				+ '</tr>';
+		licenTable.find('tbody').html(html);
+	}
+	licenTable.find('input').each(function(){
+		if( $(this).val()== 'null' ){
+			$(this).val('');
+		}
+	});
+	$('#removeTrBtn-l0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
+}
+
+//불러오기 후 userTraining 상세정보 뿌리기
+function fnUserTraining(userTrainingList){
+	var trTable = $('#trainingTb');
+	var html = '';
+	
+	for(var i=0; i<userTrainingList.length; i++){
+		html += '<tr>'
+				+ '<td><input type="text" name="userTrainingList['+ i +'].trainingName" class="trainingName" value="'+ userTrainingList[i].trainingName +'"></td>'
+				+ '<td><input type="text" name="userTrainingList['+ i +'].trainingStartdate" class="trainingStartdate dateInput prevDate" readonly="readonly" value="'+ userTrainingList[i].trainingStartdate +'"></td>'
+				+ '<td><input type="text" name="userTrainingList['+ i +'].trainingEnddate" class="trainingEnddate dateInput laterDate" readonly="readonly" value="'+ userTrainingList[i].trainingEnddate +'"></td>'
+				+ '<td><input type="text" name="userTrainingList['+ i +'].trainingAgency" class="trainingAgency" value="'+ userTrainingList[i].trainingAgency +'"></td>'
+				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-t'+ i +'" onclick="deleteBtn(this)">-</button></td>'
+			+ '</tr>';
+		trTable.find('tbody').html(html);
+	}
+	trTable.find('input').each(function(){
+		if( $(this).val()== 'null' ){
+			$(this).val('');
+		}
+	});
+	$('#removeTrBtn-t0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
+	datepicker();
+}
+
+//불러오기 후 userSkill 상세정보 뿌리기
+function fnUserSkill(userSkillList){
+	var skillTable = $('#skillTb');
+	var html = '';
+	
+		
+	for(var i=0; i<userSkillList.length; i++){
+		html += '<tr>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillProjectName" class="skillProjectName">'+ userSkillList[i].skillProjectName +'</textarea></td>'
+				+ '<td><input type="text" name="userSkillList['+ i +'].skillStartdate" class="skillStartdate dateInput prevDate" readonly="readonly" value="'+ userSkillList[i].skillStartdate +'"></td>'
+				+ '<td><input type="text" name="userSkillList['+ i +'].skillEnddate" class="skillEnddate dateInput laterDate" readonly="readonly" value="'+ userSkillList[i].skillEnddate +'"></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillCustomerComp" class="skillCustomerComp">'+ userSkillList[i].skillCustomerComp +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillWorkComp" class="skillWorkComp">'+ userSkillList[i].skillCustomerComp +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillIndustry" class="skillIndustry">'+ userSkillList[i].skillIndustry +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillApplied" class="skillApplied">'+ userSkillList[i].skillApplied +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillRole" class="skillRole">'+ userSkillList[i].skillRole +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillModel" class="skillModel">'+ userSkillList[i].skillModel +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillOs" class="skillOs">'+ userSkillList[i].skillOs +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillLang" class="skillLang">'+ userSkillList[i].skillLang +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillDbms" class="skillDbms">'+ userSkillList[i].skillDbms +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillTool" class="skillTool">'+ userSkillList[i].skillTool +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillComm" class="skillComm">'+ userSkillList[i].skillComm +'</textarea></td>'
+				+ '<td><textarea name="userSkillList['+ i +'].skillEtc" class="skillEtc">'+ userSkillList[i].skillEtc +'</textarea></td>'
+				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-s'+ i +'" onclick="deleteBtn(this)">-</button></td>'
+			+ '</tr>';
+		skillTable.find('tbody').html(html);
+	}
+	datepicker();
+	skillTable.find('textarea, input').each(function(){
+		if( $(this).val()== 'null' ){
+			$(this).val('');
+		}
+	});
+	$('#removeTrBtn-s0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
+	
+}
+
+function datepicker(){
+	$('.dateInput').datepicker({
+        yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
+        monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
+        showMonthAfterYear:true, 	//년도 먼저 나오고, 뒤에 월 표시
+        changeYear: true,			//콤보박스에서 년 선택 가능
+        changeMonth: true,			//콤보박스에서 월 선택 가능                              
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		dateFormat: 'yy-mm-dd'
+	});
+	
+	//짝 지어진 날짜 정보와 비교
+	$('.dateInput').change(function(){
+		var $self = $(this);
+		
+		if( $self.val() != '' && ($self.hasClass('prevDate') || $self.hasClass('laterDate'))){
+			var $parentTr = $self.parents('tr');
+			var prevDate = new Date( $parentTr.find('.prevDate').val() );
+			var laterDate = new Date( $parentTr.find('.laterDate').val() );
+			var diff = laterDate - prevDate;
+			
+			if(diff < 0){
+				alert("이전 날짜가 이후 날짜보다 클 수 없습니다.");
+				$self.val("").focus();
+			}
+			if( laterDate){
+				
+			}
+		}
+	});
 }

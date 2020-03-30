@@ -55,8 +55,8 @@ public class UserController {
 	
 	@RequestMapping("/topia/userDetail.do")
 	@ResponseBody 
-	public Map userDetail(int userIdx) throws IOException {
-		Map map = new HashMap();
+	public Map<String, Object> userDetail(int userIdx) throws IOException {
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		userInfoVO userInfo = service.user_detail(userIdx);
 		List<userEduVO> userEduList = service.userEdu_detail(userIdx);
@@ -73,6 +73,23 @@ public class UserController {
 		map.put("userQualifiList", userQualifiList);
 		map.put("userSkillList", userSkillList);
 		map.put("userTrainingList", userTrainingList);
+		
+		return map;
+	}
+	
+	@RequestMapping("/topia/userUpdate.do")
+	@ResponseBody
+	public Map<String, Object> userUpdate(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
+										userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo) throws IOException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		int result = service.user_update(infoVo, careerVo, eduVo, licenVo, qualifiVo, skillVo, trainVo);
+		
+		if( result == 1) {
+			map.put("result", "success");
+		}else if( result < 1) {
+			map.put("result", "fail");
+		}
 		
 		return map;
 	}
