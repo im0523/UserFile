@@ -46,7 +46,8 @@
 		VALUES
 			(
 			  USER_INFO_EDU_SEQ.NEXTVAL
-			, USER_INFO_SEQ.CURRVAL
+<!-- 			, USER_INFO_SEQ.CURRVAL -->
+			, #{userIdx}
 			<if test="skillProjectName != null">, #{skillProjectName}</if>
 			<if test="skillStartdate != null">, #{skillStartdate}</if>
 			<if test="skillEnddate != null">, #{skillEnddate}</if>
@@ -88,5 +89,15 @@
 			USER_INFO_SKILL
 		WHERE
 			USER_IDX = #{userIdx}
+		AND
+			SKILL_PROJECT_NAME IS NOT NULL
 	</select>
+	
+	<delete id="delete">
+		DELETE
+		FROM
+			USER_INFO_SKILL
+		WHERE
+			USER_IDX = #{userIdx}
+	</delete>
 </mapper>

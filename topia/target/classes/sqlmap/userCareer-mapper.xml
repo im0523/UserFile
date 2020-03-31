@@ -26,7 +26,8 @@
 		VALUES
 			(
 			  USER_INFO_CAREER_SEQ.NEXTVAL
-			, USER_INFO_SEQ.CURRVAL
+<!-- 			, USER_INFO_SEQ.CURRVAL -->
+			, #{userIdx}
 			<if test="careerCompName != null">, #{careerCompName}</if>
 			<if test="careerEnterdate != null">, #{careerEnterdate}</if>
 			<if test="careerLeavedate != null">, #{careerLeavedate}</if>
@@ -47,6 +48,16 @@
 		FROM
 			USER_INFO_CAREER
 		WHERE
-			USER_IDX = #{userIdx}	
+			USER_IDX = #{userIdx}
+		AND
+			CAREER_COMP_NAME IS NOT NULL
 	</select>
+	
+	<delete id="delete">
+		DELETE
+		FROM
+			USER_INFO_CAREER
+		WHERE
+			USER_IDX = #{userIdx}
+	</delete>
 </mapper>

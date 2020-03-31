@@ -24,7 +24,8 @@
 		VALUES
 			(
 			  USER_INFO_TRAINING_SEQ.NEXTVAL
-			, USER_INFO_SEQ.CURRVAL
+<!-- 			, USER_INFO_SEQ.CURRVAL -->
+			, #{userIdx}
 			<if test="trainingName != null">, #{trainingName}</if>
 			<if test="trainingStartdate != null">, #{trainingStartdate}</if>
 			<if test="trainingEnddate != null">, #{trainingEnddate}</if>
@@ -44,6 +45,15 @@
 			USER_INFO_TRAINING
 		WHERE
 			USER_IDX = #{userIdx}
+		AND
+			TRAINING_NAME IS NOT NULL
 	</select>
 	
+	<delete id="delete">
+		DELETE
+		FROM
+			USER_INFO_TRAINING
+		WHERE
+			USER_IDX = #{userIdx}
+	</delete>
 </mapper>

@@ -89,6 +89,35 @@ public class UserDAO {
 
 	public int userInfo_update(userInfoVO vo) {
 		return sql.update("userInfo.update", vo);
-		
+	}
+
+	// 수정저장 눌렀을 때 delete 처리 - edu
+	public void userEdu_delete(Integer userIdx) {
+		sql.delete("userEdu.delete", userIdx);
+	}
+
+	// 수정저장 눌렀을 때 delete 처리 - career
+	public void userCareer_delete(Integer userIdx) {
+		sql.delete("userCareer.delete", userIdx);
+	}
+
+	// 수정저장 눌렀을 때 delete 처리 - qualifi
+	public void userQualifi_delete(Integer userIdx) {
+		sql.delete("userQualifi.delete", userIdx);
+	}
+
+	// 수정저장 눌렀을 때 delete 처리 - licen
+	public void userLicen_delete(Integer userIdx) {
+		sql.delete("userLicen.delete", userIdx);
+	}
+
+	// 수정저장 눌렀을 때 delete 처리 - skill
+	public void userSkill_delete(Integer userIdx) {
+		sql.delete("userSkill.delete", userIdx);
+	}
+
+	// 수정저장 눌렀을 때 delete 처리 - training
+	public void userTraining_delete(Integer userIdx) {
+		sql.delete("userTraining.delete", userIdx);
 	}
 }

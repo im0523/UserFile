@@ -11,7 +11,7 @@
 		<result column="EDU_MONTH" 			property="eduMonth"/>
 	</resultMap>
 	
-	<insert id="insert">
+	<insert id="insert" parameterType="com.topia.card.vo.userEduVO">
 		INSERT INTO USER_INFO_EDU
 			(
 			 EDU_IDX
@@ -24,7 +24,7 @@
 		VALUES
 			(
 			  USER_INFO_EDU_SEQ.NEXTVAL
-			, USER_INFO_SEQ.CURRVAL
+			, #{userIdx}
 			<if test="eduSchoolName != null">, #{eduSchoolName}</if>
 			<if test="eduStatus != null">, #{eduStatus}</if>
 			<if test="eduYear != null">, #{eduYear}</if>
@@ -39,6 +39,15 @@
 			USER_INFO_EDU
 		WHERE
 			USER_IDX = #{userIdx}
+		AND
+			EDU_SCHOOL_NAME IS NOT NULL
 	</select>
 	
+	<delete id="delete">
+		DELETE
+		FROM
+			USER_INFO_EDU
+		WHERE
+			USER_IDX = #{userIdx}
+	</delete>
 </mapper>

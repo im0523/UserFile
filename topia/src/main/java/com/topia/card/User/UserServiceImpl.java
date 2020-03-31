@@ -102,10 +102,60 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	//불러오기 후 update 처리
 	@Override
 	public int user_update(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
 							userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo) {
 		int result = dao.userInfo_update(infoVo);
+
+		dao.userEdu_delete(infoVo.getUserIdx());
+		dao.userCareer_delete(infoVo.getUserIdx());
+		dao.userQualifi_delete(infoVo.getUserIdx());
+		dao.userLicen_delete(infoVo.getUserIdx());
+		dao.userSkill_delete(infoVo.getUserIdx());
+		dao.userTraining_delete(infoVo.getUserIdx());
+		
+		if( result == 1 ) {
+//			if(eduVo.getEduList().size() > 0) {
+				for(userEduVO i : eduVo.getEduList()) {
+//					System.out.println(eduVo.getEduList());
+					if(i.getEduSchoolName() != null) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userEdu_insert(i);
+					}
+				}
+//			}
+				for(userCareerVO i : careerVo.getCareerList()) {
+					if(i.getCareerCompName() != null) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userCareer_insert(i);
+					}
+				}
+				for(userQualifiVO i : qualifiVo.getQualifiList()) {
+					if(i.getQualifiName() != null) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userQualifi_insert(i);
+					}
+				}
+				for(userLicenVO i : licenVo.getLicenList()) {
+					if(i.getLicenName() != null) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userLicen_insert(i);
+					}
+				}
+				for(userSkillVO i : skillVo.getSkillList()) {
+					if(i.getSkillProjectName() != null) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userSkill_insert(i);
+					}
+				}
+				for(userTrainingVO i : trainVo.getTrainList()) {
+					if(i.getTrainingName() != null) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.usereTraining_insert(i);
+					}
+				}
+		}
 		
 		return result;
 	}

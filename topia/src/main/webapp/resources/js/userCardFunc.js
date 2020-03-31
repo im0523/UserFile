@@ -124,9 +124,11 @@ function validate(){
 //	}
 	
 	//email과 emailDomain의 합친 값을 userEmail 컬럼에 합쳐서 저장
-	if( $('#emailDomain').val() != '1'){
+	if( $('#emailDomain').val() != ''){
 		var userEmail = $('#userEmail').val() + $('#emailDomain').val();
-		$('#userEmail').val(userEmail);
+		$('[name=userEmail]').val(userEmail);
+	}else{
+		$('[name=userEmail]').val( $('#userEmail').val() );
 	}
 	
 	return true;
@@ -374,6 +376,12 @@ function fnUserInfo(userInfo){
 	$('#emailDomain').val('@'+email[1]);
 	$('#userZipcode').val(userInfo.userZipcode);
 	$('#userAddress').val(userInfo.userAddress);
+	
+	//이메일을 직접입력 했을 경우
+	if( $('#emailDomain').val() == null ){
+		$('#emailDomain').val('');		//emailDomain값을 '직접입력'으로 만들고
+		$('#userEmail').val(fullEmail);	//userEmail 값에 fullEmail 값을 담는다
+	}
 }
 
 //불러오기 후 userEdu 상세정보 뿌리기
@@ -383,9 +391,9 @@ function fnUserEdu(userEduList){
 
 	for(var i=0; i<userEduList.length; i++){
 		html += '<tr>'
-						+ '<td><input type="text" name="userEduList['+ i +'].eduSchoolName" class="eduSchoolName" value="'+ userEduList[i].eduSchoolName +'"></td>'
+						+ '<td><input type="text" name="eduList['+ i +'].eduSchoolName" class="eduSchoolName" value="'+ userEduList[i].eduSchoolName +'"></td>'
 						+ '<td>'
-							+ '<select name="userEduList['+ i +'].eduStatus" class="eduStatus">'
+							+ '<select name="eduList['+ i +'].eduStatus" class="eduStatus">'
 								+ '<option value="">선택없음</option>'
 								+ '<option value="입학">입학</option>'
 								+ '<option value="재학">재학</option>'
@@ -393,9 +401,9 @@ function fnUserEdu(userEduList){
 								+ '<option value="졸업예정">졸업예정</option>'
 							+ '</select>'
 						+ '</td>'
-						+ '<td><input type="text" name="userEduList['+ i +'].eduYear" placeholder="" class="eduYear" value="'+ userEduList[i].eduYear +'"></td>'
+						+ '<td><input type="text" name="eduList['+ i +'].eduYear" placeholder="" class="eduYear" value="'+ userEduList[i].eduYear +'"></td>'
 						+ '<td>년</td>'
-						+ '<td><input type="text" name="userEduList['+ i +'].eduMonth" placeholder="" class="eduMonth" value="'+ userEduList[i].eduMonth +'"></td>'
+						+ '<td><input type="text" name="eduList['+ i +'].eduMonth" placeholder="" class="eduMonth" value="'+ userEduList[i].eduMonth +'"></td>'
 						+ '<td>월</td>'
 						+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-e'+ i +'" onclick="deleteBtn(this)">-</button></td>'
 						+ '</tr>';
@@ -410,6 +418,7 @@ function fnUserEdu(userEduList){
 	for(var e=0; e<userEduList.length; e++){
 		$('select[name="userEduList['+ e +'].eduStatus"]').val(userEduList[e].eduStatus).prop('selected', true);
 	}
+	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
 	$('#removeTrBtn-e0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 	
 }
@@ -421,8 +430,8 @@ function fnUserQualifi(userQualifiList){
 	
 	for(var i=0; i<userQualifiList.length; i++){
 		html += '<tr>'
-				+ '<td><input type="text" name="userQualifiList['+ i +'].qualifiName" class="qualifiName" value="'+ userQualifiList[i].qualifiName +'"></td>'
-				+ '<td><input type="text" name="userQualifiList['+ i +'].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly" value="'+ userQualifiList[i].qualifiGetdate +'"></td>'
+				+ '<td><input type="text" name="qualifiList['+ i +'].qualifiName" class="qualifiName" value="'+ userQualifiList[i].qualifiName +'"></td>'
+				+ '<td><input type="text" name="qualifiList['+ i +'].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly" value="'+ userQualifiList[i].qualifiGetdate +'"></td>'
 				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-q'+ i +'" onclick="deleteBtn(this)">-</button></td>'
 			+ '</tr>';
 		quTable.find('tbody').html(html);
@@ -432,8 +441,9 @@ function fnUserQualifi(userQualifiList){
 			$(this).val('');
 		}
 	});
-	$('#removeTrBtn-q0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 	datepicker();
+	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
+	$('#removeTrBtn-q0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 }
 
 //불러오기 후 userCareer 상세정보 뿌리기
@@ -443,11 +453,11 @@ function fnUserCareer(userCareerList){
 
 	for(var i=0; i<userCareerList.length; i++){
 		html += '<tr>'
-				+ '<td><input type="text" name="userCareerList['+ i +'].careerCompName" class="careerCompName" value="'+ userCareerList[i].careerCompName +'"></td>'
-				+ '<td><input type="text" name="userCareerList['+ i +'].careerEnterdate" class="careerEnterdate dateInput prevDate" readonly="readonly" value="'+ userCareerList[i].careerEnterdate +'"></td>'
-				+ '<td><input type="text" name="userCareerList['+ i +'].careerLeavedate" class="careerLeavedate dateInput laterDate" readonly="readonly" value="'+ userCareerList[i].careerLeavedate +'"></td>'
-				+ '<td><input type="text" name="userCareerList['+ i +'].careerSpot" class="careerSpot" value="'+ userCareerList[i].careerSpot +'"></td>'
-				+ '<td><input type="text" name="userCareerList['+ i +'].careerResponsib" class="careerResponsib" value="'+ userCareerList[i].careerResponsib +'"></td>'
+				+ '<td><input type="text" name="careerList['+ i +'].careerCompName" class="careerCompName" value="'+ userCareerList[i].careerCompName +'"></td>'
+				+ '<td><input type="text" name="careerList['+ i +'].careerEnterdate" class="careerEnterdate dateInput prevDate" readonly="readonly" value="'+ userCareerList[i].careerEnterdate +'"></td>'
+				+ '<td><input type="text" name="careerList['+ i +'].careerLeavedate" class="careerLeavedate dateInput laterDate" readonly="readonly" value="'+ userCareerList[i].careerLeavedate +'"></td>'
+				+ '<td><input type="text" name="careerList['+ i +'].careerSpot" class="careerSpot" value="'+ userCareerList[i].careerSpot +'"></td>'
+				+ '<td><input type="text" name="careerList['+ i +'].careerResponsib" class="careerResponsib" value="'+ userCareerList[i].careerResponsib +'"></td>'
 				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-c'+ i +'" onclick="deleteBtn(this)">-</button></td>'
 			+ '</tr>';
 		caTable.find('tbody').html(html);
@@ -457,8 +467,9 @@ function fnUserCareer(userCareerList){
 			$(this).val('');
 		}
 	});
-	$('#removeTrBtn-c0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 	datepicker();
+	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
+	$('#removeTrBtn-c0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 }
 
 //불러오기 후 userLicen 상세정보 뿌리기
@@ -468,8 +479,8 @@ function fnUserLicen(userLicenList){
 	
 	for(var i=0; i<userLicenList.length; i++){
 		html += '<tr>'
-					+ '<td><input type="text" name="userLicenList['+ i +'].licenName" class="licenName" value="'+ userLicenList[i].licenName +'"></td>'
-					+ '<td><input type="text" name="userLicenList['+ i +'].licenSkillLevel" class="licenSkillLevel" value="'+ userLicenList[i].licenSkillLevel +'"></td>'
+					+ '<td><input type="text" name="licenList['+ i +'].licenName" class="licenName" value="'+ userLicenList[i].licenName +'"></td>'
+					+ '<td><input type="text" name="licenList['+ i +'].licenSkillLevel" class="licenSkillLevel" value="'+ userLicenList[i].licenSkillLevel +'"></td>'
 					+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-l'+ i +'" onclick="deleteBtn(this)">-</button></td>'
 				+ '</tr>';
 		licenTable.find('tbody').html(html);
@@ -479,6 +490,7 @@ function fnUserLicen(userLicenList){
 			$(this).val('');
 		}
 	});
+	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
 	$('#removeTrBtn-l0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 }
 
@@ -489,10 +501,10 @@ function fnUserTraining(userTrainingList){
 	
 	for(var i=0; i<userTrainingList.length; i++){
 		html += '<tr>'
-				+ '<td><input type="text" name="userTrainingList['+ i +'].trainingName" class="trainingName" value="'+ userTrainingList[i].trainingName +'"></td>'
-				+ '<td><input type="text" name="userTrainingList['+ i +'].trainingStartdate" class="trainingStartdate dateInput prevDate" readonly="readonly" value="'+ userTrainingList[i].trainingStartdate +'"></td>'
-				+ '<td><input type="text" name="userTrainingList['+ i +'].trainingEnddate" class="trainingEnddate dateInput laterDate" readonly="readonly" value="'+ userTrainingList[i].trainingEnddate +'"></td>'
-				+ '<td><input type="text" name="userTrainingList['+ i +'].trainingAgency" class="trainingAgency" value="'+ userTrainingList[i].trainingAgency +'"></td>'
+				+ '<td><input type="text" name="trainList['+ i +'].trainingName" class="trainingName" value="'+ userTrainingList[i].trainingName +'"></td>'
+				+ '<td><input type="text" name="trainList['+ i +'].trainingStartdate" class="trainingStartdate dateInput prevDate" readonly="readonly" value="'+ userTrainingList[i].trainingStartdate +'"></td>'
+				+ '<td><input type="text" name="trainList['+ i +'].trainingEnddate" class="trainingEnddate dateInput laterDate" readonly="readonly" value="'+ userTrainingList[i].trainingEnddate +'"></td>'
+				+ '<td><input type="text" name="trainList['+ i +'].trainingAgency" class="trainingAgency" value="'+ userTrainingList[i].trainingAgency +'"></td>'
 				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-t'+ i +'" onclick="deleteBtn(this)">-</button></td>'
 			+ '</tr>';
 		trTable.find('tbody').html(html);
@@ -502,8 +514,9 @@ function fnUserTraining(userTrainingList){
 			$(this).val('');
 		}
 	});
-	$('#removeTrBtn-t0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 	datepicker();
+	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
+	$('#removeTrBtn-t0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 }
 
 //불러오기 후 userSkill 상세정보 뿌리기
@@ -514,21 +527,21 @@ function fnUserSkill(userSkillList){
 		
 	for(var i=0; i<userSkillList.length; i++){
 		html += '<tr>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillProjectName" class="skillProjectName">'+ userSkillList[i].skillProjectName +'</textarea></td>'
-				+ '<td><input type="text" name="userSkillList['+ i +'].skillStartdate" class="skillStartdate dateInput prevDate" readonly="readonly" value="'+ userSkillList[i].skillStartdate +'"></td>'
-				+ '<td><input type="text" name="userSkillList['+ i +'].skillEnddate" class="skillEnddate dateInput laterDate" readonly="readonly" value="'+ userSkillList[i].skillEnddate +'"></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillCustomerComp" class="skillCustomerComp">'+ userSkillList[i].skillCustomerComp +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillWorkComp" class="skillWorkComp">'+ userSkillList[i].skillCustomerComp +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillIndustry" class="skillIndustry">'+ userSkillList[i].skillIndustry +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillApplied" class="skillApplied">'+ userSkillList[i].skillApplied +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillRole" class="skillRole">'+ userSkillList[i].skillRole +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillModel" class="skillModel">'+ userSkillList[i].skillModel +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillOs" class="skillOs">'+ userSkillList[i].skillOs +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillLang" class="skillLang">'+ userSkillList[i].skillLang +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillDbms" class="skillDbms">'+ userSkillList[i].skillDbms +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillTool" class="skillTool">'+ userSkillList[i].skillTool +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillComm" class="skillComm">'+ userSkillList[i].skillComm +'</textarea></td>'
-				+ '<td><textarea name="userSkillList['+ i +'].skillEtc" class="skillEtc">'+ userSkillList[i].skillEtc +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillProjectName" class="skillProjectName">'+ userSkillList[i].skillProjectName +'</textarea></td>'
+				+ '<td><input type="text" name="skillList['+ i +'].skillStartdate" class="skillStartdate dateInput prevDate" readonly="readonly" value="'+ userSkillList[i].skillStartdate +'"></td>'
+				+ '<td><input type="text" name="skillList['+ i +'].skillEnddate" class="skillEnddate dateInput laterDate" readonly="readonly" value="'+ userSkillList[i].skillEnddate +'"></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillCustomerComp" class="skillCustomerComp">'+ userSkillList[i].skillCustomerComp +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillWorkComp" class="skillWorkComp">'+ userSkillList[i].skillCustomerComp +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillIndustry" class="skillIndustry">'+ userSkillList[i].skillIndustry +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillApplied" class="skillApplied">'+ userSkillList[i].skillApplied +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillRole" class="skillRole">'+ userSkillList[i].skillRole +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillModel" class="skillModel">'+ userSkillList[i].skillModel +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillOs" class="skillOs">'+ userSkillList[i].skillOs +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillLang" class="skillLang">'+ userSkillList[i].skillLang +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillDbms" class="skillDbms">'+ userSkillList[i].skillDbms +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillTool" class="skillTool">'+ userSkillList[i].skillTool +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillComm" class="skillComm">'+ userSkillList[i].skillComm +'</textarea></td>'
+				+ '<td><textarea name="skillList['+ i +'].skillEtc" class="skillEtc">'+ userSkillList[i].skillEtc +'</textarea></td>'
 				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-s'+ i +'" onclick="deleteBtn(this)">-</button></td>'
 			+ '</tr>';
 		skillTable.find('tbody').html(html);
@@ -539,6 +552,7 @@ function fnUserSkill(userSkillList){
 			$(this).val('');
 		}
 	});
+	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
 	$('#removeTrBtn-s0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 	
 }
@@ -573,5 +587,22 @@ function datepicker(){
 				
 			}
 		}
+	});
+}
+
+//remove 버튼 이벤트 할당
+var flexibleTableTrEve = function(){
+	$('.removeTrBtn').css('display', 'none');
+	
+	$(".flexibleTable").find("tbody").find("tr").unbind().hover(function(){
+		var $trSelf = $(this);
+		var $childRemoveBtn = $trSelf.find(".removeTrBtn");
+		
+		$childRemoveBtn.css("display","block");
+	},function(){
+		var $trSelf = $(this);
+		var $childRemoveBtn = $trSelf.find(".removeTrBtn");
+		
+		$childRemoveBtn.css("display","none");
 	});
 }
