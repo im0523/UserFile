@@ -98,31 +98,56 @@
 			)
 	</insert>
 	
+	<sql id="searchQry">
+		<if test="userListSearchPeriod != null and userListSearchPeriod != ''">
+			<choose>
+				<when test="userListSearchPeriod[0] == 'userName'">
+					WHERE USER_NAME LIKE '%${userListSearchWord}%'
+				</when>
+				<when test="userListSearchPeriod[0] == 'userComp'">
+					WHERE USER_COMPT LIKE '%${userListSearchWord}%'
+				</when>
+				<when test="userListSearchPeriod[0] == 'userDept'">
+					WHERE USER_DEPT LIKE '%${userListSearchWord}%'
+				</when>
+			</choose>
+		</if>
+	</sql>
+	
 	<select id="userList" resultMap="info">
 		SELECT
-			  A.*
-			, U.*
-		FROM 
-			(SELECT
-				  USER_IDX 
-				, NVL(SUM((SKILL_ENDDATE-SKILL_STARTDATE)/365), 0) careerDate
-    		  FROM
-    		  	USER_INFO_SKILL
-    		  WHERE
-    		  	USER_IDX = (SELECT
-    		  					USER_IDX
-    		  				FROM
-    		  					USER_INFO
-    		  				WHERE
-    		  					USER_INFO.USER_IDX = USER_INFO_SKILL.USER_IDX)
-    		  GROUP BY
-    		  	USER_IDX
-    		) A
-    		, USER_INFO U
-		WHERE
-			A.USER_IDX = U.USER_IDX
+			  U.USER_IDX
+			, USER_NAME
+			, USER_COMP
+			, USER_DEPT
+			, USER_SEX
+			, USER_REGISTER_DATE
+			, NVL(SUM((SKILL_ENDDATE-SKILL_STARTDATE)/365), 0) careerDate
+		FROM
+			USER_INFO U
+		LEFT OUTER JOIN
+			USER_INFO_SKILL S
+		ON
+			U.USER_IDX = S.USER_IDX
+		
+		<include refid="searchQry"/>
+		
+		GROUP BY
+			U.USER_IDX
+			, USER_NAME
+			, USER_COMP
+			, USER_DEPT
+			, USER_SEX
+			, USER_REGISTER_DATE
 		ORDER BY
-			1 DESC
+			USER_REGISTER_DATE DESC
+	</select>
+	
+	<select id="totalCnt" resultType="integer">
+		SELECT
+			COUNT(*) totalCnt
+		FROM
+			USER_INFO
 	</select>
 
 	<select id="userInfoList" resultMap="info">

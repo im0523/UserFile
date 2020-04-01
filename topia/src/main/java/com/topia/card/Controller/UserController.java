@@ -46,9 +46,12 @@ public class UserController {
 	@RequestMapping("/topia/userList.do")
 	public String loadCard(Model model, userInfoVO infoVo) {
 		
+		int totalCnt = service.list_totalCnt(infoVo);
+		
 		List<userInfoVO> list = service.user_list(infoVo);
 		
 		model.addAttribute("list", list);
+		model.addAttribute("totalCnt", totalCnt);
 		
 		return "userList";
 	}

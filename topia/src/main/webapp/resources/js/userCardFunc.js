@@ -76,19 +76,12 @@ $(document).ready(function(){
 	});
 	
 	//불러오기 버튼 클릭시 이벤트 발생
-	$('.personalHistoryListBtn').click(function(){
+	$('.personalHistoryListBtn, #userListSearchBtn').click(function(){
 		var $listPannel = $('.pop-user-register-pannel');
 		var listPannelVisible = $listPannel.is(':visible');
 	
-		if(listPannelVisible){
-			$listPannel.css("display","none");
+		$listPannel.css("display","block");
 			
-		}else{
-			$listPannel.css("display","block");
-			
-//			userListPagingView(1);
-		}
-		
 		var param = $('#selectList').serialize();
 		$.ajax({
 			url : '/topia/userList.do',
@@ -98,12 +91,22 @@ $(document).ready(function(){
 			success: function(data){
 //				console.log(data);
 				$('#result_div').html(data);
+				$('#userInfoCnt').text($('#totalCnt').val()); 
 			},error: function(jqXHR, textStatus, errorThrown){
 				alert('실패');
 			}
 		})
 		
 		
+	})
+	
+	// 불러오기 창이 띄워진 상태에서 ㅡ 버튼 눌렀을때 불러오기 창 닫는 이벤트
+	$('.minimizeUserPannelBtn').click(function(){
+		var $listPannel = $('.pop-user-register-pannel');
+		var listPannelVisible = $listPannel.is(':visible');
+			
+		$listPannel.css("display","none");
+			
 	})
 	
 });
@@ -325,6 +328,9 @@ var flexibleTableTrEve = function(){
 
 // 불러오기 한 사람의 profile detail 뿌리기
 function go_detail(userIdx){
+	//기존에 불러왔던 데이터를 초기화
+	resetInput();
+	
 	var $listPannel = $('.pop-user-register-pannel');
 	var listPannelVisible = $listPannel.is(':visible');
 	
@@ -605,4 +611,22 @@ var flexibleTableTrEve = function(){
 		
 		$childRemoveBtn.css("display","none");
 	});
+}
+
+//작성창 초기화
+function resetInput(){
+//	alert('d');
+	var $flexibleTable = $(".flexibleTable");
+	
+	$flexibleTable.find("tbody").find("tr:not(:first-child)").remove();
+	
+	$('.userInsert').find('input').val('');
+	$('.userInsert').find('textarea').val('');
+	$('.userInsert').find('select').val('');
+}
+
+//새로작성 버튼 클릭 시
+function resetPage(){
+	resetInput();
+	$('#status').val('select');
 }

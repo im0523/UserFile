@@ -23,6 +23,11 @@ public class UserDAO {
 		return sql.selectList("userInfo.userList", vo);
 	}
 
+	// 불러오기 totalCnt 출력
+	public int list_totalCnt(userInfoVO infoVo) {
+		return sql.selectOne("userInfo.totalCnt", infoVo);
+	}
+	
 	// 한 명의 user profile detail 조회 - userInfo
 	public userInfoVO userInfo_detail(int userIdx) {
 		return sql.selectOne("userInfo.userInfoList", userIdx);
@@ -120,4 +125,5 @@ public class UserDAO {
 	public void userTraining_delete(Integer userIdx) {
 		sql.delete("userTraining.delete", userIdx);
 	}
+
 }

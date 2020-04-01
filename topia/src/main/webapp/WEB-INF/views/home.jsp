@@ -61,8 +61,8 @@
 				<button type="button" class="personalHistoryListBtn">
 					불러오기
 				</button>
-				<button type="button" class="personalHistoryResetBtn">
-					초기화
+				<button type="button" class="newHistoryCreateBtn" onclick="resetPage()">
+					새로작성
 				</button>
 				<button type="button" class="saveBtn">
 					저장
@@ -173,7 +173,9 @@
 					<td>
 						<div>
 							<input type="text" id="userZipcode" name="userZipcode" placeholder="우편번호" readonly="readonly"/>
-							<input type="button" id="personalZipcodeSearchBtn" name="personalZipcodeSearchBtn" value="우편번호 찾기" onclick="execPostCode()" />
+							<button type="button" id="personalZipcodeSearchBtn" name="personalZipcodeSearchBtn" onclick="execPostCode()" style="width: 145px; height: 30px;">
+								우편번호 찾기
+							</button>
 							<div class="clear-pannel"></div>
 						</div>
 					</td>
@@ -485,9 +487,9 @@
 					<option value="여성">여성</option>
 				</select>
 				<input type="hidden" id="userGender" name="userGender" >
-				<button id="userListSearchBtn" class="user-list-search-btn">검색</button>
+				<button id="userListSearchBtn" type="button" class="user-list-search-btn">검색</button>
 				<div class="search-cnt-pannel">
-					<span class="search-cnt-prev">검색결과 : </span>
+					<span class="search-cnt-prev">검색결과 :<b id="userInfoCnt"></b></span>
 					<span class="search-cnt-cnt"></span>
 					<span class="search-cnt-later"> 건</span>
 				</div>

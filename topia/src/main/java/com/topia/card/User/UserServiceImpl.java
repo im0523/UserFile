@@ -17,11 +17,18 @@ import com.topia.card.vo.userTrainingVO;
 public class UserServiceImpl implements UserService {
 	@Autowired private UserDAO dao;
 
+	//불러오기 list 조회
 	@Override
 	public List<userInfoVO> user_list(userInfoVO vo) {
 		return dao.user_list(vo);
 	}
 
+	//불러오기 totalCnt 조회
+	@Override
+	public int list_totalCnt(userInfoVO infoVo) {
+		return dao.list_totalCnt(infoVo);
+	}
+	
 	@Override
 	public userInfoVO user_detail(int userIdx) {
 		return dao.userInfo_detail(userIdx);
@@ -68,32 +75,32 @@ public class UserServiceImpl implements UserService {
 		if( result==1 ) {
 			for(userEduVO i : eduVo.getEduList()) {
 //				System.out.println(i + "//" + i.getEduSchoolName());
-				if(i.getEduSchoolName() != null) {
+				if(i.getEduSchoolName().equals("") == false) {
 					dao.userEdu_insert(i);
 				}
 			}
 			for(userQualifiVO i : qualifiVo.getQualifiList()) {
-				if(i.getQualifiName() != null) {
+				if(i.getQualifiName().equals("") == false) {
 					dao.userQualifi_insert(i);
 				}
 			}
 			for(userLicenVO i : licenVo.getLicenList()) {
-				if(i.getLicenName() != null) {
+				if(i.getLicenName().equals("") == false) {
 					dao.userLicen_insert(i);
 				}
 			}
 			for(userCareerVO i : careerVo.getCareerList()) {
-				if(i.getCareerCompName() != null) {
+				if(i.getCareerCompName().equals("") == false) {
 					dao.userCareer_insert(i);
 				}
 			}
 			for(userSkillVO i : skillVo.getSkillList()) {
-				if(i.getSkillProjectName() != null) {
+				if(i.getSkillProjectName().equals("") == false) {
 					dao.userSkill_insert(i);
 				}
 			}
 			for(userTrainingVO i : trainVo.getTrainList()) {
-				if(i.getTrainingName() != null) {
+				if(i.getTrainingName().equals("") == false) {
 					dao.usereTraining_insert(i);
 				}
 			}
@@ -159,6 +166,6 @@ public class UserServiceImpl implements UserService {
 		
 		return result;
 	}
-	
+
 
 }

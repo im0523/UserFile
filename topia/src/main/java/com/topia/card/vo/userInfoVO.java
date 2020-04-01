@@ -1,7 +1,7 @@
 package com.topia.card.vo;
 
 public class userInfoVO {
-	private int rnum;
+	private Integer totalCnt;
 	
 	private Integer userIdx;
 	private String userRegisterDate;
@@ -24,17 +24,34 @@ public class userInfoVO {
 	private String userAddress;
 	private Integer careerDate;
 	
+	//검색조건
+	private String userListSearchPeriod;
+	private String userListSearchWord;
+	
+	
+	public String getUserListSearchPeriod() {
+		return userListSearchPeriod;
+	}
+	public void setUserListSearchPeriod(String userListSearchPeriod) {
+		this.userListSearchPeriod = userListSearchPeriod;
+	}
+	public String getUserListSearchWord() {
+		return userListSearchWord;
+	}
+	public void setUserListSearchWord(String userListSearchWord) {
+		this.userListSearchWord = userListSearchWord;
+	}
 	public Integer getCareerDate() {
 		return careerDate;
 	}
 	public void setCareerDate(Integer careerDate) {
 		this.careerDate = careerDate;
 	}
-	public int getRnum() {
-		return rnum;
+	public Integer getTotalCnt() {
+		return totalCnt;
 	}
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
+	public void setTotalCnt(Integer totalCnt) {
+		this.totalCnt = totalCnt;
 	}
 	public Integer getUserIdx() {
 		return userIdx;
