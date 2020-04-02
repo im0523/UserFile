@@ -99,46 +99,54 @@
 	</insert>
 	
 	<sql id="searchQry">
-		<if test="userListSearchPeriod != null and userListSearchPeriod != ''">
-			<choose>
-				<when test="userListSearchPeriod[0] == 'userName'">
-					WHERE USER_NAME LIKE '%${userListSearchWord}%'
-				</when>
-				<when test="userListSearchPeriod[0] == 'userComp'">
-					WHERE USER_COMPT LIKE '%${userListSearchWord}%'
-				</when>
-				<when test="userListSearchPeriod[0] == 'userDept'">
-					WHERE USER_DEPT LIKE '%${userListSearchWord}%'
-				</when>
-			</choose>
-		</if>
+		<where>
+			<if test="userListSearchPeriod != null and userListSearchPeriod != ''">
+				<choose>
+					<when test="userListSearchPeriod == 'userName'">
+						USER_NAME LIKE '%' || #{userListSearchWord} || '%'
+					</when>
+					<when test="userListSearchPeriod == 'userComp'">
+						USER_COMP LIKE '%' || #{userListSearchWord} || '%'
+					</when>
+					<when test="userListSearchPeriod == 'userDept'">
+						USER_DEPT LIKE '%' || #{userListSearchWord} || '%'
+					</when>
+				</choose>
+			</if>
+			
+			<if test="userCareerLength >0 ">
+				AND C.CAREERDATE >= #{userCareerLength}
+			</if>
+			<if test="genderSelect != null and genderSelect != ''">
+				AND USER_SEX = #{genderSelect}
+			</if>
+		</where>
 	</sql>
 	
 	<select id="userList" resultMap="info">
 		SELECT
-			  U.USER_IDX
+			  DISTINCT U.USER_IDX
 			, USER_NAME
 			, USER_COMP
 			, USER_DEPT
 			, USER_SEX
 			, USER_REGISTER_DATE
-			, NVL(SUM((SKILL_ENDDATE-SKILL_STARTDATE)/365), 0) careerDate
+			, C.CAREERDATE
 		FROM
 			USER_INFO U
 		LEFT OUTER JOIN
 			USER_INFO_SKILL S
 		ON
 			U.USER_IDX = S.USER_IDX
+		LEFT OUTER JOIN
+			(SELECT USER_IDX, NVL(SUM((SKILL_ENDDATE-SKILL_STARTDATE)/365), 0) CAREERDATE
+                FROM USER_INFO_SKILL
+                GROUP BY USER_IDX) C
+		ON
+			C.USER_IDX = S.USER_IDX
 		
 		<include refid="searchQry"/>
 		
-		GROUP BY
-			U.USER_IDX
-			, USER_NAME
-			, USER_COMP
-			, USER_DEPT
-			, USER_SEX
-			, USER_REGISTER_DATE
 		ORDER BY
 			USER_REGISTER_DATE DESC
 	</select>
@@ -148,6 +156,7 @@
 			COUNT(*) totalCnt
 		FROM
 			USER_INFO
+		<include refid="searchQry"/>
 	</select>
 
 	<select id="userInfoList" resultMap="info">

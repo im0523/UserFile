@@ -27,8 +27,22 @@ public class userInfoVO {
 	//검색조건
 	private String userListSearchPeriod;
 	private String userListSearchWord;
+	private String userCareerLength;
+	private String genderSelect;
 	
 	
+	public String getGenderSelect() {
+		return genderSelect;
+	}
+	public void setGenderSelect(String genderSelect) {
+		this.genderSelect = genderSelect;
+	}
+	public String getUserCareerLength() {
+		return userCareerLength;
+	}
+	public void setUserCareerLength(String userCareerLength) {
+		this.userCareerLength = userCareerLength;
+	}
 	public String getUserListSearchPeriod() {
 		return userListSearchPeriod;
 	}

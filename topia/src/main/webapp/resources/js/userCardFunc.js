@@ -97,7 +97,6 @@ $(document).ready(function(){
 			}
 		})
 		
-		
 	})
 	
 	// 불러오기 창이 띄워진 상태에서 ㅡ 버튼 눌렀을때 불러오기 창 닫는 이벤트
@@ -106,7 +105,6 @@ $(document).ready(function(){
 		var listPannelVisible = $listPannel.is(':visible');
 			
 		$listPannel.css("display","none");
-			
 	})
 	
 });
@@ -348,7 +346,7 @@ function go_detail(userIdx){
 			fnUserTraining(data.userTrainingList);
 			fnUserLicen(data.userLicenList);
 			fnUserSkill(data.userSkillList);
-
+			
 			$('#status').val('update');
 			$listPannel.css("display","none");
 
