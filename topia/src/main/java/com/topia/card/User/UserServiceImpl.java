@@ -71,36 +71,42 @@ public class UserServiceImpl implements UserService {
 		int result = 0;
 		
 		result = dao.userInfo_insert(infoVo);
-		
+//		System.out.println(infoVo.getUserIdx());
 		if( result==1 ) {
 			for(userEduVO i : eduVo.getEduList()) {
 //				System.out.println(i + "//" + i.getEduSchoolName());
 				if(i.getEduSchoolName().equals("") == false) {
+					i.setUserIdx(infoVo.getUserIdx());
 					dao.userEdu_insert(i);
 				}
 			}
 			for(userQualifiVO i : qualifiVo.getQualifiList()) {
 				if(i.getQualifiName().equals("") == false) {
+					i.setUserIdx(infoVo.getUserIdx());
 					dao.userQualifi_insert(i);
 				}
 			}
 			for(userLicenVO i : licenVo.getLicenList()) {
 				if(i.getLicenName().equals("") == false) {
+					i.setUserIdx(infoVo.getUserIdx());
 					dao.userLicen_insert(i);
 				}
 			}
 			for(userCareerVO i : careerVo.getCareerList()) {
 				if(i.getCareerCompName().equals("") == false) {
+					i.setUserIdx(infoVo.getUserIdx());
 					dao.userCareer_insert(i);
 				}
 			}
 			for(userSkillVO i : skillVo.getSkillList()) {
 				if(i.getSkillProjectName().equals("") == false) {
+					i.setUserIdx(infoVo.getUserIdx());
 					dao.userSkill_insert(i);
 				}
 			}
 			for(userTrainingVO i : trainVo.getTrainList()) {
 				if(i.getTrainingName().equals("") == false) {
+					i.setUserIdx(infoVo.getUserIdx());
 					dao.usereTraining_insert(i);
 				}
 			}

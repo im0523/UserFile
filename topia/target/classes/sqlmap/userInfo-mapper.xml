@@ -52,6 +52,10 @@
 	</resultMap>
 	
 	<insert id="insert" parameterType="com.topia.card.vo.userInfoVO">
+		<selectKey resultType="int" keyProperty="userIdx" order="AFTER">
+			select NVL(MAX(user_idx), 0) as userIdx from user_info 
+		</selectKey>
+	
 		INSERT INTO USER_INFO
 			(
 			USER_IDX
