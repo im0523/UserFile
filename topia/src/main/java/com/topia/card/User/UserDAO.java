@@ -126,4 +126,9 @@ public class UserDAO {
 		sql.delete("userTraining.delete", userIdx);
 	}
 
+	//연차별 인원조회 불러오기
+	public List<userInfoVO> groupList() {
+		return sql.selectList("userInfo.groupList");
+	}
+
 }

@@ -25,12 +25,28 @@ public class userInfoVO {
 	private Integer careerDate;
 	
 	//검색조건
-	private String userListSearchPeriod;
-	private String userListSearchWord;
-	private String userCareerLength;
-	private String genderSelect;
+	private String userListSearchPeriod;	//검색조건 (이름, 회사, 부서별)
+	private String userListSearchWord;	//키워드
+	private String userCareerLength;	//경력 기준
+	private String genderSelect;		//성별 기준
+	
+	//연차별 인원조회시
+	private String groupListDate;			
+	private String groupListCnt;
 	
 	
+	public String getGroupListDate() {
+		return groupListDate;
+	}
+	public void setGroupListDate(String groupListDate) {
+		this.groupListDate = groupListDate;
+	}
+	public String getGroupListCnt() {
+		return groupListCnt;
+	}
+	public void setGroupListCnt(String groupListCnt) {
+		this.groupListCnt = groupListCnt;
+	}
 	public String getGenderSelect() {
 		return genderSelect;
 	}

@@ -173,5 +173,11 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	//연차별 인원정보 불러오기
+	@Override
+	public List<userInfoVO> groupList() {
+		return dao.groupList();
+	}
+
 
 }

@@ -213,4 +213,24 @@
 		WHERE
 			USER_IDX = #{userIdx}
 	</update>
+	
+	<select id="groupList" resultMap="info">
+		SELECT
+			   GROUPLISTDATE
+			 , COUNT(GROUPLISTDATE) GROUPLISTCNT
+		FROM
+			(
+			SELECT
+				  USER_IDX
+				, TRUNC(NVL(SUM((SKILL_ENDDATE-SKILL_STARTDATE)/365), 0)) GROUPLISTDATE
+		    FROM
+		    	USER_INFO_SKILL
+		    GROUP BY
+		    	USER_IDX
+		    ) A
+		GROUP BY
+			GROUPLISTDATE
+		ORDER BY
+			GROUPLISTDATE DESC
+	</select>
 </mapper>

@@ -56,6 +56,16 @@ public class UserController {
 		return "userList";
 	}
 	
+	//불러오기 시 연차별 인원보기 조회
+	@RequestMapping("/topia/groupList.do")
+	public String groupInfo(Model model) {
+		
+		List<userInfoVO> groupList = service.groupList();
+		
+		model.addAttribute("groupList", groupList);
+		return "groupList";
+	}
+	
 	@RequestMapping("/topia/userDetail.do")
 	@ResponseBody 
 	public Map<String, Object> userDetail(int userIdx) throws IOException {

@@ -67,7 +67,7 @@ $(document).ready(function(){
 				type: 'post',
 				data : param,
 				success: function(data, textStatus, jqXHR){
-					alert('수정테스트');
+					alert('수정 완료');
 				},error: function (data){
 					alert("실패");
 				}
@@ -96,8 +96,23 @@ $(document).ready(function(){
 				alert('실패');
 			}
 		})
-		
 	})
+	
+	// 불러오기 창에서 연차별 인원보기 버튼 이벤트
+	$('#getUserCountByCareerDate').click(function(){
+		$.ajax({
+			url: '/topia/groupList.do',
+			dataType: 'html',
+			type: 'post',
+			data: {},
+			success: function(data){
+				$('#result_div').html(data);
+			},error: function(jqXHR, textStatus, errorThrown){
+				alert('실패');
+			}
+		})
+	})
+	
 	
 	// 불러오기 창이 띄워진 상태에서 ㅡ 버튼 눌렀을때 불러오기 창 닫는 이벤트
 	$('.minimizeUserPannelBtn').click(function(){

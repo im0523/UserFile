@@ -30,5 +30,6 @@ public interface UserService {
 	//불러오기 후 update 처리
 	int user_update(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
 			userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo);
+	List<userInfoVO> groupList();		// 연차별 인원정보 불러오기
 
 }
