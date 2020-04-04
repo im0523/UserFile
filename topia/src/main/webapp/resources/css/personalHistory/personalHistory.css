@@ -380,7 +380,6 @@ input[type=date]{
 	margin: 0 0 0 4px;
 }
 
-
 /**
 * �겫�뜄�쑎占쎌궎疫뀐옙 占쎄땀 野껓옙占쎄퉳 占쎄텕占쎌뜖占쎈굡 占쎈솭占쎄섯
 */
@@ -517,3 +516,6 @@ input[type=date]{
 	cursor: pointer;
 }
 
+#qualifiTb select{
+	width: 160px;
+}

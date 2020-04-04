@@ -249,7 +249,15 @@
 					
 					<tbody>
 						<tr>
-							<td><input type="text" name="qualifiList[0].qualifiName" class="qualifiName"></td>
+							<td>
+<!-- 							<input type="text" name="qualifiList[0].qualifiName" class="qualifiName"> -->
+								<select name="qualifiList[0].qualifiName" class="qualifiName">
+									<option value="" selected="selected">선택없음</option>
+									<option value="정보처리기능사">정보처리기능사</option>
+									<option value="정보처리산업기사">정보처리산업기사</option>
+									<option value="정보처리기사">정보처리기사</option>
+								</select>
+							</td>
 							<td><input type="text" name="qualifiList[0].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly"></td>
 						</tr>
 					</tbody>
@@ -492,6 +500,13 @@
 					<span class="search-cnt-cnt"></span>
 					<span class="search-cnt-later"> 건</span>
 				</div>
+				
+				<select id="qualifiSelect" name="qualifiSelect">
+					<option value="" selected="selected">자격증</option>
+					<option value="정보처리기능사">정보처리기능사</option>
+					<option value="정보처리산업기사">정보처리산업기사</option>
+					<option value="정보처리기사">정보처리기사</option>
+				</select>
 				<button type="button" id="getUserCountByCareerDate">연차별 인원보기</button>
 				<!-- <button id="downloadExel">엑셀 다운로드</button> -->
 				
