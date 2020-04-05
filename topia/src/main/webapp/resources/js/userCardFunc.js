@@ -216,7 +216,14 @@ function qualifiAddBtn(){
 	$('#qualifiTb').append(
 			'<tbody>'
 			+ '<tr>'
-				+ '<td><input type="text" name="qualifiList['+ q +'].qualifiName" class="qualifiName"></td>'
+				+ '<td>'
+					+ '<select name="qualifiList['+ q +'].qualifiName" class="qualifiName">'
+						+ '<option value="" selected="selected">선택없음</option>'
+						+ '<option value="정보처리기능사">정보처리기능사</option>'
+						+ '<option value="정보처리산업기사">정보처리산업기사</option>'
+						+ '<option value="정보처리기사">정보처리기사</option>'
+					+ '</select>'
+				+ '</td>'
 				+ '<td><input type="text" name="qualifiList['+ q +'].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly"></td>'
 				+ '<td><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>'
 			+ '</tr>'
@@ -435,7 +442,7 @@ function fnUserEdu(userEduList){
 	}
 	//userEduList의 졸업상태를 DB에서 가져와 selected 설정하는 처리
 	for(var e=0; e<userEduList.length; e++){
-		$('select[name="userEduList['+ e +'].eduStatus"]').val(userEduList[e].eduStatus).prop('selected', true);
+		$('select[name="eduList['+ e +'].eduStatus"]').val(userEduList[e].eduStatus).prop('selected', true);
 	}
 	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
 	$('#removeTrBtn-e0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
@@ -449,7 +456,16 @@ function fnUserQualifi(userQualifiList){
 	
 	for(var i=0; i<userQualifiList.length; i++){
 		html += '<tr>'
-				+ '<td><input type="text" name="qualifiList['+ i +'].qualifiName" class="qualifiName" value="'+ userQualifiList[i].qualifiName +'"></td>'
+				+ '<td>'
+//				<input type="text" name="qualifiList['+ i +'].qualifiName" class="qualifiName" value="'+ userQualifiList[i].qualifiName +'"></td>'
+				+ '<select name="qualifiList['+ i +'].qualifiName" class="qualifiName">'
+					+ '<option value="">선택없음</option>'
+					+ '<option value="정보처리기능사">정보처리기능사</option>'
+					+ '<option value="정보처리산업기사">정보처리산업기사</option>'
+					+ '<option value="정보처리기사">정보처리기사</option>'
+				+ '</select>'
+				+ '</td>'
+
 				+ '<td><input type="text" name="qualifiList['+ i +'].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly" value="'+ userQualifiList[i].qualifiGetdate +'"></td>'
 				+ '<td><button type="button" class="removeTrBtn" id="removeTrBtn-q'+ i +'" onclick="deleteBtn(this)">-</button></td>'
 			+ '</tr>';
@@ -460,6 +476,10 @@ function fnUserQualifi(userQualifiList){
 			$(this).val('');
 		}
 	});
+	//userQualifiList의 자격증 명을 DB에서 가져와 selected 설정하는 처리
+	for(var q=0; q<userQualifiList.length; q++){
+		$('select[name="qualifiList['+ q +'].qualifiName"]').val(userQualifiList[q].qualifiName).prop('selected', true);
+	}
 	datepicker();
 	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
 	$('#removeTrBtn-q0').parent().remove();	//첫번째 - 버튼은 나타나지 않게

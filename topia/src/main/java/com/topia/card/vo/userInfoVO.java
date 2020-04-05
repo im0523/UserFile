@@ -29,12 +29,19 @@ public class userInfoVO {
 	private String userListSearchWord;	//키워드
 	private String userCareerLength;	//경력 기준
 	private String genderSelect;		//성별 기준
+	private String qualifiSelect;		//자격증 기준
 	
 	//연차별 인원조회시
 	private String groupListDate;			
 	private String groupListCnt;
 	
 	
+	public String getQualifiSelect() {
+		return qualifiSelect;
+	}
+	public void setQualifiSelect(String qualifiSelect) {
+		this.qualifiSelect = qualifiSelect;
+	}
 	public String getGroupListDate() {
 		return groupListDate;
 	}

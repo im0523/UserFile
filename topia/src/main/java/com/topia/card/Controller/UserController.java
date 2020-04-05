@@ -66,6 +66,7 @@ public class UserController {
 		return "groupList";
 	}
 	
+	//불러오기 시 한 명의 사원에 대한 detail 정보 뿌리기
 	@RequestMapping("/topia/userDetail.do")
 	@ResponseBody 
 	public Map<String, Object> userDetail(int userIdx) throws IOException {
