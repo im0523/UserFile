@@ -151,7 +151,9 @@
                 GROUP BY USER_IDX) C
 		ON
 			C.USER_IDX = S.USER_IDX
-		
+		LEFT OUTER JOIN
+            USER_INFO_QUALIFI Q
+        ON S.USER_IDX = Q.USER_IDX
 		<include refid="searchQry"/>
 		
 		ORDER BY
@@ -162,7 +164,11 @@
 		SELECT
 			COUNT(*) totalCnt
 		FROM
-			USER_INFO
+			USER_INFO U
+		LEFT OUTER JOIN
+			USER_INFO_QUALIFI Q
+		ON
+			U.USER_IDX = Q.USER_IDX
 		<include refid="searchQry"/>
 	</select>
 

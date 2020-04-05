@@ -457,7 +457,6 @@ function fnUserQualifi(userQualifiList){
 	for(var i=0; i<userQualifiList.length; i++){
 		html += '<tr>'
 				+ '<td>'
-//				<input type="text" name="qualifiList['+ i +'].qualifiName" class="qualifiName" value="'+ userQualifiList[i].qualifiName +'"></td>'
 				+ '<select name="qualifiList['+ i +'].qualifiName" class="qualifiName">'
 					+ '<option value="">선택없음</option>'
 					+ '<option value="정보처리기능사">정보처리기능사</option>'
