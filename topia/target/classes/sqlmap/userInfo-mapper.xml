@@ -124,9 +124,9 @@
 			<if test="genderSelect != null and genderSelect != ''">
 				AND USER_SEX = #{genderSelect}
 			</if>
-<!-- 			<if test="qualifiSelect != null and qualifiSelect != ''"> -->
-<!-- 				AND QUALIFI_NAME = #{qualifiSelect} -->
-<!-- 			</if> -->
+			<if test="qualifiSelect != null and qualifiSelect != ''">
+				AND QUALIFI_NAME = #{qualifiSelect}
+			</if>
 		</where>
 	</sql>
 	
