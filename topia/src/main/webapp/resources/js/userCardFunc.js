@@ -128,16 +128,16 @@ function validate(){
 	var socialNumCheck = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))[1-4][0-9]{6}$/;
 	var socialNum = $('#userSocialSecunum').val();
 	
-//	if(  $('#userName').val().trim()=='' ){
-//		alert('이름을 입력해주세요');
-//		$('#userName').focus();
-//		return false;
-//	}
-//	if( !socialNumCheck.test(socialNum) ){
-//		alert('주민번호를 확인해주세요');
-//		 $('#userSocialSecunum').focus();
-//		 return false;
-//	}
+	if(  $('#userName').val().trim()=='' ){
+		alert('이름을 입력해주세요');
+		$('#userName').focus();
+		return false;
+	}
+	if( !socialNumCheck.test(socialNum) ){
+		alert('주민번호를 확인해주세요');
+		 $('#userSocialSecunum').focus();
+		 return false;
+	}
 	
 	//email과 emailDomain의 합친 값을 userEmail 컬럼에 합쳐서 저장
 	if( $('#emailDomain').val() != ''){
@@ -657,6 +657,12 @@ function resetInput(){
 	$('.userInsert').find('select').val('');
 }
 
+//검색조건 초기화
+function searchReset(){
+	$('.pop-user-search-pannel').find('input').val('');
+	$('.pop-user-search-pannel').find('select').val('');
+	$('#userInfoDataSize').val('10');
+}
 //새로작성 버튼 클릭 시
 function resetPage(){
 	resetInput();

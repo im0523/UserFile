@@ -508,6 +508,7 @@
 					<option value="정보처리기사">정보처리기사</option>
 				</select>
 				<button type="button" id="getUserCountByCareerDate">연차별 인원보기</button>
+				<button type="button" onclick="searchReset()">검색조건 초기화</button>
 				<!-- <button id="downloadExel">엑셀 다운로드</button> -->
 				
 			</div>		
