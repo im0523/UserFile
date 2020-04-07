@@ -2,6 +2,7 @@ package com.topia.card.vo;
 
 public class userInfoVO {
 	private Integer totalCnt;
+	private Integer no;
 	
 	private Integer userIdx;
 	private String userRegisterDate;
@@ -35,7 +36,29 @@ public class userInfoVO {
 	private String groupListDate;			
 	private String groupListCnt;
 	
+	//paging
+	private int startIndex;
+	private int endIndex;
+
 	
+	public int getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+	public int getEndIndex() {
+		return endIndex;
+	}
+	public void setEndIndex(int endIndex) {
+		this.endIndex = endIndex;
+	}
+	public Integer getNo() {
+		return no;
+	}
+	public void setNo(Integer no) {
+		this.no = no;
+	}
 	public String getQualifiSelect() {
 		return qualifiSelect;
 	}

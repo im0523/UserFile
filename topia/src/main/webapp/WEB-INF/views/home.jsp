@@ -31,16 +31,8 @@
 <body>
 <form class="userInsert">
 	<input type="hidden" id="status" value="select" />
-	<input id="userIdx" type="hidden" name="userIdx">
-	<!-- <div id="pop">
-		<div style="height: 370px;">
-			레이어 팝업 Test<br>
-			<a><b>a,b 태그</b></a>
-		</div>
-		<div>
-			<div id="close" style="width: 100px; margin: auto;">close</div>
-		</div>
-	</div> -->
+	<input type="hidden" id="userIdx" name="userIdx">
+	<input type="hidden" name="curPage" value="1">
 	<div class="custom-loading"><div class="loading-image"></div></div>
 	<%-- 새 작성건의 경우 해당 인풋값은 비어있고 수정 및 조회건은 들어감 --%>
 	<div class="user-info-list-pannel">
@@ -455,6 +447,7 @@
 	
 	<div class="pop-user-register-pannel" id="drag-ele1">
 		<form id="selectList">
+		<input type="hidden" name="curPage" value="1"/>
 			<!-- 검색창 패널 -->
 			<div class="pop-user-search-pannel">
 				
@@ -532,26 +525,7 @@
 			</div>
 		</form>
 		<div class="pop-register-list-pannel" id="result_div">
-		
-<!-- 			<table class="pop-register-list"> -->
-<!-- 				<thead> -->
-<!-- 					<tr> -->
-<!-- 						<td>등록번호</td> -->
-<!-- 						<td>성명</td> -->
-<!-- 						<td>소속회사</td> -->
-<!-- 						<td>부서</td> -->
-<!-- 						<td>성별</td> -->
-<!-- 						<td>경력</td> -->
-<!-- 						<td>등록날짜</td> -->
-<!-- 					</tr> -->
-<!-- 				</thead> -->
-<!-- 				<tbody> -->
-<!-- 				</tbody> -->
-<!-- 			</table> -->
-			
-<!-- 			<div class="pop-paging-pannel"> -->
-			
-<!-- 			</div> -->
+<!-- 		이 곳에 userList가 뿌려짐 -->
 		</div>
 	</div>
 

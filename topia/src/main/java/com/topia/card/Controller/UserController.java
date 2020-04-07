@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.topia.card.User.UserService;
@@ -21,6 +22,7 @@ import com.topia.card.vo.userQualifiVO;
 import com.topia.card.vo.userSkillVO;
 import com.topia.card.vo.userTrainingVO;
 import com.topia.common.CommonUtil;
+import com.topia.common.PageVO;
 
 @Controller
 public class UserController {
@@ -44,13 +46,19 @@ public class UserController {
 	
 	//불러오기 버튼 눌렀을 시 user List조회
 	@RequestMapping("/topia/userList.do")
-	public String loadCard(Model model, userInfoVO infoVo) {
+	public String loadCard(Model model, userInfoVO infoVo,  @RequestParam(defaultValue = "1") int curPage) {
 		
 		int totalCnt = service.list_totalCnt(infoVo);
 		
+		PageVO page = new PageVO(totalCnt, curPage);
+		infoVo.setStartIndex(page.getStartIndex());
+		infoVo.setEndIndex(page.getEndIndex());
+		
+		//전체 리스트 출력
 		List<userInfoVO> list = service.user_list(infoVo);
 		
 		model.addAttribute("list", list);
+		model.addAttribute("page", page);
 		model.addAttribute("totalCnt", totalCnt);
 		
 		return "userList";

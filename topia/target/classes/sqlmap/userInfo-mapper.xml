@@ -132,34 +132,47 @@
 	
 	<select id="userList" resultMap="info">
 		SELECT
-			  DISTINCT U.USER_IDX
-			, USER_NAME
-			, USER_COMP
-			, USER_DEPT
-			, USER_SEX
-			, USER_REGISTER_DATE
-			, C.CAREERDATE
+			B.*
 		FROM
-			USER_INFO U
-		LEFT OUTER JOIN
-			USER_INFO_SKILL S
-		ON
-			U.USER_IDX = S.USER_IDX
-		LEFT OUTER JOIN
-			(SELECT
-				    USER_IDX
-				  , NVL(SUM((SKILL_ENDDATE-SKILL_STARTDATE)/365), 0) CAREERDATE
-             FROM USER_INFO_SKILL
-             GROUP BY USER_IDX) C
-		ON
-			C.USER_IDX = S.USER_IDX
-		LEFT OUTER JOIN
-            USER_INFO_QUALIFI Q
-        ON S.USER_IDX = Q.USER_IDX
-		<include refid="searchQry"/>
-		
-		ORDER BY
-			USER_REGISTER_DATE DESC
+			(
+			SELECT
+				  ROWNUM NO
+				, A.*
+			FROM (
+				SELECT
+					  DISTINCT U.USER_IDX
+					, USER_NAME
+					, USER_COMP
+					, USER_DEPT
+					, USER_SEX
+					, USER_REGISTER_DATE
+					, C.CAREERDATE
+				FROM
+					USER_INFO U
+				LEFT OUTER JOIN
+					USER_INFO_SKILL S
+				ON
+					U.USER_IDX = S.USER_IDX
+				LEFT OUTER JOIN
+					(SELECT
+						    USER_IDX
+						  , TRUNC(NVL(SUM((SKILL_ENDDATE-SKILL_STARTDATE)/365), 0)) CAREERDATE
+		             FROM USER_INFO_SKILL
+		             GROUP BY USER_IDX) C
+				ON
+					C.USER_IDX = S.USER_IDX
+				LEFT OUTER JOIN
+		            USER_INFO_QUALIFI Q
+		        ON S.USER_IDX = Q.USER_IDX
+				<include refid="searchQry"/>
+				ORDER BY
+					USER_REGISTER_DATE DESC
+				) A
+	        ORDER BY
+	        	NO ASC
+			) B
+			WHERE
+				NO BETWEEN #{startIndex} AND #{endIndex}
 	</select>
 	
 	<select id="totalCnt" resultType="integer">
