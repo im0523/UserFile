@@ -50,7 +50,7 @@ public class UserController {
 		
 		int totalCnt = service.list_totalCnt(infoVo);
 		
-		PageVO page = new PageVO(totalCnt, curPage);
+		PageVO page = new PageVO(totalCnt, curPage, infoVo.getUserInfoDataSize());
 		infoVo.setStartIndex(page.getStartIndex());
 		infoVo.setEndIndex(page.getEndIndex());
 		

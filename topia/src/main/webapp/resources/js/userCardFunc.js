@@ -79,9 +79,9 @@ $(document).ready(function(){
 	$('.personalHistoryListBtn, #userListSearchBtn').click(function(){
 		var $listPannel = $('.pop-user-register-pannel');
 		var listPannelVisible = $listPannel.is(':visible');
-	
+		
 		$listPannel.css("display","block");
-			
+		
 		var param = $('#selectList').serialize();
 		$.ajax({
 			url : '/topia/userList.do',
@@ -91,6 +91,7 @@ $(document).ready(function(){
 			success: function(data){
 //				console.log(data);
 				$('#result_div').html(data);
+				$('[name=curPage]').val('1');
 				$('#userInfoCnt').text($('#totalCnt').val()); 
 			},error: function(jqXHR, textStatus, errorThrown){
 				alert('실패');

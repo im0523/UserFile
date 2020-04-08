@@ -17,23 +17,23 @@ public class PageVO {
 	
 	public PageVO() {}
 	
-	public PageVO(int listCnt, int curPage) {
+	public PageVO(int listCnt, int curPage, int userInfoDataSize) {
 		setCurPage(curPage);	// 현재페이지
 		
-		setStartIndex(curPage);
-		setEndIndex(curPage);
+		setStartIndex(curPage, userInfoDataSize);
+		setEndIndex(curPage, userInfoDataSize);
 		
 		setListCnt(listCnt);	// 총 게시물 수
 		
-		setTotalPage(listCnt);	// 총 페이지 수
+		setTotalPage(listCnt, userInfoDataSize);	// 총 페이지 수
 		
 		setTotalBlock(curPage);	// 총 블럭 수
 		
 		rangeSetting(curPage);	// 블럭 세팅
 	}
 	
-	public void setTotalPage(int listCnt) {
-		this.totalPage = (int) Math.ceil(listCnt*1.0/pageSize);	// 1. 총 페이지 수 = 총 게시글 수 / 한 페이지당 게시글 수
+	public void setTotalPage(int listCnt, int userInfoDataSize) {
+		this.totalPage = (int) Math.ceil(listCnt*1.0/userInfoDataSize);	// 1. 총 페이지 수 = 총 게시글 수 / 한 페이지당 게시글 수
 	}
 	
 	public void setTotalBlock(int totalBlock) {
@@ -55,12 +55,12 @@ public class PageVO {
 		this.curBlock = (int)((curPage-1)/blockPage) + 1;
 	}
 
-	public void setStartIndex(int curPage) {
-		this.startIndex = (curPage - 1) * 10 + 1;
+	public void setStartIndex(int curPage, int userInfoDataSize) {
+		this.startIndex = (curPage - 1) * userInfoDataSize + 1;
 	}
 
-	public void setEndIndex(int curPage) {
-		this.endIndex = (curPage) * 10;
+	public void setEndIndex(int curPage, int userInfoDataSize) {
+		this.endIndex = (curPage) * userInfoDataSize;
 	}
 
 	public int getPageSize() {

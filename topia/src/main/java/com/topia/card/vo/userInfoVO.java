@@ -31,6 +31,7 @@ public class userInfoVO {
 	private String userCareerLength;	//경력 기준
 	private String genderSelect;		//성별 기준
 	private String qualifiSelect;		//자격증 기준
+	private int userInfoDataSize;		// 리스트 보여질 갯수(10, 20개)
 	
 	//연차별 인원조회시
 	private String groupListDate;			
@@ -39,8 +40,21 @@ public class userInfoVO {
 	//paging
 	private int startIndex;
 	private int endIndex;
+	private int curPage;
 
 	
+	public int getCurPage() {
+		return curPage;
+	}
+	public void setCurPage(int curPage) {
+		this.curPage = curPage;
+	}
+	public int getUserInfoDataSize() {
+		return userInfoDataSize;
+	}
+	public void setUserInfoDataSize(int userInfoDataSize) {
+		this.userInfoDataSize = userInfoDataSize;
+	}
 	public int getStartIndex() {
 		return startIndex;
 	}

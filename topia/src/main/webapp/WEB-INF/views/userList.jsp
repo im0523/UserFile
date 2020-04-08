@@ -33,7 +33,7 @@
 	<p id="page-list">
 
 	<c:if test="${page.curBlock gt 1 }">
-		<a onclick="go_page(1)">처음</a>
+		<a onclick="go_page(1)" id="firstPage">처음</a>
 		<a onclick="go_page(${page.startPage-page.blockPage})">이전</a>
 	</c:if>
 
