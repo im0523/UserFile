@@ -91,7 +91,7 @@ $(document).ready(function(){
 			success: function(data){
 //				console.log(data);
 				$('#result_div').html(data);
-				$('[name=curPage]').val('1');
+				$('[name=curPage]').val('1');	//검색 버튼 눌렀을 시, 1페이지로 초기화
 				$('#userInfoCnt').text($('#totalCnt').val()); 
 			},error: function(jqXHR, textStatus, errorThrown){
 				alert('실패');
