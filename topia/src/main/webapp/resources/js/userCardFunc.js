@@ -371,6 +371,7 @@ function go_detail(userIdx){
 			fnUserSkill(data.userSkillList);
 			
 			$('#status').val('update');
+			$('.status-display-pannel').find('h5').text('등록번호 : '+data.userInfo.userIdx);
 			$listPannel.css("display","none");
 
 		},error: function(req, status){
@@ -653,6 +654,7 @@ function resetInput(){
 	
 	$flexibleTable.find("tbody").find("tr:not(:first-child)").remove();
 	
+	$('.status-display-pannel').find('h5').text('※ 새 이력 작성');
 	$('.userInsert').find('input').val('');
 	$('.userInsert').find('textarea').val('');
 	$('.userInsert').find('select').val('');
