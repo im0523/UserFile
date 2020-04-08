@@ -384,6 +384,8 @@ function go_detail(userIdx){
 function fnUserInfo(userInfo){
 	var fullEmail = userInfo.userEmail;
 	var email = fullEmail.split('@');
+	
+	$('[name=curPage]').val('1');	//검색 버튼 눌렀을 시, 1페이지로 초기화
 
 	$('#userIdx').val(userInfo.userIdx); 
 	$('#userName').val(userInfo.userName);
