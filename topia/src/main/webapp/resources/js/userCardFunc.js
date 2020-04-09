@@ -89,10 +89,11 @@ $(document).ready(function(){
 			type: 'POST',
 			data: param,
 			success: function(data){
-//				console.log(data);
+				console.log(data);
 				$('#result_div').html(data);
 				$('[name=curPage]').val('1');	//검색 버튼 눌렀을 시, 1페이지로 초기화
-				$('#userInfoCnt').text($('#totalCnt').val()); 
+				$('#userInfoCnt').text($('#totalCnt').val());
+				$("#groupListDate").val("");
 			},error: function(jqXHR, textStatus, errorThrown){
 				alert('실패');
 			}
@@ -672,4 +673,12 @@ function searchReset(){
 function resetPage(){
 	resetInput();
 	$('#status').val('select');
+}
+
+//연차별 인원보기에서 각 연차를 클릭 했을 때
+function go_userList(groupListDate){
+//	alert(groupListDate);
+	$("#groupListDate").val(groupListDate);	//input 태그에 클릭 한 groupListDate 값을 넘겨줌 
+	$('#userListSearchBtn').click();
+	
 }

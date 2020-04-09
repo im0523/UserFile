@@ -448,6 +448,7 @@
 	<div class="pop-user-register-pannel" id="drag-ele1">
 		<form id="selectList">
 		<input type="hidden" name="curPage" value="1"/>
+		<input type="hidden" id="groupListDate" name="groupListDate" value=""/>
 			<!-- 검색창 패널 -->
 			<div class="pop-user-search-pannel">
 				

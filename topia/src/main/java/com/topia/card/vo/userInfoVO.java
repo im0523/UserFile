@@ -34,8 +34,8 @@ public class userInfoVO {
 	private int userInfoDataSize;		// 리스트 보여질 갯수(10, 20개)
 	
 	//연차별 인원조회시
-	private String groupListDate;			
-	private String groupListCnt;
+	private String groupListDate;	//연차별 인왼조회 - O년차		
+	private String groupListCnt;	//연차별 인원조회 - O명
 	
 	//paging
 	private int startIndex;

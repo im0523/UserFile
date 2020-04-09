@@ -127,8 +127,12 @@
 			<if test="qualifiSelect != null and qualifiSelect != ''">
 				AND QUALIFI_NAME = #{qualifiSelect}
 			</if>
+			<if test="groupListDate != null and groupListDate != ''">
+				AND C.CAREERDATE = #{groupListDate}
+			</if>
 		</where>
 	</sql>
+	
 	
 	<select id="userList" resultMap="info">
 		SELECT
@@ -173,6 +177,7 @@
 			) B
 			WHERE
 				NO BETWEEN #{startIndex} AND #{endIndex}
+			
 	</select>
 	
 	<select id="totalCnt" resultType="integer">
@@ -181,9 +186,13 @@
 		FROM
 			USER_INFO U
 		LEFT OUTER JOIN
-			USER_INFO_SKILL S
+			(SELECT
+				    USER_IDX
+				  , TRUNC(NVL(SUM((SKILL_ENDDATE-SKILL_STARTDATE)/365), 0)) CAREERDATE
+             FROM USER_INFO_SKILL
+             GROUP BY USER_IDX) C
 		ON
-			U.USER_IDX = S.USER_IDX
+			U.USER_IDX = C.USER_IDX
 		LEFT OUTER JOIN
 			USER_INFO_QUALIFI Q
 		ON
