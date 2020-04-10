@@ -120,8 +120,6 @@
 					<td><input type="text" id="userArmyServPeriod" name="userArmyServPeriod"></td>
  					<td style="display: none;">
 							<input type="file" name="file">
-<!-- 							<input type="hidden" name="userIdx"> -->
-<!-- 							<input type="hidden" name="userName" > -->
 					</td>
 				</tr>
 			</tbody>
@@ -139,8 +137,11 @@
 			<tbody>
 				<tr>
 					<td>전화</td>
-					<td><input type="tel" placeholder='   휴대전화 "-" 포함' id="userTelnumWireless" name="userTelnumWireless" maxlength="13"></td>
-					<td colspan="2"><input type="tel" placeholder='   유선 "-" 포함' id="userTelnumWired" name="userTelnumWired" maxlength="14"></td>
+					<td><input type="tel" placeholder='   휴대전화번호' id="userTelnumWireless" name="userTelnumWireless"
+								onkeyup="this.value=this.value.replace(/[^0-9]/g,''); phoneValidate(this);" maxlength="13">
+					</td>
+					<td colspan="2"><input type="tel" placeholder='   유선 "-" 포함' id="userTelnumWired" name="userTelnumWired"
+											onkeyup="this.value=this.value.replace(/[^0-9]/g,''); telValidate(this);" maxlength="12"></td>
 				</tr>
 				
 				<tr>
@@ -164,7 +165,7 @@
 					<td>주소</td>
 					<td>
 						<div>
-							<input type="text" id="userZipcode" name="userZipcode" placeholder="우편번호" readonly="readonly"/>
+							<input type="text" id="userZipcode" name="userZipcode" placeholder="   우편번호" readonly="readonly"/>
 							<button type="button" id="personalZipcodeSearchBtn" name="personalZipcodeSearchBtn" onclick="execPostCode()" style="width: 145px; height: 30px;">
 								우편번호 찾기
 							</button>
@@ -312,7 +313,6 @@
 		
 		
 		
-		학력 / 자격증
 		<div class="training-and-licen-pannel">
 			<div class="training-table-pannel">
 				<table class="training-table flexibleTable" tb="training" id="trainingTb">
