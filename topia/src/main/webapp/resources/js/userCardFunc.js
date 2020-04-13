@@ -142,7 +142,7 @@ function validate(){
 	}
 	
 	//email과 emailDomain의 합친 값을 userEmail 컬럼에 합쳐서 저장
-	if( $('#emailDomain').val() != ''){
+	if( $('#emailDomain').val() != '1' && $('#emailDomain').val() != '' ){
 		var userEmail = $('#userEmail').val() + $('#emailDomain').val();
 		$('[name=userEmail]').val(userEmail);
 	}else{
@@ -150,10 +150,10 @@ function validate(){
 	}
 	
 	// 전화번호 정규식 체크 후, false면 저장되지 않게
-	var phoneCheck = phoneValidate();
-	if( phoneCheck == false ){
-		return;
-	}
+//	var phoneCheck = phoneValidate();
+//	if( phoneCheck == false ){
+//		return;
+//	}
 	
 	return true;
 }

@@ -46,7 +46,7 @@ public class UserController {
 	
 	//불러오기 버튼 눌렀을 시 user List조회
 	@RequestMapping("/topia/userList.do")
-	public String loadCard(Model model, userInfoVO infoVo,  @RequestParam(defaultValue = "1") int curPage) {
+	public String loadCard(Model model, userInfoVO infoVo, @RequestParam(defaultValue = "1") int curPage) {
 		
 		int totalCnt = service.list_totalCnt(infoVo);
 		

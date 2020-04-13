@@ -149,11 +149,11 @@
 					<td><input type="email" id="userEmail"></td>
 					<td>
 						<select type="text" id="emailDomain" name="emailDomain" style="width: 100%;">
-							<option disabled="disabled" selected="selected">선택하세요</option>
+							<option value="">선택하세요</option>
 							<option>@naver.com</option>
 							<option>@gmail.com</option>
 							<option>@daum.net</option>
-							<option value="">직접입력</option>
+							<option value="1">직접입력</option>
 						</select>
 					</td>
 					<td id="test12" style="display: none;">
