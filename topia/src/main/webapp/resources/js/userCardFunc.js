@@ -190,7 +190,7 @@ function phoneValidate(obj){
 //유선전화 정규식
 function telValidate(obj){
 	var number = obj.value.replace(/[^0-9]/g, '');
-	 var tel = "";
+	var tel = '';
 
 	    // 서울 지역번호(02)가 들어오는 경우
 	    if(number.substring(0, 2).indexOf('02') == 0) {
@@ -214,7 +214,7 @@ function telValidate(obj){
 	            tel += number.substr(6);
 	        }
 	    
-	    // 서울 지역번호(02)가 아닌경우
+	    // 서울 지역번호(02)가 아닌경우 / 휴대폰 전화번호일 경우
 	    } else {
 	        if(number.length < 4) {
 	            return number;
