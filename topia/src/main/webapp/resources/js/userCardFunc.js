@@ -68,6 +68,7 @@ $(document).ready(function(){
 				data : param,
 				success: function(data, textStatus, jqXHR){
 					alert('수정 완료');
+					location.href = "/topia.do";
 				},error: function (data){
 					alert("실패");
 				}
@@ -474,7 +475,6 @@ function go_detail(userIdx){
 //불러오기 후 userInfo 상세정보 뿌리기
 function fnUserInfo(userInfo){
 	var fullEmail = userInfo.userEmail;
-	var email = fullEmail.split('@');
 	
 	$('[name=curPage]').val('1');	//검색 버튼 눌렀을 시, 1페이지로 초기화
 
@@ -493,8 +493,16 @@ function fnUserInfo(userInfo){
 	$('#userArmyServPeriod').val(userInfo.userArmyServPeriod);
 	$('#userTelnumWireless').val(userInfo.userTelnumWireless);
 	$('#userArmyServPeriod').val(userInfo.userArmyServPeriod);
-	$('#userEmail').val(email[0]);
-	$('#emailDomain').val('@'+email[1]);
+	//email이 null이 아닐때 @를 기준으로 나누고
+	if( fullEmail != null ){
+		var email = fullEmail.split('@');
+		
+		$('#userEmail').val(email[0]);
+		$('#emailDomain').val('@'+email[1]);
+	//null일 경우에는 공백으로 출력
+	}else {
+		$('#userEmail').val('');
+	}
 	$('#userZipcode').val(userInfo.userZipcode);
 	$('#userAddress').val(userInfo.userAddress);
 	
@@ -763,6 +771,7 @@ function searchReset(){
 function resetPage(){
 	resetInput();
 	$('#status').val('select');
+	$('#curPage').val('1');
 }
 
 //연차별 인원보기에서 각 연차별로 클릭 했을 때
