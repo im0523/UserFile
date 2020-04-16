@@ -1,5 +1,7 @@
 package com.topia.card.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class userInfoVO {
 	private Integer totalCnt;
 	private Integer no;
@@ -24,6 +26,8 @@ public class userInfoVO {
 	private String userZipcode;
 	private String userAddress;
 	private Integer careerDate;
+	private MultipartFile userFilepathReal;
+	private String userFilepath;
 	
 	//검색조건
 	private String userListSearchPeriod;	//검색조건 (이름, 회사, 부서별)
@@ -43,6 +47,18 @@ public class userInfoVO {
 	private int curPage;
 
 	
+	public String getUserFilepath() {
+		return userFilepath;
+	}
+	public void setUserFilepath(String userFilepath) {
+		this.userFilepath = userFilepath;
+	}
+	public MultipartFile getUserFilepathReal() {
+		return userFilepathReal;
+	}
+	public void setUserFilepathReal(MultipartFile userFilepathReal) {
+		this.userFilepathReal = userFilepathReal;
+	}
 	public int getCurPage() {
 		return curPage;
 	}

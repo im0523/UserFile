@@ -29,7 +29,7 @@
 	</style>
 </head>
 <body>
-<form class="userInsert">
+<form class="userInsert" id="userInsertForm" method="POST" enctype="multipart/form-data">
 	<input type="hidden" id="status" value="select" />
 	<input type="hidden" id="userIdx" name="userIdx">
 	<input type="hidden" id="curPage" name="curPage" value="1">
@@ -67,24 +67,33 @@
 		<table class="user-info-table1">
 		
 			<tbody>
+			
 				<tr>
-					<td>*성명</td>
-					<td><input type="text" id="userName" name="userName"></td>
-					<td>*주민등록번호</td>
-					<td colspan="3"><input type="password" id="userSocialSecunum" name="userSocialSecunum" maxlength="13" placeholder='  "-" 제외한 숫자만 입력'></td>
-					<td>성별</td>
-					<td>
+					<td class="img_td" rowspan="4" style="background-color: white;">
+						<div id="imgDiv" >
+							<label>
+								<img id="thumbNail" src="/resources/img/icon/thumbNail.JPG" width="80" height="80" />
+								<input type="file" class="attach-file" name="userFilepathReal"/>
+							</label>
+						</div>
+						<div class="img_block">
+							<img id="img" />
+						</div>
+					</td>
+					
+					<td class="odd_css">*성명</td>
+					<td style="background-color: white;"><input type="text" id="userName" name="userName"></td>
+					<td class="odd_css">*주민등록번호</td>
+					<td style="background-color: white;" colspan="3"><input type="password" id="userSocialSecunum" name="userSocialSecunum" maxlength="13" placeholder='  "-" 제외한 숫자만 입력'></td>
+					<td class="odd_css">성별</td>
+					<td style="background-color: white;">
 						<select id="userSex" name="userSex">
 							<option value="">선택없음</option>
 							<option value="남성">남성</option>
 							<option value="여성">여성</option>
 						</select>
 					</td>
-					<td style="display: none;" rowspan="3">
-						<div id="imgDiv" >
-							<img id="thumbNail" name="thumbNail" width="120" height="120" />
-						</div>
-					</td>
+					
 				</tr>
 				
 				<tr>

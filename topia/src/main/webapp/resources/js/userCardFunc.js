@@ -1,6 +1,10 @@
 "use strict"; // 엄격한 문법 검사
 
 $(document).ready(function(){
+	// ThumbNail 사진 upload시 image 보이게
+	$('.attach-file').on('change', handleImgFileSelect);
+	
+	//datepicker 설정
 	$('.dateInput').datepicker({
 		yearSuffix: "년",			//달력의 년도 부분 뒤에 붙는 텍스트
 		monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],	//달력의 월 부분 텍스트
@@ -40,15 +44,19 @@ $(document).ready(function(){
 			return;
 		}
 		
-		var $frm = $('.userInsert :input');
-		var param = $frm.serialize();
+//		var $frm = $('.userInsert :input');
+//		var param = $frm.serialize();
+		var form = new FormData(document.getElementById('userInsertForm'));
 
 		if( $('#status').val()=='select'){
 			$.ajax({
 				url : "/topia/userInsert.do",
+				enctype : 'multipart/form-data',
 				dataType: "json",
+				processData: false, 
+				contentType: false,
 				type: "POST",
-				data : param,
+				data : form,
 				success: function(data, textStatus, jqXHR)
 				{
 					alert("등록완료");
@@ -136,11 +144,11 @@ function validate(){
 		$('#userName').focus();
 		return false;
 	}
-	if( !socialNumCheck.test(socialNum) ){
-		alert('주민번호를 확인해주세요');
-		 $('#userSocialSecunum').focus();
-		 return false;
-	}
+//	if( !socialNumCheck.test(socialNum) ){
+//		alert('주민번호를 확인해주세요');
+//		 $('#userSocialSecunum').focus();
+//		 return false;
+//	}
 	
 	//email과 emailDomain의 합친 값을 userEmail 컬럼에 합쳐서 저장
 	if( $('#emailDomain').val() != '1' && $('#emailDomain').val() != '' ){
@@ -780,4 +788,31 @@ function go_userList(groupListDate){
 	$("#groupListDate").val(groupListDate);	//input 태그에 클릭 한 groupListDate 값을 넘겨줌 
 	$('#userListSearchBtn').click();
 	
+}
+
+
+// ThumbNail 사진 upload시 image 보이게
+function handleImgFileSelect(e){
+	
+	var sel_file;
+	
+	var files = e.target.files;
+	var filesArr = Array.prototype.slice.call(files);
+	
+	filesArr.forEach(function(f){
+		if( !f.type.match('image.*')) {
+			alert("확장자는 이미지 확장자만 가능합니다.");
+	        return;
+		}
+		
+		sel_file = f;
+		
+		var reader = new FileReader();
+		reader.onload = function (e){
+			$('#imgDiv').css('display', 'none');
+			$('.img_block').css('display', 'block');
+			$('#img').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(f);
+	});
 }
