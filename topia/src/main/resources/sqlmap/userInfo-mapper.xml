@@ -101,7 +101,7 @@
 			, #{userEmail}
 			, #{userZipcode}
 			, #{userAddress}
-			, #{userFilepath}
+			, #{userFilepath, jdbcType = VARCHAR}
 			)
 	</insert>
 	

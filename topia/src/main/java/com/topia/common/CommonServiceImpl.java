@@ -33,7 +33,7 @@ public class CommonServiceImpl implements CommonService {
 		} catch (Exception e) {
 		}
 
-		// /upload/card/2020/04/16/44asdg_abc.txt 내가 필요한 건 upload 부터니까
+		// /upload/card/2020/04/16/asdg_abc.txt 내가 필요한 건 upload 부터니까
 		return folder.substring( resources.length() ) + File.separator + uuid;
 //		return folder.substring( resources.length() ) + "/" + uuid;
 	}
