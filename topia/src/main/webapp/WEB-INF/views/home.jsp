@@ -73,11 +73,10 @@
 						<div id="imgDiv" >
 							<label>
 								<img id="thumbNail" src="/resources/img/icon/thumbNail.JPG" width="80" height="80" />
-								<input type="file" class="attach-file" name="userFilepathReal"/>
+								<input type="file" class="attach-file" id="userFilepathReal" name="userFilepathReal"/>
+								<img id="img" />
 							</label>
-						</div>
-						<div class="img_block">
-							<img id="img" />
+								<img id="delete-file" src="/resources/img/icon/delete-img.JPG" hidden=""/>
 						</div>
 					</td>
 					

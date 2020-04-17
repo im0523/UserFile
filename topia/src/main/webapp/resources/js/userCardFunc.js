@@ -3,6 +3,17 @@
 $(document).ready(function(){
 	// ThumbNail 사진 upload시 image 보이게
 	$('.attach-file').on('change', handleImgFileSelect);
+
+	//delete-file 버튼 눌렀을 시 thumbNail 삭제
+	$('#delete-file').click(function(){
+		$('#userFilepathReal').val('');
+		$('#img').attr('src', null);
+		$('#img').css('display', 'none');
+		$('#thumbNail').css('display', 'block');
+		$('#thumbNail').css('padding-left', '20px');
+		$('#delete-file').css('display', 'none');
+	});
+	
 	
 	//datepicker 설정
 	$('.dateInput').datepicker({
@@ -70,10 +81,13 @@ $(document).ready(function(){
 			});
 		}else{
 			$.ajax({
-				url : '/topia/userUpdate.do',
+				url: '/topia/userUpdate.do',
+				enctype: 'multipart/form-data',
 				dataType: 'json',
+				processData: false,
+				contentType: false,
 				type: 'post',
-				data : param,
+				data : form,
 				success: function(data, textStatus, jqXHR){
 					alert('수정 완료');
 					location.href = "/topia.do";
@@ -456,7 +470,7 @@ function go_detail(userIdx){
 	var listPannelVisible = $listPannel.is(':visible');
 	
 	$.ajax({
-		url : '/topia/userDetail.do',
+		url: '/topia/userDetail.do',
 		dataType: 'json',
 		type: 'POST',
 		data: {userIdx : userIdx},
@@ -486,6 +500,16 @@ function fnUserInfo(userInfo){
 	
 	$('[name=curPage]').val('1');	//검색 버튼 눌렀을 시, 1페이지로 초기화
 
+	if( userInfo.userFilepath != null ){
+		$('#thumbNail').css('display', 'none');
+		$('#img').css('display', 'block');
+		$('#img').attr('src', 'resources/'+userInfo.userFilepath);
+		$('#delete-file').css('display', 'block');
+	}else{
+		$('#thumbNail').css('display', 'block');
+		$('#thumbNail').css('padding-left', '20px');
+		$('#img').css('display', 'none');
+	}
 	$('#userIdx').val(userInfo.userIdx); 
 	$('#userName').val(userInfo.userName);
 	$('#userSocialSecunum').val(userInfo.userSocialSecunum);
@@ -501,6 +525,9 @@ function fnUserInfo(userInfo){
 	$('#userArmyServPeriod').val(userInfo.userArmyServPeriod);
 	$('#userTelnumWireless').val(userInfo.userTelnumWireless);
 	$('#userArmyServPeriod').val(userInfo.userArmyServPeriod);
+	
+	//
+	
 	//email이 null이 아닐때 @를 기준으로 나누고
 	if( fullEmail != null ){
 		var email = fullEmail.split('@');
@@ -767,6 +794,10 @@ function resetInput(){
 	$('.userInsert').find('input').val('');
 	$('.userInsert').find('textarea').val('');
 	$('.userInsert').find('select').val('');
+	$('#img').css('display', 'none');
+	$('#thumbNail').css('display', 'block');
+	$('#thumbNail').css('padding-left', '20px');
+	$('#delete-file').css('display', 'none');
 }
 
 //검색조건 초기화
@@ -791,7 +822,7 @@ function go_userList(groupListDate){
 }
 
 
-// ThumbNail 사진 upload시 image 보이게
+// thumbNail upload시 image 보이게
 function handleImgFileSelect(e){
 	
 	var sel_file;
@@ -809,9 +840,10 @@ function handleImgFileSelect(e){
 		
 		var reader = new FileReader();
 		reader.onload = function (e){
-			$('#imgDiv').css('display', 'none');
-			$('.img_block').css('display', 'block');
+			$('#thumbNail').css('display', 'none');
+			$('#img').css('display', 'block');
 			$('#img').attr('src', e.target.result);
+			$('#delete-file').css('display', 'block');
 		}
 		reader.readAsDataURL(f);
 	});

@@ -526,21 +526,28 @@ input[type=date]{
 	color: #fff
 }
 
-#thumbNail{
+#thumbNail, .img_td, .img_block, #img{
 	cursor: pointer;
+}
+
+#imgDiv{
+	position: relative;
 }
 
 .attach-file{
 	display: none;
 }
 
-.img_block{
+#img{
 	width: 120px;
 	height: 130px;
 	display: none;
 }
 
-#img{
-	width: 100%;
-	height: 100%;
+#delete-file{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 0px;
+	left: 100px;
 }

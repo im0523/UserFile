@@ -2,6 +2,7 @@ package com.topia.common;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -25,16 +26,30 @@ public class CommonServiceImpl implements CommonService {
 		
 		// D://Spring/..../topia/resources/upload/card/2020/04/16
 		String folder = makeFolder(category, upload);
-		String uuid = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+		// ① 저장 되는 이름을 uuid로 할 경우
+//		String uuid = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 		
+		// ② 저장 되는 이름을 uuid로 할 경우
+		String fileName = file.getOriginalFilename();
+		String date = "";
+		Calendar calendar = Calendar.getInstance();
+		date += calendar.get(Calendar.YEAR);
+		date += calendar.get(Calendar.MONTH)+1;
+		date += calendar.get(Calendar.DATE);
+		date += calendar.get(Calendar.HOUR);
+		date += calendar.get(Calendar.SECOND);
+		date += calendar.get(Calendar.MILLISECOND);
+		date += "_" + fileName;
+		
+		System.out.println("1213123123 = " + date);
 		try {
 			// 생성한 폴더에 업로드한 파일 저장하기
-			file.transferTo(new File(folder, uuid));
+			file.transferTo(new File(folder, date));
 		} catch (Exception e) {
 		}
 
 		// /upload/card/2020/04/16/asdg_abc.txt 내가 필요한 건 upload 부터니까
-		return folder.substring( resources.length() ) + File.separator + uuid;
+		return folder.substring( resources.length() ) + File.separator + date;
 //		return folder.substring( resources.length() ) + "/" + uuid;
 	}
 	
