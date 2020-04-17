@@ -26,10 +26,11 @@ public class CommonServiceImpl implements CommonService {
 		
 		// D://Spring/..../topia/resources/upload/card/2020/04/16
 		String folder = makeFolder(category, upload);
-		// ① 저장 되는 이름을 uuid로 할 경우
+		
+		// ① 물리적 위치에 저장 되는 파일명을 uuid로 할 경우
 //		String uuid = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 		
-		// ② 저장 되는 이름을 uuid로 할 경우
+		// ② 물리적 위치에 저장 되는 이름을 년+월+일+파일명 으로 할 경우
 		String fileName = file.getOriginalFilename();
 		String date = "";
 		Calendar calendar = Calendar.getInstance();
