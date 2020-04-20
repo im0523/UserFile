@@ -115,11 +115,12 @@ public class UserController {
 		return map;
 	}
 	
+	//
 	@RequestMapping("/topia/userUpdate.do")
 	@ResponseBody
 	public Map<String, Object> userUpdate(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
 										userQualifiVO qualifiVo, userSkillVO skillVo, userTrainingVO trainVo,
-										HttpSession ss) throws IOException {
+										HttpSession ss, int deleteImg) throws IOException {
 		Map<String, Object> map = new HashMap<String, Object>();
 		CommonServiceImpl common = new CommonServiceImpl();
 
@@ -127,7 +128,8 @@ public class UserController {
 		userInfoVO old = service.user_detail(infoVo.getUserIdx());
 		String uuid = ss.getServletContext().getRealPath("resources") + old.getUserFilepath();
 		
-		// 파일 첨부 할 때
+		System.out.println("deleteImg"+deleteImg);
+		// 추가하려는 파일이 있을 때
 		if( infoVo.getUserFilepathReal().getSize() > 0 ) {	//첨부하려는 파일이 있을 때
 			File f = new File(uuid);	// 먼저 기존에 저장되어 있는 파일의 물리적 주소를 받아와
 			f.delete();		//삭제시키고
@@ -135,11 +137,16 @@ public class UserController {
 			//파일 업로드 하는 처리
 			String filePath = common.fileUpload(infoVo.getUserFilepathReal(), ss, "card");
 			infoVo.setUserFilepath(filePath);
-
-		// 기존에 있던 파일을 삭제하고 파일을 첨부하지 않을 때
+		// 파일을 첨부하지 않을 때
 		}else {
-			File f = new File(uuid);
-			if( f.exists() ) f.delete();
+			// 원래 첨부된 파일을 그대로 사용하는 경우
+			if( deleteImg == 1) {
+				infoVo.setUserFilepath(old.getUserFilepath());
+			}else {
+				// 기존에 있던 파일을 삭제하고 파일을 첨부하지 않을 때
+				File f = new File(uuid);
+				if( f.exists() ) f.delete();
+			}
 		}
 		
 		int result = service.user_update(infoVo, careerVo, eduVo, licenVo, qualifiVo, skillVo, trainVo);

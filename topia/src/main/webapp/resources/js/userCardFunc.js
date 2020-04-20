@@ -498,18 +498,22 @@ function go_detail(userIdx){
 function fnUserInfo(userInfo){
 	var fullEmail = userInfo.userEmail;
 	
-	$('[name=curPage]').val('1');	//검색 버튼 눌렀을 시, 1페이지로 초기화
+	$('[name=curPage]').val('1');	//상세정보 뿌렸을 때, 1페이지로 초기화
+//	$('#deleteImg').val('0');	//상세정보 뿌렸을 때, 0로 초기화
 
+	
 	if( userInfo.userFilepath != null ){
 		$('#thumbNail').css('display', 'none');
 		$('#img').css('display', 'block');
 		$('#img').attr('src', 'resources/'+userInfo.userFilepath);
 		$('#delete-file').css('display', 'block');
+		$('#deleteImg').val('1');
 	}else{
 		$('#thumbNail').css('display', 'block');
 		$('#thumbNail').css('padding-left', '20px');
 		$('#img').css('display', 'none');
 	}
+	
 	$('#userIdx').val(userInfo.userIdx); 
 	$('#userName').val(userInfo.userName);
 	$('#userSocialSecunum').val(userInfo.userSocialSecunum);
@@ -525,8 +529,6 @@ function fnUserInfo(userInfo){
 	$('#userArmyServPeriod').val(userInfo.userArmyServPeriod);
 	$('#userTelnumWireless').val(userInfo.userTelnumWireless);
 	$('#userArmyServPeriod').val(userInfo.userArmyServPeriod);
-	
-	//
 	
 	//email이 null이 아닐때 @를 기준으로 나누고
 	if( fullEmail != null ){
