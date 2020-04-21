@@ -34,6 +34,7 @@
 	<input type="hidden" id="userIdx" name="userIdx">
 	<input type="hidden" id="deleteImg" name="deleteImg" value="0">
 	<input type="hidden" id="curPage" name="curPage" value="1">
+
 	<div class="custom-loading"><div class="loading-image"></div></div>
 	<%-- 새 작성건의 경우 해당 인풋값은 비어있고 수정 및 조회건은 들어감 --%>
 	<div class="user-info-list-pannel">
@@ -472,7 +473,7 @@
 					<option value="userDept">부서</option>
 				</select>
 				
-				<input type="text" id="userListSearchWord" name="userListSearchWord">
+				<input type="text" id="userListSearchWord" name="userListSearchWord" />
 				
 				<select id="userCareerLength" name="userCareerLength">
 					<option value="">경력사항</option>
@@ -525,7 +526,8 @@
 			<div class="clear-pannel"></div>
 			
 			<div class="keyword-add-pannel">			
-				<div class="keywordInputPannel keyword-input-pannel keyword-input-pannel-invisible">#<input maxlength="16"></div>
+				<div class="keywordInputPannel keyword-input-pannel keyword-input-pannel-invisible">#
+					<input maxlength="16" name="searchKeyword" onkeypress="if(event.keyCode == 32) event.returnValue = false;"></div>
 				<div class="pop-keyword-add-btn-pannel keywordAddPannelBtn tooltip">
 					<div class="pop-user-keyword-add-btn keywordAddBtn">
 					+

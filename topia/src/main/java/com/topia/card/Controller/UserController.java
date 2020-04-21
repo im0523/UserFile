@@ -115,7 +115,7 @@ public class UserController {
 		return map;
 	}
 	
-	//
+	//사원 불러오기 후 수정처리
 	@RequestMapping("/topia/userUpdate.do")
 	@ResponseBody
 	public Map<String, Object> userUpdate(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
@@ -129,6 +129,9 @@ public class UserController {
 		String uuid = ss.getServletContext().getRealPath("resources") + old.getUserFilepath();
 		
 		System.out.println("deleteImg"+deleteImg);
+		System.out.println("filepath: "+infoVo.getUserFilepath());
+		System.out.println("filepathReal: "+infoVo.getUserFilepathReal());
+		System.out.println("old filepath: "+old.getUserFilepath());
 		// 추가하려는 파일이 있을 때
 		if( infoVo.getUserFilepathReal().getSize() > 0 ) {	//첨부하려는 파일이 있을 때
 			File f = new File(uuid);	// 먼저 기존에 저장되어 있는 파일의 물리적 주소를 받아와

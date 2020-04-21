@@ -12,6 +12,7 @@ $(document).ready(function(){
 		$('#thumbNail').css('display', 'block');
 		$('#thumbNail').css('padding-left', '20px');
 		$('#delete-file').css('display', 'none');
+		$('#deleteImg').val('0');
 	});
 	
 	
@@ -105,6 +106,9 @@ $(document).ready(function(){
 		
 		$listPannel.css("display","block");
 		
+		$('[name=searchKeyword').val( $('.keyword-text').html() );
+//		alert( $('[name=searchKeyword').val() );
+		
 		var param = $('#selectList').serialize();
 		$.ajax({
 			url : '/topia/userList.do',
@@ -117,6 +121,7 @@ $(document).ready(function(){
 				$('[name=curPage]').val('1');	//검색 버튼 눌렀을 시, 1페이지로 초기화
 				$('#userInfoCnt').text($('#totalCnt').val());
 				$("#groupListDate").val("");
+				
 			},error: function(jqXHR, textStatus, errorThrown){
 				alert('실패');
 			}
@@ -138,6 +143,51 @@ $(document).ready(function(){
 		})
 	})
 	
+	// 키워드 추가 버튼 클릭 이벤트
+	$('.keywordAddBtn').click(function(){
+		var $keywordInputPannel = $('.keywordInputPannel');
+		if(!$keywordInputPannel.is(':visible')){
+			$keywordInputPannel.removeClass('keyword-input-pannel-invisible');
+			$keywordInputPannel.addClass('keyword-input-pannel-visible');
+			$('.keywordInputPannel').find('input').focus();
+		}
+	});
+
+	// 키워드 추가 버튼에서 엔터시 blur
+	$('.keywordInputPannel').find('input').keydown(function(key) {
+		if (key.keyCode == 13) {
+			$(this).blur();
+		}
+	});
+	
+	// 키워드 추가 input에 blur 이벤트 발생 시 
+	// 입력한 내용을 검색 키워드로 추가
+	$('.keywordInputPannel').find('input').blur(function(){
+		var $keywordInputPannel = $('.keywordInputPannel');
+		var $inputSelf = $(this);
+		
+		var val = $inputSelf.val();
+		
+		$keywordInputPannel.removeClass('keyword-input-pannel-visible');
+		$keywordInputPannel.addClass('keyword-input-pannel-invisible');
+
+		if( val.trim() != '' ){
+			var beforeText = '';
+			
+			beforeText += '<div class="keyword-body">#';
+			beforeText += '<span class="keyword-text">';
+			beforeText += val;
+			beforeText += '</span><button type="button" class="keyword-remove-btn keywordRemoveBtn"><span>X</span></button></div>';
+			
+			$keywordInputPannel.before(beforeText);
+			$inputSelf.val('');
+		}
+	})
+	
+	// 키워드 삭제 버튼
+	$(document).on('click','.keywordRemoveBtn',function(){
+		$(this).parent().remove();
+	});
 	
 	// 불러오기 창이 띄워진 상태에서 ㅡ 버튼 눌렀을때 불러오기 창 닫는 이벤트
 	$('.minimizeUserPannelBtn').click(function(){
@@ -499,8 +549,6 @@ function fnUserInfo(userInfo){
 	var fullEmail = userInfo.userEmail;
 	
 	$('[name=curPage]').val('1');	//상세정보 뿌렸을 때, 1페이지로 초기화
-//	$('#deleteImg').val('0');	//상세정보 뿌렸을 때, 0로 초기화
-
 	
 	if( userInfo.userFilepath != null ){
 		$('#thumbNail').css('display', 'none');
@@ -512,6 +560,7 @@ function fnUserInfo(userInfo){
 		$('#thumbNail').css('display', 'block');
 		$('#thumbNail').css('padding-left', '20px');
 		$('#img').css('display', 'none');
+		$('#deleteImg').val('0');
 	}
 	
 	$('#userIdx').val(userInfo.userIdx); 

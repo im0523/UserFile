@@ -99,10 +99,10 @@ public class UserServiceImpl implements UserService {
 				}
 			}
 			for(userSkillVO i : skillVo.getSkillList()) {
-				if(i.getSkillProjectName().equals("") == false) {
+//				if(i.getSkillProjectName().equals("") == false) {
 					i.setUserIdx(infoVo.getUserIdx());
 					dao.userSkill_insert(i);
-				}
+//				}
 			}
 			for(userTrainingVO i : trainVo.getTrainList()) {
 				if(i.getTrainingName().equals("") == false) {

@@ -133,6 +133,22 @@
 			<if test="groupListDate != null and groupListDate != ''">
 				AND C.CAREERDATE = #{groupListDate}
 			</if>
+			<if test="searchKeyword != null and searchKeyword != ''">
+				AND
+					SKILL_MODEL LIKE UPPER( '%' || #{searchKeyword} || '%' )
+				OR
+					SKILL_OS LIKE UPPER( '%' || #{searchKeyword} || '%' )
+				OR
+					SKILL_LANG LIKE UPPER( '%' || #{searchKeyword} || '%' )
+				OR
+					SKILL_DBMS LIKE UPPER( '%' || #{searchKeyword} || '%' )
+				OR
+					SKILL_TOOL LIKE UPPER( '%' || #{searchKeyword} || '%' )
+				OR
+					SKILL_ETC LIKE UPPER( '%' || #{searchKeyword} || '%' )
+				OR
+					SKILL_COMM LIKE UPPER( '%' || #{searchKeyword} || '%' )
+			</if>
 		</where>
 	</sql>
 	
@@ -200,6 +216,9 @@
 			USER_INFO_QUALIFI Q
 		ON
 			U.USER_IDX = Q.USER_IDX
+		LEFT OUTER JOIN
+            USER_INFO_SKILL S
+        ON U.USER_IDX = S.USER_IDX
 		<include refid="searchQry"/>
 	</select>
 
