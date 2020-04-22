@@ -36,7 +36,7 @@ public class userInfoVO {
 	private String genderSelect;		//성별 기준
 	private String qualifiSelect;		//자격증 기준
 	private int userInfoDataSize;		// 리스트 보여질 갯수(10, 20개)
-	private String searchKeyword;		// 개발환경 기준
+	private String searchKeyword[];		// 개발환경 기준
 	
 	//연차별 인원조회시
 	private String groupListDate;	//연차별 인왼조회 - O년차		
@@ -48,10 +48,10 @@ public class userInfoVO {
 	private int curPage;
 
 	
-	public String getSearchKeyword() {
+	public String[] getSearchKeyword() {
 		return searchKeyword;
 	}
-	public void setSearchKeyword(String searchKeyword) {
+	public void setSearchKeyword(String[] searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
 	public String getUserFilepath() {

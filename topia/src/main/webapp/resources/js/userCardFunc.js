@@ -106,8 +106,19 @@ $(document).ready(function(){
 		
 		$listPannel.css("display","block");
 		
-		$('[name=searchKeyword').val( $('.keyword-text').html() );
+//		$('[name=searchKeyword').val( $('.keyword-text').html() );
 //		alert( $('[name=searchKeyword').val() );
+
+		// 개발환경 검색조건
+		var list = new Array();
+		
+		$('.keyword-text').each(function(index, item){
+			list.push($(item).html());	//각각의 span 태그에 들어있는 값을 list라는 배열에 담고
+		})
+
+		$("#searchKeyword").val(list);	//hidden으로 들어있는 input 태그에 배열 형식으로 list 값을 담는다		ex) {java, oracle, linux}
+		
+		
 		
 		var param = $('#selectList').serialize();
 		$.ajax({
@@ -149,6 +160,7 @@ $(document).ready(function(){
 		if(!$keywordInputPannel.is(':visible')){
 			$keywordInputPannel.removeClass('keyword-input-pannel-invisible');
 			$keywordInputPannel.addClass('keyword-input-pannel-visible');
+			$('.keywordInputPannel').find('input').val('');
 			$('.keywordInputPannel').find('input').focus();
 		}
 	});

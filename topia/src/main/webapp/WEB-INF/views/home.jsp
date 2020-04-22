@@ -527,7 +527,9 @@
 			
 			<div class="keyword-add-pannel">			
 				<div class="keywordInputPannel keyword-input-pannel keyword-input-pannel-invisible">#
-					<input maxlength="16" name="searchKeyword" onkeypress="if(event.keyCode == 32) event.returnValue = false;"></div>
+					<input maxlength="16" onkeypress="if(event.keyCode == 32) event.returnValue = false;">
+					<input type="hidden" id="searchKeyword" name="searchKeyword" value="">
+				</div>
 				<div class="pop-keyword-add-btn-pannel keywordAddPannelBtn tooltip">
 					<div class="pop-user-keyword-add-btn keywordAddBtn">
 					+

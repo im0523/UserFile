@@ -64,6 +64,10 @@ public class UserController {
 	@RequestMapping("/topia/userList.do")
 	public String loadCard(Model model, userInfoVO infoVo, @RequestParam(defaultValue = "1") int curPage) {
 		
+//		for(int i = 0; i < infoVo.getSearchKeyword().length; i++) {		//hidden으로 준 input 태그 값에 배열로 잘 들어왔나 확인해보자
+//			System.out.println(infoVo.getSearchKeyword()[i]);
+//		}
+		
 		int totalCnt = service.list_totalCnt(infoVo);
 		
 		PageVO page = new PageVO(totalCnt, curPage, infoVo.getUserInfoDataSize());
@@ -115,7 +119,7 @@ public class UserController {
 		return map;
 	}
 	
-	//사원 불러오기 후 수정처리
+	//사원 detail 정보 불러오기 후 수정처리
 	@RequestMapping("/topia/userUpdate.do")
 	@ResponseBody
 	public Map<String, Object> userUpdate(userInfoVO infoVo, userCareerVO careerVo, userEduVO eduVo, userLicenVO licenVo,
@@ -129,9 +133,11 @@ public class UserController {
 		String uuid = ss.getServletContext().getRealPath("resources") + old.getUserFilepath();
 		
 		System.out.println("deleteImg"+deleteImg);
-		System.out.println("filepath: "+infoVo.getUserFilepath());
-		System.out.println("filepathReal: "+infoVo.getUserFilepathReal());
-		System.out.println("old filepath: "+old.getUserFilepath());
+		
+//		System.out.println("filepath: "+infoVo.getUserFilepath());
+//		System.out.println("filepathReal: "+infoVo.getUserFilepathReal());
+//		System.out.println("old filepath: "+old.getUserFilepath());
+		
 		// 추가하려는 파일이 있을 때
 		if( infoVo.getUserFilepathReal().getSize() > 0 ) {	//첨부하려는 파일이 있을 때
 			File f = new File(uuid);	// 먼저 기존에 저장되어 있는 파일의 물리적 주소를 받아와
