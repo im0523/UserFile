@@ -358,8 +358,9 @@ function execPostCode(){
 }
 
 //학교 추가버튼 클릭시
-var s=1;
 function schoolAddBtn(){
+	var s = $('#eduIdx').val();
+	
 	$('#schoolTb').append(
 			'<tbody>'
 			+ '<tr>'
@@ -382,14 +383,16 @@ function schoolAddBtn(){
 		+ '</tbody>'		
 	)
 	s++;
+	$('#eduIdx').val(s);
 	flexibleTableTrEve();
 	
 	datepicker();
 }
 
 //자격증 추가버튼 클릭시 
-var q=1;
 function qualifiAddBtn(){
+	var q = $('#qualifiIdx').val();
+	
 	$('#qualifiTb').append(
 			'<tbody>'
 			+ '<tr>'
@@ -407,14 +410,16 @@ function qualifiAddBtn(){
 		+ '</tbody>'
 	)
 	q++;
+	$('#qualifiIdx').val(q);
 	flexibleTableTrEve();
 	
 	datepicker();
 }
 
 //회사 추가버튼 클릭시
-var c=1;
 function careerAddBtn(){
+	var c = $('#careerIdx').val();
+	
 	$('#careerTb').append(
 			'<tbody>'
 			+ '<tr>'
@@ -428,14 +433,16 @@ function careerAddBtn(){
 		+ '</tbody>'
 	)
 	c++;
+	$('#careerIdx').val(c);
 	flexibleTableTrEve();
 	
 	datepicker();
 }
 
 //학력,자격증 추가버튼 클릭시
-var t=1;
 function trainingAddBtn(){
+	var t = $('#trainIdx').val();
+	
 	$('#trainingTb').append(
 		+ '<tbody>'
 			+ '<tr>'
@@ -448,14 +455,16 @@ function trainingAddBtn(){
 		+ '</tbody>'
 	)
 	t++;
+	$('#trainIdx').val(t);
 	flexibleTableTrEve();
 	
 	datepicker();
 }
 
 //보유기술 추가버튼 클릭시
-var l=1;
 function licenAddBtn(){
+	var l = $('#licenIdx').val();
+	
 	$('#licenTb').append(
 			'<tbody>'
 			+ '<tr>'
@@ -466,14 +475,16 @@ function licenAddBtn(){
 		+ '</tbody>'
 	)
 	l++;
+	$('#licenIdx').val(l);
 	flexibleTableTrEve();
 	
 	datepicker();
 }
 
 //스킬 추가버튼 클릭시
-var k=1;
 function skillAddBtn(){
+	var k = $('#skillIdx').val();
+	
 	$('#skillTb').append(
 			'<tbody>'
 			+ '<tr>'
@@ -497,6 +508,7 @@ function skillAddBtn(){
 		+ '</tbody>'
 	)
 	k++;
+	$('#skillIdx').val(k);
 	flexibleTableTrEve();
 	
 	datepicker();
@@ -641,6 +653,9 @@ function fnUserEdu(userEduList){
 			}
 		});
 	}
+	
+	$('#eduIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	
 	//userEduList의 졸업상태를 DB에서 가져와 selected 설정하는 처리
 	for(var e=0; e<userEduList.length; e++){
 		$('select[name="eduList['+ e +'].eduStatus"]').val(userEduList[e].eduStatus).prop('selected', true);
@@ -671,6 +686,9 @@ function fnUserQualifi(userQualifiList){
 			+ '</tr>';
 		quTable.find('tbody').html(html);
 	}
+	
+	$('#qualifiIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	
 	quTable.find('input').each(function(){
 		if( $(this).val()== 'null' ){
 			$(this).val('');
@@ -701,6 +719,9 @@ function fnUserCareer(userCareerList){
 			+ '</tr>';
 		caTable.find('tbody').html(html);
 	}
+	
+	$('#careerIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	
 	caTable.find('input').each(function(){
 		if( $(this).val()== 'null' ){
 			$(this).val('');
@@ -724,6 +745,9 @@ function fnUserLicen(userLicenList){
 				+ '</tr>';
 		licenTable.find('tbody').html(html);
 	}
+	
+	$('#licenIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	
 	licenTable.find('input').each(function(){
 		if( $(this).val()== 'null' ){
 			$(this).val('');
@@ -748,6 +772,9 @@ function fnUserTraining(userTrainingList){
 			+ '</tr>';
 		trTable.find('tbody').html(html);
 	}
+	
+	$('#trainIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	
 	trTable.find('input').each(function(){
 		if( $(this).val()== 'null' ){
 			$(this).val('');
@@ -785,6 +812,9 @@ function fnUserSkill(userSkillList){
 			+ '</tr>';
 		skillTable.find('tbody').html(html);
 	}
+	
+	$('#skillIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	
 	datepicker();
 	skillTable.find('textarea, input').each(function(){
 		if( $(this).val()== 'null' ){

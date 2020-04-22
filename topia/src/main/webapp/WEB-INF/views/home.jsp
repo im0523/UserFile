@@ -34,6 +34,13 @@
 	<input type="hidden" id="userIdx" name="userIdx">
 	<input type="hidden" id="deleteImg" name="deleteImg" value="0">
 	<input type="hidden" id="curPage" name="curPage" value="1">
+	
+	<input type="hidden" id="eduIdx" value="1"/>
+	<input type="hidden" id="careerIdx" value="1"/>
+	<input type="hidden" id="qualifiIdx" value="1"/>
+	<input type="hidden" id="trainIdx" value="1"/>
+	<input type="hidden" id="licenIdx" value="1"/>
+	<input type="hidden" id="skillIdx" value="1"/>
 
 	<div class="custom-loading"><div class="loading-image"></div></div>
 	<%-- 새 작성건의 경우 해당 인풋값은 비어있고 수정 및 조회건은 들어감 --%>
