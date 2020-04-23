@@ -359,6 +359,7 @@ function execPostCode(){
 
 //학교 추가버튼 클릭시
 function schoolAddBtn(){
+	$('#schoolTb').find('.removeTrBtn:first-child').parent().css('display', 'block');	//첫번째 remove 버튼이 다시 보이게
 	var s = $('#eduIdx').val();
 	
 	$('#schoolTb').append(
@@ -384,8 +385,11 @@ function schoolAddBtn(){
 	)
 	s++;
 	$('#eduIdx').val(s);
-	flexibleTableTrEve();
+//	if( s != 1 ){	// 만약 행이 1줄이 아닐 경우
+		
+//	}
 	
+	flexibleTableTrEve();
 	datepicker();
 }
 
@@ -411,8 +415,11 @@ function qualifiAddBtn(){
 	)
 	q++;
 	$('#qualifiIdx').val(q);
-	flexibleTableTrEve();
+	if( q != 1 ){	// 만약 행이 1줄이 아닐 경우
+		$('#qualifiTb').find('.removeTrBtn:first-child').parent().css('display', 'block');	//첫번째 remove 버튼이 다시 보이게
+	}
 	
+	flexibleTableTrEve();
 	datepicker();
 }
 
@@ -434,14 +441,17 @@ function careerAddBtn(){
 	)
 	c++;
 	$('#careerIdx').val(c);
-	flexibleTableTrEve();
+	if( c != 1 ){	// 만약 행이 1줄이 아닐 경우
+		$('#careerTb').find('.removeTrBtn:first-child').parent().css('display', 'block');	//첫번째 remove 버튼이 다시 보이게
+	}
 	
+	flexibleTableTrEve();
 	datepicker();
 }
 
 //학력,자격증 추가버튼 클릭시
 function trainingAddBtn(){
-	var t = $('#trainIdx').val();
+	var t = $('#trainingIdx').val();
 	
 	$('#trainingTb').append(
 		+ '<tbody>'
@@ -455,9 +465,12 @@ function trainingAddBtn(){
 		+ '</tbody>'
 	)
 	t++;
-	$('#trainIdx').val(t);
-	flexibleTableTrEve();
+	$('#trainingIdx').val(t);
+	if( t != 1 ){	// 만약 행이 1줄이 아닐 경우
+		$('#trainingTb').find('.removeTrBtn:first-child').parent().css('display', 'block');	//첫번째 remove 버튼이 다시 보이게
+	}
 	
+	flexibleTableTrEve();
 	datepicker();
 }
 
@@ -476,8 +489,11 @@ function licenAddBtn(){
 	)
 	l++;
 	$('#licenIdx').val(l);
+	if( l != 1 ){	// 만약 행이 1줄이 아닐 경우
+		$('#licenTb').find('.removeTrBtn:first-child').parent().css('display', 'block');	//첫번째 remove 버튼이 다시 보이게
+	}
+
 	flexibleTableTrEve();
-	
 	datepicker();
 }
 
@@ -509,13 +525,25 @@ function skillAddBtn(){
 	)
 	k++;
 	$('#skillIdx').val(k);
-	flexibleTableTrEve();
+	if( k != 1 ){	// 만약 행이 1줄이 아닐 경우
+		$('#skillTb').find('.removeTrBtn:first-child').parent().css('display', 'block');	//첫번째 remove 버튼이 다시 보이게
+	}
 	
+	flexibleTableTrEve();
 	datepicker();
 }
 
 // 추가항목 삭제 처리
 function deleteBtn(o){
+	var tableName = $(o).closest('table').attr('tb')+'Idx';
+	var idx = $('#'+tableName).val()-1;
+	
+	$('#'+tableName).val(idx);
+	
+	if( $('#'+tableName).val() == 1 ){	// 만약 행이 1줄일 경우에는
+		$(o).closest('table').find('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
+	}
+	
 	$(o).parent().parent().remove();
 }
 
@@ -654,14 +682,24 @@ function fnUserEdu(userEduList){
 		});
 	}
 	
-	$('#eduIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	if( userEduList.length <= 1 ){
+		$('#eduIdx').val('1');	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+		eduTable.find('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
+		
+	}else{
+		$('#eduIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	}
+	
+//	if( $('#eduIdx').val() == 1 ){
+//		$('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
+//		eduTable.find('.removeTrBtn:first-child').parent().css('display', 'block');	//첫번째 remove 버튼이 다시 보이게
+//	}
 	
 	//userEduList의 졸업상태를 DB에서 가져와 selected 설정하는 처리
 	for(var e=0; e<userEduList.length; e++){
 		$('select[name="eduList['+ e +'].eduStatus"]').val(userEduList[e].eduStatus).prop('selected', true);
 	}
 	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
-	$('#removeTrBtn-e0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 	
 }
 
@@ -687,7 +725,12 @@ function fnUserQualifi(userQualifiList){
 		quTable.find('tbody').html(html);
 	}
 	
-	$('#qualifiIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	if( userQualifiList.length <= 1 ){
+		$('#qualifiIdx').val('1');	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+		quTable.find('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
+	}else{
+		$('#qualifiIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	}
 	
 	quTable.find('input').each(function(){
 		if( $(this).val()== 'null' ){
@@ -700,7 +743,6 @@ function fnUserQualifi(userQualifiList){
 	}
 	datepicker();
 	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
-	$('#removeTrBtn-q0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 }
 
 //불러오기 후 userCareer 상세정보 뿌리기
@@ -720,7 +762,12 @@ function fnUserCareer(userCareerList){
 		caTable.find('tbody').html(html);
 	}
 	
-	$('#careerIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	if( userCareerList.length <= 1 ){
+		$('#careerIdx').val('1');	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+		caTable.find('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
+	}else{
+		$('#careerIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	}
 	
 	caTable.find('input').each(function(){
 		if( $(this).val()== 'null' ){
@@ -729,7 +776,6 @@ function fnUserCareer(userCareerList){
 	});
 	datepicker();
 	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
-	$('#removeTrBtn-c0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 }
 
 //불러오기 후 userLicen 상세정보 뿌리기
@@ -746,7 +792,12 @@ function fnUserLicen(userLicenList){
 		licenTable.find('tbody').html(html);
 	}
 	
-	$('#licenIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	if( userLicenList.length <= 1 ){
+		$('#licenIdx').val('1');	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+		licenTable.find('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
+	}else{
+		$('#licenIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	}
 	
 	licenTable.find('input').each(function(){
 		if( $(this).val()== 'null' ){
@@ -754,7 +805,6 @@ function fnUserLicen(userLicenList){
 		}
 	});
 	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
-	$('#removeTrBtn-l0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 }
 
 //불러오기 후 userTraining 상세정보 뿌리기
@@ -772,8 +822,12 @@ function fnUserTraining(userTrainingList){
 			+ '</tr>';
 		trTable.find('tbody').html(html);
 	}
-	
-	$('#trainIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	if( userTrainingList.length <= 1 ){
+		$('#trainingIdx').val('1');	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+		trTable.find('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
+	}else{
+		$('#trainingIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	}
 	
 	trTable.find('input').each(function(){
 		if( $(this).val()== 'null' ){
@@ -782,14 +836,12 @@ function fnUserTraining(userTrainingList){
 	});
 	datepicker();
 	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
-	$('#removeTrBtn-t0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
 }
 
 //불러오기 후 userSkill 상세정보 뿌리기
 function fnUserSkill(userSkillList){
 	var skillTable = $('#skillTb');
 	var html = '';
-	
 		
 	for(var i=0; i<userSkillList.length; i++){
 		html += '<tr>'
@@ -813,7 +865,12 @@ function fnUserSkill(userSkillList){
 		skillTable.find('tbody').html(html);
 	}
 	
-	$('#skillIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	if( userSkillList.length <= 1 ){
+		$('#skillIdx').val('1');	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+		skillTable.find('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
+	}else{
+		$('#skillIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
+	}
 	
 	datepicker();
 	skillTable.find('textarea, input').each(function(){
@@ -822,8 +879,6 @@ function fnUserSkill(userSkillList){
 		}
 	});
 	flexibleTableTrEve();		// 추가된 remove 버튼에 이벤트 할당
-	$('#removeTrBtn-s0').parent().remove();	//첫번째 - 버튼은 나타나지 않게
-	
 }
 
 function datepicker(){

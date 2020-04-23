@@ -38,7 +38,7 @@
 	<input type="hidden" id="eduIdx" value="1"/>
 	<input type="hidden" id="careerIdx" value="1"/>
 	<input type="hidden" id="qualifiIdx" value="1"/>
-	<input type="hidden" id="trainIdx" value="1"/>
+	<input type="hidden" id="trainingIdx" value="1"/>
 	<input type="hidden" id="licenIdx" value="1"/>
 	<input type="hidden" id="skillIdx" value="1"/>
 
@@ -232,6 +232,7 @@
 							<td>년</td>
 							<td><input type="text" name="eduList[0].eduMonth" placeholder="" class="eduMonth"></td>
 							<td>월</td>
+							<td style="display: none;"><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>
 						</tr>
 					</tbody>
 					
@@ -269,6 +270,7 @@
 								</select>
 							</td>
 							<td><input type="text" name="qualifiList[0].qualifiGetdate" class="qualifiGetdate dateInput" readonly="readonly"></td>
+							<td style="display: none;"><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>
 						</tr>
 					</tbody>
 					
@@ -313,6 +315,7 @@
 						<td><input type="text" name="careerList[0].careerLeavedate" class="careerLeavedate dateInput laterDate" readonly="readonly"></td>
 						<td><input type="text" name="careerList[0].careerSpot" class="careerSpot"></td>
 						<td><input type="text" name="careerList[0].careerResponsib" class="careerResponsib"></td>
+						<td style="display: none;"><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>
 					</tr>
 				</tbody>
 			</table>
@@ -355,6 +358,7 @@
 							<td><input type="text" name="trainList[0].trainingStartdate" class="trainingStartdate dateInput prevDate" readonly="readonly"></td>
 							<td><input type="text" name="trainList[0].trainingEnddate" class="trainingEnddate dateInput laterDate" readonly="readonly"></td>
 							<td><input type="text" name="trainList[0].trainingAgency" class="trainingAgency"></td>
+							<td style="display: none;"><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -381,6 +385,7 @@
 						<tr>
 							<td><input type="text" name="licenList[0].licenName" class="licenName"></td>
 							<td><input type="text" name="licenList[0].licenSkillLevel" class="licenSkillLevel"></td>
+							<td style="display: none;"><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -450,6 +455,7 @@
 						<td><textarea name="skillList[0].skillTool" class="skillTool"></textarea></td>
 						<td><textarea name="skillList[0].skillComm" class="skillComm"></textarea></td>
 						<td><textarea name="skillList[0].skillEtc" class="skillEtc"></textarea></td>
+						<td style="display: none;"><button type="button" class="removeTrBtn" onclick="deleteBtn(this)">-</button></td>
 					</tr>
 				</tbody>
 			</table>
