@@ -45,8 +45,6 @@
 			USER_INFO_TRAINING
 		WHERE
 			USER_IDX = #{userIdx}
-		AND
-			TRAINING_NAME IS NOT NULL
 	</select>
 	
 	<delete id="delete">

@@ -89,8 +89,6 @@
 			USER_INFO_SKILL
 		WHERE
 			USER_IDX = #{userIdx}
-		AND
-			SKILL_PROJECT_NAME IS NOT NULL
 	</select>
 	
 	<delete id="delete">

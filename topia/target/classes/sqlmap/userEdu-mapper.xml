@@ -39,8 +39,6 @@
 			USER_INFO_EDU
 		WHERE
 			USER_IDX = #{userIdx}
-		AND
-			EDU_SCHOOL_NAME IS NOT NULL
 	</select>
 	
 	<delete id="delete">

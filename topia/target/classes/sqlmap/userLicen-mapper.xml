@@ -34,8 +34,6 @@
 			USER_INFO_LICEN
 		WHERE
 			USER_IDX = #{userIdx}
-		AND
-			LICEN_NAME IS NOT NULL
 	</select>
 	
 	<delete id="delete">

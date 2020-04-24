@@ -75,39 +75,55 @@ public class UserServiceImpl implements UserService {
 		if( result==1 ) {
 			for(userEduVO i : eduVo.getEduList()) {
 //				System.out.println(i + "//" + i.getEduSchoolName());
-				if(i.getEduSchoolName().equals("") == false) {
-					i.setUserIdx(infoVo.getUserIdx());
-					dao.userEdu_insert(i);
+				if(i.getEduSchoolName() != null && i.getEduStatus() != null && i.getEduYear() != null && i.getEduMonth() != null) {
+					if(!i.getEduSchoolName().equals("") || !i.getEduStatus().equals("") || !i.getEduYear().equals("") || !i.getEduMonth().equals("")) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userEdu_insert(i);
+					}
 				}
 			}
 			for(userQualifiVO i : qualifiVo.getQualifiList()) {
-				if(i.getQualifiName().equals("") == false) {
-					i.setUserIdx(infoVo.getUserIdx());
-					dao.userQualifi_insert(i);
+				if(i.getQualifiName() != null && i.getQualifiGetdate() != null) {
+					if(!i.getQualifiName().equals("") || !i.getQualifiGetdate().equals("")) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userQualifi_insert(i);
+					}
 				}
 			}
 			for(userLicenVO i : licenVo.getLicenList()) {
-				if(i.getLicenName().equals("") == false) {
-					i.setUserIdx(infoVo.getUserIdx());
-					dao.userLicen_insert(i);
+				if(i.getLicenName() != null && i.getLicenSkillLevel() != null) {
+					if(!i.getLicenName().equals("") || !i.getLicenSkillLevel().equals("")) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userLicen_insert(i);
+					}
 				}
 			}
 			for(userCareerVO i : careerVo.getCareerList()) {
-				if(i.getCareerCompName().equals("") == false) {
-					i.setUserIdx(infoVo.getUserIdx());
-					dao.userCareer_insert(i);
+				if(i.getCareerCompName() != null && i.getCareerEnterdate() != null && i.getCareerLeavedate() != null && i.getCareerSpot() != null && i.getCareerResponsib() != null) {
+					if(!i.getCareerCompName().equals("") || !i.getCareerEnterdate().equals("") || !i.getCareerLeavedate().equals("") || !i.getCareerSpot().equals("") || !i.getCareerResponsib().equals("")) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userCareer_insert(i);
+					}
 				}
 			}
 			for(userSkillVO i : skillVo.getSkillList()) {
-//				if(i.getSkillProjectName().equals("") == false) {
-					i.setUserIdx(infoVo.getUserIdx());
-					dao.userSkill_insert(i);
-//				}
+				if(i.getSkillProjectName() != null && i.getSkillStartdate() != null && i.getSkillEnddate() != null && i.getSkillCustomerComp() != null && i.getSkillWorkComp() != null
+						&& i.getSkillIndustry() != null && i.getSkillApplied() != null && i.getSkillRole() != null && i.getSkillModel() != null && i.getSkillOs() != null && i.getSkillLang() != null
+						&& i.getSkillDbms() != null && i.getSkillTool() != null && i.getSkillComm() != null && i.getSkillEtc() != null) {
+					if(!i.getSkillProjectName().equals("") || !i.getSkillStartdate().equals("") || !i.getSkillEnddate().equals("") || !i.getSkillCustomerComp().equals("") || !i.getSkillWorkComp().equals("")
+						|| !i.getSkillIndustry().equals("") || !i.getSkillApplied().equals("")	|| !i.getSkillRole().equals("") || !i.getSkillModel().equals("") || !i.getSkillOs().equals("") || !i.getSkillLang().equals("")
+						|| !i.getSkillDbms().equals("") || !i.getSkillTool().equals("") || !i.getSkillComm().equals("") || !i.getSkillEtc().equals("")) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.userSkill_insert(i);
+					}
+				}
 			}
 			for(userTrainingVO i : trainVo.getTrainList()) {
-				if(i.getTrainingName().equals("") == false) {
-					i.setUserIdx(infoVo.getUserIdx());
-					dao.usereTraining_insert(i);
+				if(i.getTrainingName() != null && i.getTrainingStartdate() != null && i.getTrainingEnddate() != null & i.getTrainingAgency() != null) {
+					if(!i.getTrainingName().equals("") || !i.getTrainingStartdate().equals("") || !i.getTrainingEnddate().equals("") || !i.getTrainingAgency().equals("")) {
+						i.setUserIdx(infoVo.getUserIdx());
+						dao.usereTraining_insert(i);
+					}
 				}
 			}
 		}
@@ -132,40 +148,56 @@ public class UserServiceImpl implements UserService {
 //			if(eduVo.getEduList().size() > 0) {
 				for(userEduVO i : eduVo.getEduList()) {
 //					System.out.println(eduVo.getEduList());
-					if(i.getEduSchoolName() != null) {
-						i.setUserIdx(infoVo.getUserIdx());
-						dao.userEdu_insert(i);
+					if(i.getEduSchoolName() != null && i.getEduStatus() != null && i.getEduYear() != null && i.getEduMonth() != null) {
+						if(!i.getEduSchoolName().equals("") || !i.getEduStatus().equals("") || !i.getEduYear().equals("") || !i.getEduMonth().equals("")) {
+							i.setUserIdx(infoVo.getUserIdx());
+							dao.userEdu_insert(i);
+						}
 					}
 				}
 //			}
 				for(userCareerVO i : careerVo.getCareerList()) {
-					if(i.getCareerCompName() != null) {
-						i.setUserIdx(infoVo.getUserIdx());
-						dao.userCareer_insert(i);
+					if(i.getCareerCompName() != null && i.getCareerEnterdate() != null && i.getCareerLeavedate() != null && i.getCareerSpot() != null && i.getCareerResponsib() != null) {
+						if(!i.getCareerCompName().equals("") || !i.getCareerEnterdate().equals("") || !i.getCareerLeavedate().equals("") || !i.getCareerSpot().equals("") || !i.getCareerResponsib().equals("")) {
+							i.setUserIdx(infoVo.getUserIdx());
+							dao.userCareer_insert(i);
+						}
 					}
 				}
 				for(userQualifiVO i : qualifiVo.getQualifiList()) {
-					if(i.getQualifiName() != null) {
-						i.setUserIdx(infoVo.getUserIdx());
-						dao.userQualifi_insert(i);
+					if(i.getQualifiName() != null && i.getQualifiGetdate() != null) {
+						if(!i.getQualifiName().equals("") || !i.getQualifiGetdate().equals("")) {
+							i.setUserIdx(infoVo.getUserIdx());
+							dao.userQualifi_insert(i);
+						}
 					}
 				}
 				for(userLicenVO i : licenVo.getLicenList()) {
-					if(i.getLicenName() != null) {
-						i.setUserIdx(infoVo.getUserIdx());
-						dao.userLicen_insert(i);
+					if(i.getLicenName() != null && i.getLicenSkillLevel() != null) {
+						if(!i.getLicenName().equals("") || !i.getLicenSkillLevel().equals("")) {
+							i.setUserIdx(infoVo.getUserIdx());
+							dao.userLicen_insert(i);
+						}
 					}
 				}
 				for(userSkillVO i : skillVo.getSkillList()) {
-					if(i.getSkillProjectName() != null) {
-						i.setUserIdx(infoVo.getUserIdx());
-						dao.userSkill_insert(i);
+					if(i.getSkillProjectName() != null && i.getSkillStartdate() != null && i.getSkillEnddate() != null && i.getSkillCustomerComp() != null && i.getSkillWorkComp() != null
+							&& i.getSkillIndustry() != null && i.getSkillApplied() != null && i.getSkillRole() != null && i.getSkillModel() != null && i.getSkillOs() != null && i.getSkillLang() != null
+							&& i.getSkillDbms() != null && i.getSkillTool() != null && i.getSkillComm() != null && i.getSkillEtc() != null) {
+						if(!i.getSkillProjectName().equals("") || !i.getSkillStartdate().equals("") || !i.getSkillEnddate().equals("") || !i.getSkillCustomerComp().equals("") || !i.getSkillWorkComp().equals("")
+								|| !i.getSkillIndustry().equals("") || !i.getSkillApplied().equals("")	|| !i.getSkillRole().equals("") || !i.getSkillModel().equals("") || !i.getSkillOs().equals("") || !i.getSkillLang().equals("")
+								|| !i.getSkillDbms().equals("") || !i.getSkillTool().equals("") || !i.getSkillComm().equals("") || !i.getSkillEtc().equals("")) {
+								i.setUserIdx(infoVo.getUserIdx());
+								dao.userSkill_insert(i);
+						}
 					}
 				}
 				for(userTrainingVO i : trainVo.getTrainList()) {
-					if(i.getTrainingName() != null) {
-						i.setUserIdx(infoVo.getUserIdx());
-						dao.usereTraining_insert(i);
+					if(i.getTrainingName() != null && i.getTrainingStartdate() != null && i.getTrainingEnddate() != null & i.getTrainingAgency() != null) {
+						if(!i.getTrainingName().equals("") || !i.getTrainingStartdate().equals("") || !i.getTrainingEnddate().equals("") || !i.getTrainingAgency().equals("")) {
+							i.setUserIdx(infoVo.getUserIdx());
+							dao.usereTraining_insert(i);
+						}
 					}
 				}
 		}

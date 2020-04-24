@@ -37,8 +37,6 @@
 			USER_INFO_QUALIFI
 		WHERE
 			USER_IDX = #{userIdx}
-		AND
-			QUALIFI_NAME IS NOT NULL
 	</select>
 	
 	<delete id="delete">

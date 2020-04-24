@@ -690,11 +690,6 @@ function fnUserEdu(userEduList){
 		$('#eduIdx').val(i);	// 행추가 할 때를 위해 input value를 바꿔 놓는 처리
 	}
 	
-//	if( $('#eduIdx').val() == 1 ){
-//		$('.removeTrBtn:first-child').parent().css('display', 'none');	//첫번째 - 버튼은 나타나지 않게
-//		eduTable.find('.removeTrBtn:first-child').parent().css('display', 'block');	//첫번째 remove 버튼이 다시 보이게
-//	}
-	
 	//userEduList의 졸업상태를 DB에서 가져와 selected 설정하는 처리
 	for(var e=0; e<userEduList.length; e++){
 		$('select[name="eduList['+ e +'].eduStatus"]').val(userEduList[e].eduStatus).prop('selected', true);
