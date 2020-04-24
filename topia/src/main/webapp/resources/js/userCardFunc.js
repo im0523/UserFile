@@ -949,12 +949,6 @@ function searchReset(){
 	$('.pop-user-search-pannel').find('select').val('');
 	$('#userInfoDataSize').val('10');
 }
-//새로작성 버튼 클릭 시
-function resetPage(){
-	resetInput();
-	$('#status').val('select');
-	$('#curPage').val('1');
-}
 
 //연차별 인원보기에서 각 연차별로 클릭 했을 때
 function go_userList(groupListDate){

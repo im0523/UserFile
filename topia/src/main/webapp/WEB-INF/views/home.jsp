@@ -62,7 +62,7 @@
 				<button type="button" class="personalHistoryListBtn">
 					불러오기
 				</button>
-				<button type="button" class="newHistoryCreateBtn" onclick="resetPage()">
+				<button type="button" class="newHistoryCreateBtn" onclick="location='/topia.do'">
 					새로작성
 				</button>
 				<button type="button" class="saveBtn">
