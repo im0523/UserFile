@@ -113,11 +113,45 @@
 				
 				<tr>
 					<td>부서</td>
-					<td><input type="text" id="userDept" name="userDept"></td>
+					<td>
+						<select id="userDept" name="userDept">
+							<option value="">선택없음</option>
+							<option value="인사팀">인사팀</option>
+							<option value="총무팀">총무팀</option>
+							<option value="개발팀">개발팀</option>
+							<option value="마케팅팀">마케팅팀</option>
+							<option value="영업팀">영업팀</option>
+						</select>
+					</td>
 					<td>직위</td>
-					<td><input type="text" id="userSpot" name="userSpot"></td>
+					<td>
+						<select id="userSpot" name="userSpot">
+							<option value="">선택없음</option>
+							<option value="사원">사원</option>
+							<option value="주임">주임</option>
+							<option value="대리">대리</option>
+							<option value="과장">과장</option>
+							<option value="차장">차장</option>
+							<option value="부장">부장</option>
+							<option value="팀장">팀장</option>
+							<option value="이사">이사</option>
+							<option value="상무">상무</option>
+							<option value="대표">대표</option>
+						</select>
+					</td>
 					<td>병역</td>
-					<td><input type="text" id="userArmyServ" name="userArmyServ"></td>
+					<td>
+						<select id="userArmyServ" name="userArmyServ">
+							<option value="">선택없음</option>
+							<option value="병역필">병역필</option>
+							<option value="병역면제">병역면제</option>
+							<option value="병역미필">병역미필</option>
+							<option value="해당무">해당무</option>
+							<option value="특례필">특례필</option>
+							<option value="특례">특례</option>
+							<option value="비대상(여자)">비대상(여자)</option>
+						</select>
+					</td>
 					<td>결혼</td>
 					<td>
 						<select id="userMaritalStatus" name="userMaritalStatus">
